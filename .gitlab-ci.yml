@@ -24,7 +24,7 @@ build site:
 unit test:
   stage: test
   script:
-    - npm test
+    - npm test 
   artifacts:
     paths:
       - dist/
