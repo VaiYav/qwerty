@@ -1,13 +1,13 @@
 <template lang="pug">
-  div#app
-    Navbar
-    |{{$t('message')}}
+  div
+    Locale
 </template>
 
 <script>
 export default {
+  name: 'Navbar',
   components: {
-    Navbar: () => import('@/layout/Navbar')
+    Locale: () => import('@/components/Locale')
   }
 }
 </script>
