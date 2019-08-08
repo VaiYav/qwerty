@@ -1,10 +1,13 @@
-<template lang="pug">
-  b-container(fluid)
-    b-row(align-h="end").justify-content-end
-      b-form-select(
-        v-model="locale"
-        :options="$i18n.availableLocales"
-        @change="switchLocale").container__locale.m-1
+<template>
+  <b-container fluid>
+    <b-row align-h="end" class="justify-content-end">
+      <b-form-select
+          v-model="locale"
+          :options="$i18n.availableLocales"
+          @change="switchLocale"
+          class="container__locale m-1" />
+    </b-row>
+  </b-container>
 </template>
 
 <script>
