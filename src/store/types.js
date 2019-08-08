@@ -1,0 +1,3 @@
+export const SET_CONFIG = 'SET_CONFIG'
+export const REQUEST_SUCCESS = 'REQUEST_SUCCESS'
+export const REQUEST_FAILURE = 'REQUEST_FAILURE'

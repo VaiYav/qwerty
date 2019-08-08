@@ -1,6 +1,7 @@
-<template lang="pug">
-  div
-    Locale
+<template>
+  <div>
+    <Locale />
+  </div>
 </template>
 
 <script>
