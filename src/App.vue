@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <Navbar />
-    <Table-grid
-        :columns="columns"
-        :data="data"
-        :config="config"
-    />
+    <div style="margin: 1000px 0;">
+      <Table-grid
+          :columns="columns"
+          :data="data"
+          :config="config"
+      />
+    </div>
   </div>
 </template>
 

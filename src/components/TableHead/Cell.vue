@@ -1,7 +1,11 @@
 <template>
-  <th class="table-grid-cell-head">
-    <span class="table-grid-cell-head-container">
-      <span class="table-grid-head-title">{{ $t(`columns.${columnKey}`) }}</span>
+  <th
+      class="table-grid-cell-head"
+      :style="width">
+    <span
+        class="table-grid-cell-head-container">
+      <span
+          class="table-grid-head-title">{{ $t(`columns.${columnKey}`) }}</span>
     </span>
   </th>
 </template>
@@ -9,13 +13,51 @@
 export default {
   name: 'TableHeadColumnCell',
   props: {
-    column: {
-      type: Object,
-      default: () => {}
-    },
     columnKey: {
       type: String,
       default: ''
+    },
+    fixed: {
+      type: Boolean,
+      default: false
+    },
+    columns: {
+      type: Array,
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      width: {}
+    }
+  },
+  watch: {
+    columns: {
+      handler() {
+        if (this.fixed) {
+          this.getWidth()
+        }
+      }
+    }
+  },
+  methods: {
+    getWidth() {
+      this.$nextTick(() => {
+        const row = document.querySelector(`.with-fixed-header th[data-col-order="${this.$attrs['data-col-order']}"]`)
+        if (!row) return
+        this.width = {
+          'width': `${row.clientWidth}px`,
+          'min-width': `${row.clientWidth}px`,
+          'max-width': `${row.clientWidth}px`
+        }
+      })
+    }
+  },
+  created() {
+    if (this.fixed) {
+      this.getWidth()
+      window.addEventListener('resize', this.getWidth)
+      window.addEventListener('scroll', this.getWidth)
     }
   }
 }

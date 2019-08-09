@@ -19,6 +19,7 @@
           :key="rowIndex"/>
       </tbody>
     </table>
+    <FixedHeader :columns="columns" v-if="config.fixedHeader" />
   </div>
 </template>
 
@@ -47,7 +48,8 @@ export default {
   },
   components: {
     TableBodyRow: () => import('@/components/TableBody/Row'),
-    TableHeadColumn: () => import('@/components/TableHead/Column')
+    TableHeadColumn: () => import('@/components/TableHead/Column'),
+    FixedHeader: () => import('@/components/FixedHeader')
   },
   computed: {
     ...mapGetters({

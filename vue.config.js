@@ -5,6 +5,8 @@ module.exports = {
       fallbackLocale: 'en',
       localeDir: 'locales',
       enableInSFC: true
-    }
+    },
+    lintStyleOnBuild: true,
+    stylelint: {}
   }
 }
