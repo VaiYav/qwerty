@@ -1,11 +1,13 @@
 <template>
   <tr class="table-grid-row-head">
-    <TableHeadColumnCell
+    <TableHeadCell
         v-for="(column, columnIndex) in columns"
-        :data-colindex="column.order"
+        :data-col-order="column.order"
         :key="columnIndex"
         :columnKey="column.key"
-        :column="column" />
+        :fixed="fixed"
+        :columns="columns"
+    />
   </tr>
 </template>
 
@@ -13,12 +15,16 @@
 export default {
   name: 'TableHeadColumn',
   components: {
-    TableHeadColumnCell: () => import('@/components/TableHead/Cell')
+    TableHeadCell: () => import('@/components/TableHead/Cell')
   },
   props: {
     columns: {
       type: Array,
       default: () => ({})
+    },
+    fixed: {
+      type: Boolean,
+      default: false
     }
   }
 }

@@ -11,7 +11,7 @@
       top: 0;
       left: 0;
       background: #eef2f4;
-      opacity: 0.3;
+      opacity: .3;
       z-index: 1000;
     }
     tbody {
@@ -22,7 +22,7 @@
         width: 3rem;
         height: 3rem;
         vertical-align: text-bottom;
-        border: 0.25em solid currentColor;
+        border: .25em solid currentColor;
         border-right-color: transparent;
         border-radius: 50%;
         -webkit-animation: spinner-border .75s linear infinite;
@@ -44,6 +44,7 @@
         cursor: pointer;
         white-space: nowrap;
         text-transform: uppercase;
+        background: $white;
         &:hover {
           .table-grid-head-title {
             color: black;
@@ -66,7 +67,7 @@
             white-space: nowrap;
             font-size: 11px;
             line-height: 12px;
-            transition: all .3s cubic-bezier(.000,.465,.750,.750);
+            transition: all .3s cubic-bezier(0, .465, .75, .75);
             user-select: none;
           }
         }
