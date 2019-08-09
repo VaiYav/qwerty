@@ -1,0 +1,100 @@
+.table {
+  position: relative;
+  min-height: 600px;
+  &.loader-active {
+    &::before {
+      display: block;
+      content: '';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #eef2f4;
+      opacity: 0.3;
+      z-index: 1000;
+    }
+    tbody {
+      position: relative;
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        vertical-align: text-bottom;
+        border: 0.25em solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner-border .75s linear infinite;
+        animation: spinner-border .75s linear infinite;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: 10px 0;
+      }
+    }
+  }
+  &-grid {
+    &-header {
+      .table-grid-cell-head {
+        position: relative;
+        box-sizing: border-box;
+        vertical-align: middle;
+        padding: 0;
+        cursor: pointer;
+        white-space: nowrap;
+        text-transform: uppercase;
+        &:hover {
+          .table-grid-head-title {
+            color: black;
+          }
+        }
+        &-container {
+          position: relative;
+          display: block;
+          padding: 15px 16px 11px;
+          min-width: 100%;
+          max-width: 100%;
+          .table-grid-head-title {
+            display: inline-block;
+            overflow: hidden;
+            padding-right: 21px;
+            max-width: 100%;
+            color: grey;
+            text-align: left;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 11px;
+            line-height: 12px;
+            transition: all .3s cubic-bezier(.000,.465,.750,.750);
+            user-select: none;
+          }
+        }
+      }
+    }
+    .table-grid-cell {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      border-bottom: 1px #eef2f4 solid;
+      background: #fff;
+      vertical-align: top;
+      -webkit-user-drag: none;
+      &-content {
+        position: relative;
+        display: block;
+        margin: 16px 16px 16px;
+        color: #535c69;
+        vertical-align: top;
+        font-size: 13px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    &-spinner {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+}
