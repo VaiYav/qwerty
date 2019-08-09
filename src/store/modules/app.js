@@ -2,11 +2,14 @@ import * as types from '../types'
 const config = {
   namespaced: true,
   state: {
-    loading: false
+    loader: false
   },
   getters: {
   },
   actions: {
+    setLoader({ commit }, payload) {
+      commit(types.SET_LOADER, payload)
+    },
     requestFailure({ commit }, payload) {
       commit(types.REQUEST_FAILURE)
     },
@@ -20,6 +23,9 @@ const config = {
     },
     [types.REQUEST_FAILURE](state, payload) {
       console.error('REQUEST_FAILURE', payload)
+    },
+    [types.SET_LOADER](state, payload) {
+      state.loader = payload
     }
   }
 }

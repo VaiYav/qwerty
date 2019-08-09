@@ -1,3 +1,12 @@
 {
-  "message": "Message EN"
+  "message": "Message EN",
+  "columns": {
+    "id": "Id",
+    "quantity": "Quantity",
+    "open_date": "Open date",
+    "last_sale": "Last sale",
+    "last_pricerule_change": "Last price rule change",
+    "sales_channel": "Sales channel",
+    "account_name": "Account name"
+  }
 }

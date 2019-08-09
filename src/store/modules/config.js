@@ -10,10 +10,7 @@ const getData = () => {
 const config = {
   namespaced: true,
   state: {
-    a: 2,
-    b: 1,
-    c: 1,
-    d: 4,
+    fixedHeader: false,
     ...customConfiguration
   },
   getters: {
