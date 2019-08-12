@@ -1,12 +1,17 @@
 <template>
   <th
       class="table-grid-cell-head"
+      :class="{ draggable }"
       :style="width">
-    <span
+    <div
         class="table-grid-cell-head-container">
       <span
+          v-if="visibleText"
+          v-b-tooltip.hover
+          :title="$t(`columns.${columnKey}`)"
           class="table-grid-head-title">{{ $t(`columns.${columnKey}`) }}</span>
-    </span>
+      <slot />
+    </div>
   </th>
 </template>
 <script>
@@ -24,6 +29,14 @@ export default {
     columns: {
       type: Array,
       default: () => ({})
+    },
+    visibleText: {
+      type: Boolean,
+      default: true
+    },
+    draggable: {
+      type: Boolean,
+      default: true
     }
   },
   data() {

@@ -15,6 +15,7 @@
         <TableBodyRow
           v-for="(row, rowIndex) in data"
           :data="row"
+          :rowIndex="rowIndex"
           :columns="columns"
           :key="rowIndex"/>
       </tbody>
