@@ -3,7 +3,7 @@
       class="fixed-header-container"
       :style="{ width: tableWidth + 'px', left: tablePositionX + 'px' }">
     <table
-        class="table table-grid"
+        class="table table-grid m-0"
         :hidden="hidden">
       <thead class="table-grid-header">
         <TableHeadColumn

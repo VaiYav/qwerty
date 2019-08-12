@@ -41,10 +41,12 @@
         box-sizing: border-box;
         vertical-align: middle;
         padding: 0;
-        cursor: pointer;
         white-space: nowrap;
         text-transform: uppercase;
         background: $white;
+        &.draggable {
+          cursor: pointer;
+        }
         &:hover {
           .table-grid-head-title {
             color: black;
@@ -52,7 +54,8 @@
         }
         &-container {
           position: relative;
-          display: block;
+          display: flex;
+          align-items: center;
           padding: 15px 16px 11px;
           min-width: 100%;
           max-width: 100%;
@@ -91,11 +94,20 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        &.context-container {
+          display: flex;
+          align-items: center;
+        }
       }
     }
     &-spinner {
       width: 3rem;
       height: 3rem;
     }
+  }
+  &-checkbox {
+    margin-left: 2.5rem;
+    width: 0;
+    padding: 0;
   }
 }

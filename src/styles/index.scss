@@ -3,3 +3,10 @@
 @import './variables.scss';
 @import './components/_tableGrid.scss';
 @import "./components/_fixedHeader.scss";
+.popover-body {
+  padding: 0;
+}
+.pointer {
+  cursor: pointer;
+  outline: none;
+}
