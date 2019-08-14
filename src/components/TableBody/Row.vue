@@ -13,7 +13,6 @@
             <b-list-group-item href="#foobar" disabled>Disabled link</b-list-group-item>
           </b-list-group>
         </b-popover>
-
       </div>
     </td>
     <TableBodyCell

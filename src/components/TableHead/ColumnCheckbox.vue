@@ -25,7 +25,7 @@ export default {
     },
     status: {
       get() {
-        if (this.selectedRow.length === this.allData.length) return 'checked'
+        if (this.allData.length > 0 && this.selectedRow.length === this.allData.length) return 'checked'
         else return 'not_checked'
       },
       set(value) {}
