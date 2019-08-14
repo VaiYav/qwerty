@@ -2,6 +2,7 @@
   <div id="app">
     <Navbar />
     <div style="margin: 1000px 0;">
+      <Pagination v-if="config.pagination.isActive" />
       <Table-grid
           :columns="columns"
           :data="data"
@@ -16,7 +17,8 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
     Navbar: () => import('@/layout/Navbar'),
-    TableGrid: () => import('@/components/TableGrid')
+    TableGrid: () => import('@/components/TableGrid'),
+    Pagination: () => import('@/components/Pagination')
   },
   computed: {
     ...mapGetters({
@@ -37,7 +39,7 @@ export default {
     Promise.all([
       this.setAppLoader(true),
       this.fetchConfig({}),
-      this.fetchData({})
+      this.fetchData({ query: 'response', payload: {}})
     ]).then(() => {
       this.setAppLoader(false)
     })
