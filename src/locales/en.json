@@ -7,6 +7,30 @@
     "last_sale": "Last sale",
     "last_pricerule_change": "Last price rule change",
     "sales_channel": "Sales channel",
-    "account_name": "Account name"
+    "account_name": "Account name",
+    "condition": "Condition",
+    "title": "Title",
+    "sku": "SKU",
+    "article_number": "Article number",
+    "manufacturer": "Manufacturer",
+    "part_number": "Part number",
+    "onlineprice_with_shipping_costs": "Online price with shipping costs",
+    "minimum_price": "Minimum price",
+    "maximum_price": "Maximum price",
+    "wish_price": "Wish price",
+    "price_margin": "Price margin",
+    "strike_price": "Strike price",
+    "purchase_price": "Purchase price",
+    "netto_costs": "Netto costs",
+    "margin_minprice": "Margin min price",
+    "margin_maxprice": "Margin max price",
+    "margin_wishprice": "Margin wish price",
+    "cheapest_competitor": "Cheapest competitor",
+    "buybox_competitor": "Buy box competitor",
+    "comparedwith_competitor": "Compared with competitor"
+  },
+  "form": {
+    "edit": "Edit",
+    "menu": "Menu"
   }
 }

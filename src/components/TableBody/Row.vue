@@ -5,7 +5,7 @@
         <RowCheckbox :rowIndex="rowIndex" :data="data" :id="data.id.value" />
         <VIcon :id="`${data.id.value}`" name="bars" class="pointer" />
         <b-popover :target="`${data.id.value}`" triggers="focus">
-          <template slot="title">Menu</template>
+          <template slot="title">{{$t('form.menu')}}</template>
           <b-list-group>
             <b-list-group-item href="#some-link">Awesome link</b-list-group-item>
             <b-list-group-item href="#" active>Link with active state</b-list-group-item>
@@ -20,21 +20,19 @@
         :data-cellindex="cell.key"
         :key="cellIndex"
         :type="cell.type"
+        :id="data.id"
         :data="data[cell.key]">
     </TableBodyCell>
   </tr>
 </template>
 
 <script>
-import VIcon from 'vue-awesome/components/Icon'
-import 'vue-awesome/icons/bars'
 
 export default {
   name: 'TableBodyRow',
   components: {
     TableBodyCell: () => import('@/components/TableBody/Cell'),
-    RowCheckbox: () => import('@/components/TableBody/Cell/RowCheckbox'),
-    VIcon
+    RowCheckbox: () => import('@/components/TableBody/Cell/RowCheckbox')
   },
   props: {
     data: {

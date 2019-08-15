@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div
+    class="table"
+    :class="{
+      'loader-active': loader,
+    }">
     <table
-        class="table table-grid"
+        class="table-grid"
         :class="{
-          'loader-active': loader,
           'content-full': data.length,
           'with-fixed-header': config.fixedHeader
         }"
@@ -11,13 +14,13 @@
       <thead class="table-grid-header">
         <TableHeadColumn :columns="columns" />
       </thead>
-      <tbody>
+      <tbody v-if="data.length">
         <TableBodyRow
-          v-for="(row, rowIndex) in data"
-          :data="row"
-          :rowIndex="rowIndex"
-          :columns="columns"
-          :key="rowIndex"/>
+            v-for="(row, rowIndex) in data"
+            :data="row"
+            :rowIndex="rowIndex"
+            :columns="columns"
+            :key="row.id.value"/>
       </tbody>
     </table>
     <FixedHeader :columns="columns" v-if="config.fixedHeader" />
@@ -52,6 +55,10 @@ export default {
     TableHeadColumn: () => import('@/components/TableHead/Column'),
     FixedHeader: () => import('@/components/FixedHeader')
   },
+  data() {
+    return {
+    }
+  },
   computed: {
     ...mapGetters({
       loader: 'externalData/getLoader'
@@ -60,6 +67,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

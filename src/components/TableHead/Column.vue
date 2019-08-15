@@ -1,7 +1,7 @@
 <template>
   <tr class="table-grid-row-head">
     <TableHeadCell
-        data-col-order="1"
+        data-col-order="0"
         :draggable="false"
         :fixed="fixed"
         :visibleText="false"
@@ -22,15 +22,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import 'vue-awesome/icons/sliders-h'
-import VIcon from 'vue-awesome/components/Icon'
 
 export default {
   name: 'TableHeadColumn',
   components: {
     TableHeadCell: () => import('@/components/TableHead/Cell'),
-    ColumnCheckbox: () => import('@/components/TableHead/ColumnCheckbox'),
-    VIcon
+    ColumnCheckbox: () => import('@/components/TableHead/ColumnCheckbox')
   },
   props: {
     columns: {

@@ -34,14 +34,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import VIcon from 'vue-awesome/components/Icon'
-import 'vue-awesome/icons/list-ol'
 
 export default {
   name: 'Pagination',
-  components: {
-    VIcon
-  },
   data() {
     return {
       currentPage: 1

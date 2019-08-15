@@ -4,7 +4,7 @@ export default ({
     'nullable': false,
     'visible': true,
     'editable': false,
-    'order': 2,
+    'order': 1,
     'width': {
       'min': 5,
       'max': 50,
@@ -16,7 +16,7 @@ export default ({
     'nullable': false,
     'visible': true,
     'editable': true,
-    'order': 3,
+    'order': 2,
     'width': {
       'min': 5,
       'max': 50,
