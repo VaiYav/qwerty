@@ -2,8 +2,6 @@
   <td
       :id="`${$attrs['data-cellindex']}-${id.value}`"
       class="table-grid-cell"
-      @mouseover.prevent.capture="visiblePencil = true"
-      @mouseleave="visiblePencil = false"
       :class="{ pointer: data.editable }">
     <span class="table-grid-cell-content">
       <custom
@@ -15,7 +13,7 @@
       <span v-else>{{data.value}}</span>
     </span>
     <VIcon
-        v-if="data.editable && visiblePencil || visiblePopover"
+        v-if="data.editable && hoveredRow || visiblePopover"
         class="ml-1 position-absolute edit-pencil"
         name="pencil-alt" />
     <b-popover
@@ -66,11 +64,14 @@ export default {
     id: {
       type: Object,
       default: () => ({})
+    },
+    hoveredRow: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      visiblePencil: false,
       visiblePopover: false,
       value: ''
     }

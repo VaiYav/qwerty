@@ -1,9 +1,18 @@
 <template>
-  <tr class="table-grid-row table-grid-row-body">
+  <tr
+      @mouseover.prevent.capture="hoveredRow = true"
+      @mouseleave="hoveredRow = false"
+      class="table-grid-row table-grid-row-body">
     <td class="table-grid-cell">
       <div class="table-grid-cell-content context-container">
-        <RowCheckbox :rowIndex="rowIndex" :data="data" :id="data.id.value" />
-        <VIcon :id="`${data.id.value}`" name="bars" class="pointer" />
+        <RowCheckbox
+            :rowIndex="rowIndex"
+            :data="data"
+            :id="data.id.value" />
+        <VIcon
+            :id="`${data.id.value}`"
+            name="bars"
+            class="pointer" />
         <b-popover :target="`${data.id.value}`" triggers="focus">
           <template slot="title">{{$t('form.menu')}}</template>
           <b-list-group>
@@ -21,7 +30,8 @@
         :key="cellIndex"
         :type="cell.type"
         :id="data.id"
-        :data="data[cell.key]">
+        :data="data[cell.key]"
+        :hoveredRow="hoveredRow">
     </TableBodyCell>
   </tr>
 </template>
@@ -46,6 +56,11 @@ export default {
     rowIndex: {
       type: [String, Number],
       default: ''
+    }
+  },
+  data() {
+    return {
+      hoveredRow: false
     }
   }
 }
