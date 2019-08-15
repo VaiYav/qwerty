@@ -54,7 +54,7 @@ const externalData = {
         const data = {
           ...response.data,
           ...MockedData,
-          meta: { ...state.meta, ...response.data.meta },
+          meta: { ...state.meta, ...MockedData.meta },
           columns: { ...state.columns, ...MockedData.columns }
         }
         commit(types.SET_DATA, data)
@@ -62,8 +62,10 @@ const externalData = {
         dispatch('setLoader', false)
         return data
       } catch (e) {
-        dispatch('app/requestFailure', e, { root: true })
-        dispatch('setLoader', false)
+        setTimeout(() => {
+          dispatch('app/requestFailure', e, { root: true })
+          dispatch('setLoader', false)
+        }, 1500)
         return e
       }
     },

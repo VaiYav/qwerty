@@ -303,7 +303,7 @@ export default {
   },
   'meta': {
     'pagination': {
-      'total': 150,
+      'total': 550,
       'count': 50,
       'per_page': 50,
       'current_page': 1,
