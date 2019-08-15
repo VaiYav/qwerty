@@ -1,5 +1,6 @@
 export const SET_CONFIG = 'SET_CONFIG'
 export const SET_DATA = 'SET_DATA'
+export const EDIT_ENTITY = 'EDIT_ENTITY'
 export const SET_LOADER = 'SET_LOADER'
 export const SELECT_ROW = 'SELECT_ROW'
 export const REQUEST_SUCCESS = 'REQUEST_SUCCESS'

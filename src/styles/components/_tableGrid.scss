@@ -1,6 +1,9 @@
 .table {
   position: relative;
   min-height: 600px;
+  table {
+    width: 100%;
+  }
   &.loader-active {
     &::before {
       display: block;
@@ -19,8 +22,8 @@
       &::after {
         content: '';
         display: inline-block;
-        width: 3rem;
-        height: 3rem;
+        width: 5rem;
+        height: 5rem;
         vertical-align: text-bottom;
         border: .25em solid currentColor;
         border-right-color: transparent;
@@ -28,7 +31,7 @@
         -webkit-animation: spinner-border .75s linear infinite;
         animation: spinner-border .75s linear infinite;
         position: absolute;
-        top: 50%;
+        top: 4rem;
         left: 50%;
         margin: 10px 0;
       }
@@ -80,7 +83,8 @@
       position: relative;
       overflow: hidden;
       padding: 0;
-      border-bottom: 1px #eef2f4 solid;
+      border-bottom: 2px #eef2f4 solid;
+      border-top: none;
       background: #fff;
       vertical-align: top;
       -webkit-user-drag: none;
@@ -98,6 +102,10 @@
           display: flex;
           align-items: center;
         }
+      }
+      .edit-pencil {
+        right: 0;
+        top: calc(50% - 10px);
       }
     }
     &-spinner {

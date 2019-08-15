@@ -2,6 +2,7 @@ import * as types from '../types'
 import MockedData from '@/mockedData'
 import defaultColumns from '@/defaultColumns'
 import { fetchData } from '@/api'
+const cloneState = (state) => JSON.parse(JSON.stringify(state))
 
 const externalData = {
   namespaced: true,
@@ -13,9 +14,9 @@ const externalData = {
     },
     meta: {
       pagination: {
-        total: 100,
-        count: 50,
-        per_page: 10,
+        total: 0,
+        count: 0,
+        per_page: 50,
         current_page: 1,
         total_pages: 2,
         links: {
@@ -27,10 +28,12 @@ const externalData = {
   getters: {
     getData: state => state.data,
     getPagination: state => state.meta.pagination,
-    getAllColumns: state => state.columns,
+    getAllColumns: state => {
+      return Object.keys(state.columns)
+        .map(key => ({ key, ...state.columns[key] }))
+    },
     getSortedByOrder: (state, getters) => {
-      return Object.keys(getters.getAllColumns)
-        .map(key => ({ key, ...getters.getAllColumns[key] }))
+      return getters.getAllColumns
         .filter(entity => entity.visible)
         .sort((a, b) => {
           if (a.order && b.order) {
@@ -47,9 +50,10 @@ const externalData = {
     async fetchData({ commit, dispatch, state }, payload) {
       dispatch('setLoader', true)
       try {
-        const response = payload ? await fetchData(payload) : {}
+        const response = payload ? await fetchData(payload) : { meta: {}, data: {}}
         const data = {
           ...response.data,
+          ...MockedData,
           meta: { ...state.meta, ...response.data.meta },
           columns: { ...state.columns, ...MockedData.columns }
         }
@@ -59,8 +63,19 @@ const externalData = {
         return data
       } catch (e) {
         dispatch('app/requestFailure', e, { root: true })
+        dispatch('setLoader', false)
         return e
       }
+    },
+    editEntity({ dispatch, commit, state }, payload) {
+      dispatch('setLoader', true)
+      const clonedState = cloneState(state.data)
+      setTimeout(() => {
+        const entity = clonedState.find(s => s.id.value === payload.id)
+        entity[payload.field].value = payload.value
+        commit(types.EDIT_ENTITY, clonedState)
+        dispatch('setLoader', false)
+      }, 1500)
     }
   },
   mutations: {
@@ -71,6 +86,9 @@ const externalData = {
     },
     [types.SET_LOADER](state, payload) {
       state.loader = payload
+    },
+    [types.EDIT_ENTITY](state, payload) {
+      state.data = payload
     }
   }
 }

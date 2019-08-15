@@ -39,7 +39,8 @@ export default {
     Promise.all([
       this.setAppLoader(true),
       this.fetchConfig({}),
-      this.fetchData({ query: 'response', payload: {}})
+      this.fetchData()
+      // this.fetchData({ query: 'response', payload: {}})
     ]).then(() => {
       this.setAppLoader(false)
     })
