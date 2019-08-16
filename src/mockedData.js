@@ -3,7 +3,7 @@ export default {
     'open_date': {
       'type': 'datetime',
       'nullable': true,
-      'visible': true,
+      'visible': false,
       'editable': false,
       'order': 3,
       'width': {
@@ -15,7 +15,7 @@ export default {
     'last_sale': {
       'type': 'datetime',
       'nullable': true,
-      'visible': true,
+      'visible': false,
       'editable': false,
       'order': 4,
       'width': {
@@ -27,7 +27,7 @@ export default {
     'last_pricerule_change': {
       'type': 'datetime',
       'nullable': true,
-      'visible': true,
+      'visible': false,
       'editable': false,
       'order': 5,
       'width': {
@@ -39,7 +39,7 @@ export default {
     'sales_channel': {
       'type': 'custom',
       'nullable': false,
-      'visible': true,
+      'visible': false,
       'editable': false,
       'order': 6,
       'width': {
@@ -51,7 +51,7 @@ export default {
     'account_name': {
       'type': 'string',
       'nullable': false,
-      'visible': true,
+      'visible': false,
       'editable': false,
       'order': 7,
       'width': {
@@ -63,7 +63,7 @@ export default {
     'condition': {
       'type': 'string',
       'nullable': false,
-      'visible': true,
+      'visible': false,
       'editable': false,
       'order': 8,
       'width': {

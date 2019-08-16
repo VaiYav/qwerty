@@ -24,6 +24,7 @@
       </tbody>
     </table>
     <FixedHeader :columns="columns" v-if="config.fixedHeader" />
+    <ColumnSettings />
   </div>
 </template>
 
@@ -53,7 +54,8 @@ export default {
   components: {
     TableBodyRow: () => import('@/components/TableBody/Row'),
     TableHeadColumn: () => import('@/components/TableHead/Column'),
-    FixedHeader: () => import('@/components/FixedHeader')
+    FixedHeader: () => import('@/components/FixedHeader'),
+    ColumnSettings: () => import('@/components/TableHead/ColumnSettings')
   },
   data() {
     return {
