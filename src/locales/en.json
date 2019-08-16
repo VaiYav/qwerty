@@ -27,7 +27,9 @@
     "margin_wishprice": "Margin wish price",
     "cheapest_competitor": "Cheapest competitor",
     "buybox_competitor": "Buy box competitor",
-    "comparedwith_competitor": "Compared with competitor"
+    "comparedwith_competitor": "Compared with competitor",
+    "show_hide_columns": "Show hide columns",
+    "column_settings": "Column settings"
   },
   "form": {
     "edit": "Edit",

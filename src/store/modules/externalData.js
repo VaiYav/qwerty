@@ -78,6 +78,19 @@ const externalData = {
         commit(types.EDIT_ENTITY, clonedState)
         dispatch('setLoader', false)
       }, 1500)
+    },
+    changeColumns({ state, commit }, payload) {
+      const clonedState = cloneState(state.columns)
+      const object = payload.reduce((result, item) => {
+        result[item.key] = item
+        return result
+      }, {})
+      for (const key in clonedState) {
+        if (clonedState.hasOwnProperty(key)) {
+          clonedState[key].visible = false
+        }
+      }
+      commit(types.CHANGE_COLUMNS, { ...clonedState, ...object })
     }
   },
   mutations: {
@@ -91,6 +104,9 @@ const externalData = {
     },
     [types.EDIT_ENTITY](state, payload) {
       state.data = payload
+    },
+    [types.CHANGE_COLUMNS](state, payload) {
+      state.columns = payload
     }
   }
 }

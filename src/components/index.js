@@ -7,5 +7,7 @@ import 'vue-awesome/icons/euro-sign'
 import 'vue-awesome/icons/bars'
 import 'vue-awesome/icons/sliders-h'
 import 'vue-awesome/icons/list-ol'
+import 'vue-awesome/icons/save'
+import 'vue-awesome/icons/window-close'
 
 Vue.component('VIcon', Icon)

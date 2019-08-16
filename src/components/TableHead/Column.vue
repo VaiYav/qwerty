@@ -7,7 +7,9 @@
         :visibleText="false"
         :columns="[]">
       <ColumnCheckbox />
-      <VIcon name="sliders-h" class="pointer" />
+      <div @click="$root.$emit('bv::show::modal', 'modal-column-settings', $event.target)">
+        <VIcon name="sliders-h" class="pointer" />
+      </div>
     </TableHeadCell>
     <TableHeadCell
         v-for="(column, columnIndex) in columns"
