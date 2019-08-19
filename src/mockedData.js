@@ -7,9 +7,9 @@ export default {
       'editable': false,
       'order': 3,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'last_sale': {
@@ -19,9 +19,9 @@ export default {
       'editable': false,
       'order': 4,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'last_pricerule_change': {
@@ -31,9 +31,9 @@ export default {
       'editable': false,
       'order': 5,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'sales_channel': {
@@ -43,9 +43,9 @@ export default {
       'editable': false,
       'order': 6,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'account_name': {
@@ -55,9 +55,9 @@ export default {
       'editable': false,
       'order': 7,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'condition': {
@@ -67,9 +67,9 @@ export default {
       'editable': false,
       'order': 8,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'title': {
@@ -79,9 +79,9 @@ export default {
       'editable': false,
       'order': 9,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'sku': {
@@ -91,9 +91,9 @@ export default {
       'editable': false,
       'order': 10,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'article_number': {
@@ -103,9 +103,9 @@ export default {
       'editable': false,
       'order': 11,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'manufacturer': {
@@ -115,9 +115,9 @@ export default {
       'editable': false,
       'order': 12,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'part_number': {
@@ -127,9 +127,9 @@ export default {
       'editable': false,
       'order': 13,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'onlineprice_with_shipping_costs': {
@@ -139,9 +139,9 @@ export default {
       'editable': false,
       'order': 14,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'minimum_price': {
@@ -151,9 +151,9 @@ export default {
       'editable': true,
       'order': 15,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'maximum_price': {
@@ -163,9 +163,9 @@ export default {
       'editable': true,
       'order': 16,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'wish_price': {
@@ -175,9 +175,9 @@ export default {
       'editable': true,
       'order': 17,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'price_margin': {
@@ -187,9 +187,9 @@ export default {
       'editable': false,
       'order': 18,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'strike_price': {
@@ -199,9 +199,9 @@ export default {
       'editable': true,
       'order': 19,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'purchase_price': {
@@ -211,9 +211,9 @@ export default {
       'editable': true,
       'order': 20,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'netto_costs': {
@@ -223,9 +223,9 @@ export default {
       'editable': true,
       'order': 21,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'margin_minprice': {
@@ -235,9 +235,9 @@ export default {
       'editable': true,
       'order': 22,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'margin_maxprice': {
@@ -247,9 +247,9 @@ export default {
       'editable': true,
       'order': 23,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'margin_wishprice': {
@@ -259,9 +259,9 @@ export default {
       'editable': true,
       'order': 24,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'cheapest_competitor': {
@@ -271,9 +271,9 @@ export default {
       'editable': false,
       'order': 25,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'comparedwith_competitor': {
@@ -283,9 +283,9 @@ export default {
       'editable': false,
       'order': 26,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     },
     'buybox_competitor': {
@@ -295,9 +295,9 @@ export default {
       'editable': false,
       'order': 27,
       'width': {
-        'min': 5,
-        'max': 50,
-        'default': 20
+        'min': 55,
+        'max': 350,
+        'default': 100
       }
     }
   },

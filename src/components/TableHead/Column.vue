@@ -1,6 +1,11 @@
 <template>
   <tr class="table-grid-row-head">
     <TableHeadCell
+        :style="{
+          width: '88px',
+          'max-width': '88px',
+          'min-width': '88px'
+        }"
         data-col-order="0"
         :draggable="false"
         :fixed="fixed"
@@ -18,7 +23,9 @@
         :columnKey="column.key"
         :fixed="fixed"
         :columns="columns"
+        :column="column"
     />
+    <th class="table-grid-cell-head table-grid-cell-head__special-empty"></th>
   </tr>
 </template>
 

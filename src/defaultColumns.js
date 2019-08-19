@@ -6,9 +6,9 @@ export default ({
     'editable': false,
     'order': 1,
     'width': {
-      'min': 5,
-      'max': 50,
-      'default': 20
+      'min': 55,
+      'max': 150,
+      'default': 100
     }
   },
   'quantity': {
@@ -18,9 +18,9 @@ export default ({
     'editable': true,
     'order': 2,
     'width': {
-      'min': 5,
-      'max': 50,
-      'default': 20
+      'min': 55,
+      'max': 250,
+      'default': 100
     }
   }
 })

@@ -91,6 +91,10 @@ const externalData = {
         }
       }
       commit(types.CHANGE_COLUMNS, { ...clonedState, ...object })
+    },
+    setColumnWidth({ commit, state }, payload) {
+      const clonedState = cloneState(state.columns)
+      clonedState[payload.field].width.default = payload.width
     }
   },
   mutations: {
@@ -106,6 +110,9 @@ const externalData = {
       state.data = payload
     },
     [types.CHANGE_COLUMNS](state, payload) {
+      state.columns = payload
+    },
+    [types.SET_COLUMN_WIDTH](state, payload) {
       state.columns = payload
     }
   }
