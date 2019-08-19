@@ -33,6 +33,7 @@
         :data="data[cell.key]"
         :hoveredRow="hoveredRow">
     </TableBodyCell>
+    <td class="table-grid-cell"></td>
   </tr>
 </template>
 
