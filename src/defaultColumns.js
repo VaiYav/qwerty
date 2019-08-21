@@ -1,9 +1,32 @@
 export default ({
+  'context': {
+    'type': 'custom',
+    'component': 'RowControl',
+    'nullable': false,
+    'visible': true,
+    'editable': false,
+    'settable': false,
+    'fixed': {
+      active: true,
+      position: 'left'
+    },
+    'order': 0,
+    'width': {
+      'min': 88,
+      'max': 88,
+      'default': 88
+    }
+  },
   'id': {
     'type': 'int',
     'nullable': false,
     'visible': true,
     'editable': false,
+    'settable': true,
+    'fixed': {
+      active: true,
+      position: 'left'
+    },
     'order': 1,
     'width': {
       'min': 55,
@@ -15,6 +38,11 @@ export default ({
     'type': 'int',
     'nullable': false,
     'visible': true,
+    'settable': true,
+    'fixed': {
+      active: true,
+      position: 'right'
+    },
     'editable': true,
     'order': 2,
     'width': {

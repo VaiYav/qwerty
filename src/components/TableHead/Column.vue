@@ -1,27 +1,13 @@
 <template>
   <tr class="table-grid-row-head">
     <TableHeadCell
-        :style="{
-          width: '88px',
-          'max-width': '88px',
-          'min-width': '88px'
-        }"
-        data-col-order="0"
-        :draggable="false"
-        :fixed="fixed"
-        :visibleText="false"
-        :columns="[]">
-      <ColumnCheckbox />
-      <div @click="$root.$emit('bv::show::modal', 'modal-column-settings', $event.target)">
-        <VIcon name="sliders-h" class="pointer" />
-      </div>
-    </TableHeadCell>
-    <TableHeadCell
+        :class="{ 'table-cell-hidden': !fixedColumn && column.fixed && column.fixed.active }"
         v-for="(column, columnIndex) in columns"
         :data-col-order="column.order"
         :key="columnIndex"
         :columnKey="column.key"
-        :fixed="fixed"
+        :fixedHeader="fixedHeader"
+        :fixedColumn="fixedColumn"
         :columns="columns"
         :column="column"
     />
@@ -35,15 +21,18 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'TableHeadColumn',
   components: {
-    TableHeadCell: () => import('@/components/TableHead/Cell'),
-    ColumnCheckbox: () => import('@/components/TableHead/ColumnCheckbox')
+    TableHeadCell: () => import('@/components/TableHead/Cell')
   },
   props: {
     columns: {
       type: Array,
       default: () => ({})
     },
-    fixed: {
+    fixedHeader: {
+      type: Boolean,
+      default: false
+    },
+    fixedColumn: {
       type: Boolean,
       default: false
     }

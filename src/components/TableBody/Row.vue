@@ -1,39 +1,20 @@
 <template>
   <tr
-      @mouseover.prevent.capture="hoveredRow = true"
-      @mouseleave="hoveredRow = false"
-      class="table-grid-row table-grid-row-body">
-    <td class="table-grid-cell">
-      <div class="table-grid-cell-content context-container">
-        <RowCheckbox
-            :rowIndex="rowIndex"
-            :data="data"
-            :id="data.id.value" />
-        <VIcon
-            :id="`${data.id.value}`"
-            name="bars"
-            class="pointer" />
-        <b-popover :target="`${data.id.value}`" triggers="focus">
-          <template slot="title">{{$t('form.menu')}}</template>
-          <b-list-group>
-            <b-list-group-item href="#some-link">Awesome link</b-list-group-item>
-            <b-list-group-item href="#" active>Link with active state</b-list-group-item>
-            <b-list-group-item href="#">Action links are easy</b-list-group-item>
-            <b-list-group-item href="#foobar" disabled>Disabled link</b-list-group-item>
-          </b-list-group>
-        </b-popover>
-      </div>
-    </td>
+      @mouseover.prevent.capture="showPencil(`row-${data.id.value}`)"
+      @mouseleave="hidePencil(`row-${data.id.value}`)"
+      class="table-grid-row table-grid-row-body"
+      :class="{ [`row-${data.id.value}`]: data.id }">
     <TableBodyCell
         v-for="(cell, cellIndex) in columns"
         :data-cellindex="cell.key"
         :key="cellIndex"
         :type="cell.type"
+        :component="cell.component"
         :id="data.id"
-        :data="data[cell.key]"
-        :hoveredRow="hoveredRow">
+        :fixedColumn="fixedColumn"
+        :data="data[cell.key] || data">
     </TableBodyCell>
-    <td class="table-grid-cell"></td>
+    <td v-if="!fixedColumn" class="table-grid-cell"></td>
   </tr>
 </template>
 
@@ -42,8 +23,7 @@
 export default {
   name: 'TableBodyRow',
   components: {
-    TableBodyCell: () => import('@/components/TableBody/Cell'),
-    RowCheckbox: () => import('@/components/TableBody/Cell/RowCheckbox')
+    TableBodyCell: () => import('@/components/TableBody/Cell')
   },
   props: {
     data: {
@@ -57,11 +37,28 @@ export default {
     rowIndex: {
       type: [String, Number],
       default: ''
+    },
+    fixedColumn: {
+      type: Boolean,
+      default: false
+    },
+    fixedHeader: {
+      type: Boolean,
+      default: false
     }
   },
-  data() {
-    return {
-      hoveredRow: false
+  methods: {
+    showPencil(e) {
+      const rows = document.querySelectorAll(`.${e}`)
+      for (let i = 0; i < rows.length; i++) {
+        rows[i].classList.add('active')
+      }
+    },
+    hidePencil(e) {
+      const rows = document.querySelectorAll(`.${e}`)
+      for (let i = 0; i < rows.length; i++) {
+        rows[i].classList.remove('active')
+      }
     }
   }
 }

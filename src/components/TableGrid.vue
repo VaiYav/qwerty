@@ -1,42 +1,28 @@
 <template>
   <div
-    class="table"
+    class="table table-container"
     :class="{
       'loader-active': loader,
     }">
-    <table
-        class="table-grid"
-        :class="{
-          'content-full': data.length,
-          'with-fixed-header': config.fixedHeader
-        }"
-    >
-      <thead class="table-grid-header">
-        <TableHeadColumn :columns="columns" />
-      </thead>
-      <tbody v-if="data.length">
-        <TableBodyRow
-            v-for="(row, rowIndex) in data"
-            :data="row"
-            :rowIndex="rowIndex"
-            :columns="columns"
-            :key="row.id.value"/>
-      </tbody>
-    </table>
-    <FixedHeader :columns="columns" v-if="config.fixedHeader" />
-    <ColumnSettings />
+    <FixedColumn :columns="columns" :config="config" position="left" :data="data" ref="fixed-left" />
+    <vueScroll @handle-scroll="handleHorizontalScroll">
+      <MainTable :columns="columns" :data="data" :config="config" />
+      <ColumnSettings />
+    </vueScroll>
+    <FixedColumn :columns="columns" :config="config" position="right" :data="data" ref="fixed-right" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { EventBus } from '../EventBus'
 
 export default {
   name: 'TableGrid',
   props: {
     columns: {
       type: Array,
-      default: () => {}
+      default: () => ([])
     },
     data: {
       type: Array,
@@ -52,19 +38,22 @@ export default {
     }
   },
   components: {
-    TableBodyRow: () => import('@/components/TableBody/Row'),
-    TableHeadColumn: () => import('@/components/TableHead/Column'),
-    FixedHeader: () => import('@/components/FixedHeader'),
-    ColumnSettings: () => import('@/components/TableHead/ColumnSettings')
-  },
-  data() {
-    return {
-    }
+    ColumnSettings: () => import('@/components/TableHead/ColumnSettings'),
+    FixedColumn: () => import('@/components/FixedColumn'),
+    MainTable: () => import('@/components/MainTable')
   },
   computed: {
     ...mapGetters({
       loader: 'externalData/getLoader'
-    })
+    }),
+    getColumns() {
+      return this.columns.filter(c => !c.fixed || c.fixed && !c.fixed.active)
+    }
+  },
+  methods: {
+    handleHorizontalScroll() {
+      EventBus.$emit('handle-horizontal-scroll')
+    }
   }
 }
 </script>

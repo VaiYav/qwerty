@@ -1,19 +1,31 @@
 <template>
   <td
+      @blur="closeEditMenu"
       :id="`${$attrs['data-cellindex']}-${id.value}`"
       class="table-grid-cell"
-      :class="{ pointer: data.editable }">
-    <span class="table-grid-cell-content">
+      :class="{
+        pointer: data.editable
+      }">
+    <keep-alive>
+      <component v-if="component" :data="data" :rowIndex="$attrs['data-cellindex']" :is="component"/>
+    </keep-alive>
+    <span v-if="!component" class="table-grid-cell-content">
       <custom
           v-if="type === 'custom'"
-          :data="data.formatted"></custom>
+          :data="data.formatted">
+      </custom>
       <span
+          v-b-tooltip.hover.d300
+          :title="data.formatted"
           v-else-if="data.formatted"
           v-html="data.formatted"></span>
-      <span v-else>{{data.value}}</span>
+      <span
+          v-b-tooltip.hover.d300
+          :title="data.value"
+          v-else>{{data.value}}</span>
     </span>
     <VIcon
-        v-if="data.editable && hoveredRow || visiblePopover"
+        v-if="data.editable || visiblePopover"
         class="ml-1 position-absolute edit-pencil"
         name="pencil-alt" />
     <b-popover
@@ -50,7 +62,8 @@ import { mapActions } from 'vuex'
 export default {
   name: 'TableBodyCell',
   components: {
-    Custom: () => import('@/components/TableBody/Cell/custom')
+    Custom: () => import('@/components/TableBody/Cell/custom'),
+    RowControl: () => import('@/components/TableBody/Cell/RowControl')
   },
   props: {
     data: {
@@ -65,7 +78,11 @@ export default {
       type: Object,
       default: () => ({})
     },
-    hoveredRow: {
+    component: {
+      type: String,
+      default: ''
+    },
+    fixedColumn: {
       type: Boolean,
       default: false
     }

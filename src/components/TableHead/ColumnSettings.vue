@@ -8,7 +8,7 @@
     <b-container fluid>
       <b-form-checkbox-group :checked="sortedByOrder" @input="changeColumn">
         <b-form-checkbox
-            v-for="column in allColumns"
+            v-for="column in allColumns.filter(c => c.settable)"
             :key="column.key"
             :value="column"
             class="setting-column-checkbox"

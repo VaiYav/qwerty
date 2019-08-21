@@ -1,5 +1,6 @@
 <template>
   <span v-html="data">
+    <slot />
   </span>
 </template>
 
