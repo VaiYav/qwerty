@@ -5,6 +5,7 @@ export default {
       'nullable': true,
       'visible': false,
       'editable': false,
+      'settable': true,
       'order': 3,
       'width': {
         'min': 55,
@@ -17,6 +18,7 @@ export default {
       'nullable': true,
       'visible': false,
       'editable': false,
+      'settable': true,
       'order': 4,
       'width': {
         'min': 55,
@@ -29,6 +31,7 @@ export default {
       'nullable': true,
       'visible': false,
       'editable': false,
+      'settable': true,
       'order': 5,
       'width': {
         'min': 55,
@@ -41,6 +44,7 @@ export default {
       'nullable': false,
       'visible': false,
       'editable': false,
+      'settable': true,
       'order': 6,
       'width': {
         'min': 55,
@@ -53,6 +57,7 @@ export default {
       'nullable': false,
       'visible': false,
       'editable': false,
+      'settable': true,
       'order': 7,
       'width': {
         'min': 55,
@@ -65,6 +70,7 @@ export default {
       'nullable': false,
       'visible': false,
       'editable': false,
+      'settable': true,
       'order': 8,
       'width': {
         'min': 55,
@@ -77,6 +83,11 @@ export default {
       'nullable': false,
       'visible': true,
       'editable': false,
+      'settable': true,
+      'fixed': {
+        active: false,
+        position: 'right'
+      },
       'order': 9,
       'width': {
         'min': 55,
@@ -89,7 +100,12 @@ export default {
       'nullable': false,
       'visible': true,
       'editable': false,
+      'settable': true,
       'order': 10,
+      'fixed': {
+        active: true,
+        position: 'right'
+      },
       'width': {
         'min': 55,
         'max': 350,
@@ -101,7 +117,12 @@ export default {
       'nullable': false,
       'visible': true,
       'editable': false,
+      'settable': true,
       'order': 11,
+      'fixed': {
+        active: true,
+        position: 'right'
+      },
       'width': {
         'min': 55,
         'max': 350,
@@ -113,6 +134,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': false,
+      'settable': true,
       'order': 12,
       'width': {
         'min': 55,
@@ -125,6 +147,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': false,
+      'settable': true,
       'order': 13,
       'width': {
         'min': 55,
@@ -137,6 +160,7 @@ export default {
       'nullable': false,
       'visible': true,
       'editable': false,
+      'settable': true,
       'order': 14,
       'width': {
         'min': 55,
@@ -149,6 +173,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': true,
+      'settable': true,
       'order': 15,
       'width': {
         'min': 55,
@@ -161,6 +186,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': true,
+      'settable': true,
       'order': 16,
       'width': {
         'min': 55,
@@ -173,6 +199,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': true,
+      'settable': true,
       'order': 17,
       'width': {
         'min': 55,
@@ -185,6 +212,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': false,
+      'settable': true,
       'order': 18,
       'width': {
         'min': 55,
@@ -197,6 +225,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': true,
+      'settable': true,
       'order': 19,
       'width': {
         'min': 55,
@@ -209,6 +238,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': true,
+      'settable': true,
       'order': 20,
       'width': {
         'min': 55,
@@ -221,6 +251,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': true,
+      'settable': true,
       'order': 21,
       'width': {
         'min': 55,
@@ -233,6 +264,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': true,
+      'settable': true,
       'order': 22,
       'width': {
         'min': 55,
@@ -245,6 +277,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': true,
+      'settable': true,
       'order': 23,
       'width': {
         'min': 55,
@@ -257,6 +290,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': true,
+      'settable': true,
       'order': 24,
       'width': {
         'min': 55,
@@ -269,6 +303,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': false,
+      'settable': true,
       'order': 25,
       'width': {
         'min': 55,
@@ -281,6 +316,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': false,
+      'settable': true,
       'order': 26,
       'width': {
         'min': 55,
@@ -293,6 +329,7 @@ export default {
       'nullable': true,
       'visible': true,
       'editable': false,
+      'settable': true,
       'order': 27,
       'width': {
         'min': 55,

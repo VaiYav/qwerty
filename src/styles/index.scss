@@ -4,6 +4,9 @@
 @import './components/_tableGrid.scss';
 @import "./components/_fixedHeader.scss";
 @import "./components/_pagination.scss";
+#app {
+  overflow: hidden;
+}
 .popover-body {
   padding: 0;
 }
@@ -13,4 +16,7 @@
 }
 .setting-column-checkbox {
   width: 45%;
+}
+.dropdown-menu.show {
+  z-index: 2000;
 }

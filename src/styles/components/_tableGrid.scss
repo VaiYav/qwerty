@@ -1,6 +1,18 @@
 .table {
   position: relative;
   min-height: 600px;
+  overflow: hidden;
+  z-index: 1000;
+  &.table-container {
+    display: flex;
+  }
+  .main-table {
+    .table-grid-cell-head {
+      &__special-empty {
+        min-width: 150px !important;
+      }
+    }
+  }
   table {
     width: 100%;
     overflow: hidden;
@@ -20,9 +32,9 @@
       left: 0;
       background: #eef2f4;
       opacity: .3;
-      z-index: 1000;
+      z-index: 5000;
     }
-    tbody {
+    .__vuescroll {
       position: relative;
       &::after {
         content: '';
@@ -52,6 +64,7 @@
         white-space: nowrap;
         text-transform: uppercase;
         background: $white;
+        height: 52px;
         &.draggable {
           cursor: pointer;
         }
@@ -105,16 +118,17 @@
       border-bottom: 2px #eef2f4 solid;
       border-top: none;
       background: #fff;
-      vertical-align: top;
+      vertical-align: middle;
       * {
         -webkit-user-drag: none;
       }
       &-content {
         position: relative;
-        display: block;
-        margin: 16px 16px 16px;
+        display: flex;
+        padding: 16px 16px 16px;
+        height: 55px;
         color: #535c69;
-        vertical-align: top;
+        vertical-align: inherit;
         font-size: 13px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -139,6 +153,16 @@
       &:nth-child(even) {
         .table-grid-cell {
           background-color: $gray-100;
+        }
+      }
+      &-body {
+        .edit-pencil {
+          display: none;
+        }
+        &.active {
+          .edit-pencil {
+            display: block;
+          }
         }
       }
     }
@@ -193,5 +217,30 @@
     margin-left: 2.5rem;
     width: 0;
     padding: 0;
+  }
+  .table-fixed-column {
+    position: relative;
+    top: 0;
+    min-width: min-content;
+    max-width: min-content;
+    width: initial;
+    box-shadow: 0 0 6px 2px rgba(0, 0, 0, .2);
+    z-index: 1000;
+    .fixed-header-container {
+      z-index: 2000;
+    }
+  }
+  .table-cell-hidden {
+    visibility: hidden;
+  }
+}
+.__vuescroll.hasHBar {
+  .__panel {
+    overflow: hidden !important;
+  }
+  .__rail-is-horizontal {
+    position: fixed !important;
+    bottom: 2px !important;
+    z-index: 1200 !important;
   }
 }
