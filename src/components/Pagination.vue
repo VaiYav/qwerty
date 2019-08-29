@@ -1,7 +1,7 @@
 <template>
   <b-container
       fluid
-      class="d-flex flex-row flex-md-nowrap align-items-baseline justify-content-end"
+      class="d-flex flex-row flex-md-nowrap align-items-baseline justify-content-end flex-wrap"
   >
     <b-pagination
         :disabled="loader"

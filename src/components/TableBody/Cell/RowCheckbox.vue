@@ -34,7 +34,7 @@ export default {
       selectedRow: 'table/getSelectedRow'
     }),
     status: {
-      get(val) {
+      get() {
         const entity = this.selectedRow.find(sr => sr.id.value === this.id)
         if (entity) return 'checked'
         else return 'not_checked'

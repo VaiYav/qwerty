@@ -1,5 +1,5 @@
 <template>
-    <div class="table-grid-cell-content context-container">
+    <div v-cloak class="table-grid-cell-content context-container">
       <RowCheckbox
           :rowIndex="rowIndex"
           :data="data"

@@ -2,7 +2,7 @@ import * as types from '../types'
 import MockedData from '@/mockedData'
 import defaultColumns from '@/defaultColumns'
 import { fetchData } from '@/api'
-const cloneState = (state) => JSON.parse(JSON.stringify(state))
+import { cloneDeep } from '@/utils'
 
 const externalData = {
   namespaced: true,
@@ -31,6 +31,9 @@ const externalData = {
     getAllColumns: state => {
       return Object.keys(state.columns)
         .map(key => ({ key, ...state.columns[key] }))
+    },
+    getSortedColumnsByPosition: state => (columns, position) => {
+      return columns.filter(c => c.fixed && c.fixed.active && c.fixed.position === position)
     },
     getSortedByOrder: (state, getters) => {
       return getters.getAllColumns
@@ -71,7 +74,7 @@ const externalData = {
     },
     editEntity({ dispatch, commit, state }, payload) {
       dispatch('setLoader', true)
-      const clonedState = cloneState(state.data)
+      const clonedState = cloneDeep(state.data)
       setTimeout(() => {
         const entity = clonedState.find(s => s.id.value === payload.id)
         entity[payload.field].value = payload.value
@@ -80,20 +83,14 @@ const externalData = {
       }, 1500)
     },
     changeColumns({ state, commit }, payload) {
-      const clonedState = cloneState(state.columns)
-      const object = payload.reduce((result, item) => {
+      const newState = payload.reduce((result, item) => {
         result[item.key] = item
         return result
       }, {})
-      for (const key in clonedState) {
-        if (clonedState.hasOwnProperty(key)) {
-          clonedState[key].visible = false
-        }
-      }
-      commit(types.CHANGE_COLUMNS, { ...clonedState, ...object })
+      commit(types.CHANGE_COLUMNS, { ...state.columns, ...newState })
     },
     setColumnWidth({ commit, state }, payload) {
-      const clonedState = cloneState(state.columns)
+      const clonedState = cloneDeep(state.columns)
       clonedState[payload.field].width.default = payload.width
     }
   },

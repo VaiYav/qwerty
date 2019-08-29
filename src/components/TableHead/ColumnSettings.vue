@@ -8,7 +8,7 @@
     <b-container fluid>
       <b-form-checkbox-group :checked="sortedByOrder" @input="changeColumn">
         <b-form-checkbox
-            v-for="column in allColumns.filter(c => c.settable)"
+            v-for="column in filteredColumns"
             :key="column.key"
             :value="column"
             class="setting-column-checkbox"
@@ -23,6 +23,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { arrayDiffByKey } from '@/utils'
 export default {
   name: 'ColumnSettings',
   data() {
@@ -34,7 +35,10 @@ export default {
     ...mapGetters({
       allColumns: 'externalData/getAllColumns',
       sortedByOrder: 'externalData/getSortedByOrder'
-    })
+    }),
+    filteredColumns() {
+      return this.allColumns.filter(c => c.settable)
+    }
   },
   methods: {
     ...mapActions({
@@ -48,7 +52,10 @@ export default {
       })
     },
     saveChanges() {
-      this.changeColumns(this.selected)
+      this.changeColumns([].concat(this.selected, arrayDiffByKey('key', this.selected, this.allColumns).map(c => {
+        c.visible = false
+        return c
+      })))
     }
   }
 }

@@ -10,6 +10,10 @@
     .table-grid-cell-head {
       &__special-empty {
         min-width: 150px !important;
+
+        @media (max-width: 1023px) {
+          display: none;
+        }
       }
     }
   }
@@ -65,6 +69,12 @@
         text-transform: uppercase;
         background: $white;
         height: 52px;
+
+        @media (max-width: 1023px) {
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 100% !important;
+        }
         &.draggable {
           cursor: pointer;
         }
@@ -122,6 +132,25 @@
       * {
         -webkit-user-drag: none;
       }
+      &__special-empty {
+        background: transparent;
+        border: none;
+      }
+
+      @media (max-width: 1023px) {
+        display: flex;
+        width: auto;
+        justify-content: space-between;
+        text-align: right;
+        border-bottom: 1px solid #f5f5f5;
+        align-items: center;
+        padding: 0 1rem;
+        &::before {
+          content: attr(data-label);
+          font-weight: 600;
+          text-align: left;
+        }
+      }
       &-content {
         position: relative;
         display: flex;
@@ -140,6 +169,10 @@
       .edit-pencil {
         right: 0;
         top: calc(50% - 10px);
+
+        @media (max-width: 1023px) {
+          right: 5px;
+        }
       }
       &-overlay {
         position: absolute;
@@ -150,9 +183,20 @@
       }
     }
     &-row {
+      @media (max-width: 1023px) {
+        &:not(:last-child) {
+          box-shadow: 0 2px 3px hsla(0, 0%, 4%, .1), 0 0 0 1px hsla(0, 0%, 4%, .1);
+          max-width: 100%;
+          position: relative;
+          display: block;
+          margin: 1rem;
+        }
+      }
       &:nth-child(even) {
-        .table-grid-cell {
-          background-color: $gray-100;
+        @media (min-width: 1023px) {
+          .table-grid-cell {
+            background-color: $gray-100;
+          }
         }
       }
       &-body {
@@ -162,6 +206,13 @@
         &.active {
           .edit-pencil {
             display: block;
+          }
+        }
+        td {
+          &.active {
+            .edit-pencil {
+              display: block;
+            }
           }
         }
       }
@@ -214,9 +265,9 @@
     }
   }
   &-checkbox {
-    margin-left: 2.5rem;
-    width: 0;
-    padding: 0;
+    //margin-left: 2.5rem;
+    //width: 0;
+    //padding: 0;
   }
   .table-fixed-column {
     position: relative;
@@ -232,6 +283,7 @@
   }
   .table-cell-hidden {
     visibility: hidden;
+    display: none;
   }
 }
 .__vuescroll.hasHBar {

@@ -20,7 +20,10 @@
           :title="$t(`columns.${columnKey}`)"
           class="table-grid-head-title">{{ $t(`columns.${columnKey}`) }}</span>
       <slot />
-      <span v-if="!fixedColumn && draggable" class="table-grid-resize-button" @mousedown="clickDownEvt"></span>
+      <span
+          v-if="!fixedColumn && draggable"
+          class="table-grid-resize-button"
+          @mousedown="clickDownEvt"></span>
     </div>
   </th>
 </template>

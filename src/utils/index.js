@@ -13,3 +13,25 @@ export function debounce(func, wait, immediate) {
     if (callNow) func.apply(context, args)
   }
 }
+export function cloneDeep(payload) {
+  return JSON.parse(JSON.stringify(payload))
+}
+export function arrayDiffByKey(key, ...arrays) {
+  return [].concat(...arrays.map((arr, i) => {
+    const others = arrays.slice(0)
+    others.splice(i, 1)
+    const unique = [...new Set([].concat(...others))]
+    return arr.filter(x =>
+      !unique.some(y => x[key] === y[key])
+    )
+  }))
+}
+export function freezeObject(obj) {
+  return Object.freeze(obj)
+}
+export default {
+  debounce,
+  cloneDeep,
+  arrayDiffByKey,
+  freezeObject
+}
