@@ -8,6 +8,7 @@
         :columnKey="column.key"
         :fixedHeader="fixedHeader"
         :fixedColumn="fixedColumn"
+        v-show="column.visible"
         :columns="columns"
         :column="column"
     />

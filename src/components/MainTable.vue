@@ -7,21 +7,23 @@
       }"
   >
     <thead class="table-grid-header">
-    <TableHeadColumn :columns="columns.filter(c => !c.fixed || c.fixed && !c.fixed.active)" />
+    <TableHeadColumn :columns="getAvailableColumns" />
     </thead>
     <tbody v-if="data.length">
     <TableBodyRow
-        v-for="(row, rowIndex) in data"
+        v-for="(row, rowIndex) in data.slice(0).map(d => freezeObject(d))"
         :data="row"
         :rowIndex="rowIndex"
-        :columns="columns.filter(c => !c.fixed || c.fixed && !c.fixed.active)"
+        :columns="getNotFixedColumns"
         :key="row.id.value"/>
     </tbody>
-    <FixedHeader :columns="columns" v-if="config.fixedHeader" />
+    <FixedHeader :columns="getAvailableColumns" v-if="config.fixedHeader" />
   </table>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { cloneDeep, freezeObject } from '@/utils'
 export default {
   name: 'MainTable',
   props: {
@@ -42,6 +44,42 @@ export default {
     TableBodyRow: () => import('@/components/TableBody/Row'),
     TableHeadColumn: () => import('@/components/TableHead/Column'),
     FixedHeader: () => import('@/components/FixedHeader')
+  },
+  computed: {
+    ...mapGetters({
+      isMobile: 'app/isMobile'
+    }),
+    clonedColumns() {
+      return cloneDeep(this.columns)
+    },
+    getAvailableColumns() {
+      if (this.isMobile) {
+        return this.clonedColumns.map(c => {
+          if (c.key !== 'context') {
+            c.visible = false
+          } else {
+            c.fixed.active = false
+          }
+          return c
+        })
+      } else {
+        return cloneDeep(this.columns).map(c => freezeObject(c))
+      }
+    },
+    getNotFixedColumns() {
+      if (this.isMobile) {
+        return this.clonedColumns.map(c => {
+          if (c.fixed) {
+            c.fixed.active = false
+          }
+          return c
+        })
+      }
+      return cloneDeep(this.columns).filter(c => !c.fixed || c.fixed && !c.fixed.active).map(c => freezeObject(c))
+    }
+  },
+  methods: {
+    freezeObject
   }
 }
 </script>

@@ -1,14 +1,14 @@
 <template>
   <td
-      @blur="closeEditMenu"
+      @click="showPopover"
+      v-cloak
       :id="`${$attrs['data-cellindex']}-${id.value}`"
       class="table-grid-cell"
       :class="{
-        pointer: data.editable
+        pointer: data.editable,
+        active: visiblePopover
       }">
-    <keep-alive>
-      <component v-if="component" :data="data" :rowIndex="$attrs['data-cellindex']" :is="component"/>
-    </keep-alive>
+    <component v-if="component" :data="data" :rowIndex="$attrs['data-cellindex']" :is="component"/>
     <span v-if="!component" class="table-grid-cell-content">
       <custom
           v-if="type === 'custom'"
@@ -29,11 +29,12 @@
         class="ml-1 position-absolute edit-pencil"
         name="pencil-alt" />
     <b-popover
-        v-if="data.editable"
+        v-if="data.editable && visiblePopover"
         @show="() => {
           this.value = data.value
           this.visiblePopover = true
         }"
+        :show="visiblePopover"
         @hide="visiblePopover = false"
         :target="`${$attrs['data-cellindex']}-${id.value}`"
         :triggers="data.editable ? 'click' : ''">
@@ -104,6 +105,9 @@ export default {
     },
     closeEditMenu() {
       this.$root.$emit('bv::hide::popover')
+    },
+    showPopover() {
+      this.data.editable ? this.visiblePopover = true : ''
     }
   }
 }

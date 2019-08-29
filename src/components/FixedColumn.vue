@@ -3,22 +3,23 @@
       class="table-grid table-fixed-column"
       :style="{ [position]: 0 }">
     <thead class="table-grid-header">
-      <TableHeadColumn :columns="getFixedColumns" fixedColumn />
+      <TableHeadColumn v-cloak :columns="getFixedColumns(columns, position)" fixedColumn />
     </thead>
     <tbody>
     <TableBodyRow
         v-for="(row, rowIndex) in data"
         :data="row"
         :rowIndex="rowIndex"
-        :columns="getFixedColumns"
+        :columns="getFixedColumns(columns, position)"
         :key="row.id.value"
         fixedColumn />
     </tbody>
-    <FixedHeader :columns="getFixedColumns" fixedColumn v-if="config.fixedHeader" />
+    <FixedHeader :columns="getFixedColumns(columns, position)" fixedColumn v-if="config.fixedHeader" />
   </table>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'FixedColumn',
   props: {
@@ -45,9 +46,9 @@ export default {
     FixedHeader: () => import('@/components/FixedHeader')
   },
   computed: {
-    getFixedColumns() {
-      return this.columns.filter(c => c.fixed && c.fixed.active && c.fixed.position === this.position)
-    }
+    ...mapGetters({
+      getFixedColumns: 'externalData/getSortedColumnsByPosition'
+    })
   }
 }
 </script>

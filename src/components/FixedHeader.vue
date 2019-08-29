@@ -54,6 +54,7 @@ export default {
   methods: {
     getClientHeight() {
       const target = this.$parent.$el
+      if (!target) return
       const distanceScrolled = document.body.scrollTop
       const elemRect = target.getBoundingClientRect()
       const elemViewportOffset = elemRect.top
@@ -68,6 +69,7 @@ export default {
     },
     getTableWidth() {
       const target = this.$parent.$el
+      if (!target) return
       this.tableWidth = target.clientWidth
     }
   },

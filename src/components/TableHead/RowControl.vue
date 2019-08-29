@@ -1,5 +1,5 @@
 <template>
-  <div class="table-grid-cell-head-container">
+  <div v-cloak class="table-grid-cell-head-container">
     <ColumnCheckbox />
     <div @click="$root.$emit('bv::show::modal', 'modal-column-settings', $event.target)">
       <VIcon name="sliders-h" class="pointer" />

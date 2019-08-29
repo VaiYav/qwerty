@@ -4,21 +4,35 @@
     :class="{
       'loader-active': loader,
     }">
-    <FixedColumn :columns="columns" :config="config" position="left" :data="data" ref="fixed-left" />
+    <FixedColumn
+        v-if="!isMobile"
+        :columns="columns"
+        :config="config"
+        position="left"
+        :data="data"
+        ref="fixed-left" />
     <vueScroll @handle-scroll="handleHorizontalScroll">
       <MainTable :columns="columns" :data="data" :config="config" />
       <ColumnSettings />
     </vueScroll>
-    <FixedColumn :columns="columns" :config="config" position="right" :data="data" ref="fixed-right" />
+    <FixedColumn
+        v-if="!isMobile"
+        :columns="columns"
+        :config="config"
+        position="right"
+        :data="data"
+        ref="fixed-right" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import { EventBus } from '../EventBus'
+import ResizeMixin from '@/mixins/resizeHandler'
 
 export default {
   name: 'TableGrid',
+  mixins: [ResizeMixin],
   props: {
     columns: {
       type: Array,
@@ -44,11 +58,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      loader: 'externalData/getLoader'
-    }),
-    getColumns() {
-      return this.columns.filter(c => !c.fixed || c.fixed && !c.fixed.active)
-    }
+      loader: 'externalData/getLoader',
+      isMobile: 'app/isMobile'
+    })
   },
   methods: {
     handleHorizontalScroll() {

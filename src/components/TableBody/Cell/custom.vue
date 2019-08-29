@@ -1,5 +1,5 @@
 <template>
-  <span v-html="data">
+  <span v-b-tooltip.hover.html.d300 :title="data" v-html="data">
     <slot />
   </span>
 </template>

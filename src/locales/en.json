@@ -2,6 +2,7 @@
   "message": "Message EN",
   "columns": {
     "id": "Id",
+    "context": "",
     "quantity": "Quantity",
     "open_date": "Open date",
     "last_sale": "Last sale",
