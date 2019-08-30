@@ -11,7 +11,7 @@
         position="left"
         :data="data"
         ref="fixed-left" />
-    <vueScroll @handle-scroll="handleHorizontalScroll">
+    <vueScroll @handle-scroll="handleHorizontalScroll" ref="vs">
       <MainTable :columns="columns" :data="data" :config="config" />
       <ColumnSettings />
     </vueScroll>
@@ -59,12 +59,22 @@ export default {
   computed: {
     ...mapGetters({
       loader: 'externalData/getLoader',
-      isMobile: 'app/isMobile'
+      isMobile: 'app/isMobile',
+      sortedByOrder: 'externalData/getSortedByOrder'
     })
   },
   methods: {
     handleHorizontalScroll() {
       EventBus.$emit('handle-horizontal-scroll')
+    }
+  },
+  watch: {
+    sortedByOrder: {
+      handler(newVal, oldVal) {
+        if (newVal.length > oldVal.length) {
+          this.$refs['vs'].scrollTo({ x: 2000 }, 1000, 'easeInQuad')
+        }
+      }
     }
   }
 }
