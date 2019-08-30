@@ -12,7 +12,7 @@
         :columns="columns"
         :column="column"
     />
-    <th class="table-grid-cell-head table-grid-cell-head__special-empty"></th>
+    <th style="width: 150px;" v-if="!fixedHeader" class="table-grid-cell-head table-grid-cell-head__special-empty"></th>
   </tr>
 </template>
 
