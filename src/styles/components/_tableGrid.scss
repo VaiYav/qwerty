@@ -138,6 +138,15 @@
         background: transparent;
         border: none;
       }
+      .cell-edit-button {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: none;
+        border: none;
+        outline: none;
+      }
 
       @media (max-width: 1023px) {
         display: flex;
@@ -169,12 +178,8 @@
         }
       }
       .edit-pencil {
-        right: 0;
-        top: calc(50% - 10px);
-
-        @media (max-width: 1023px) {
-          right: 5px;
-        }
+        min-height: 16px;
+        min-width: 16px;
       }
       &-overlay {
         position: absolute;
@@ -203,17 +208,17 @@
       }
       &-body {
         .edit-pencil {
-          display: none;
+          visibility: hidden;
         }
         &.active {
           .edit-pencil {
-            display: block;
+            visibility: visible;
           }
         }
         td {
           &.active {
             .edit-pencil {
-              display: block;
+              visibility: visible;
             }
           }
         }

@@ -8,24 +8,15 @@
         v-for="(cell, cellIndex) in columns"
         :data-cellindex="cell.key"
         :data-label="$t(`columns.${cell.key}`)"
+        :label="$t(`columns.${cell.key}`)"
         :key="cellIndex"
         :type="cell.type"
         :component="cell.component"
         :id="data.id"
+        :multiModalAllowed="cell.multiModalAllowed"
         :fixedColumn="fixedColumn"
         :data="data[cell.key] || data">
     </TableBodyCell>
-<!--    <td-->
-<!--        v-for="(cell, cellIndex) in columns"-->
-<!--        :data-cellindex="cell.key"-->
-<!--        :data-label="$t(`columns.${cell.key}`)"-->
-<!--        :key="cellIndex"-->
-<!--        :type="cell.type"-->
-<!--        :component="cell.component"-->
-<!--        :id="data.id"-->
-<!--        :fixedColumn="fixedColumn"-->
-<!--        :data="data[cell.key] || data"-->
-<!--    >{{data[cell.key]}}</td>-->
     <td v-if="!fixedColumn" class="table-grid-cell table-grid-cell__special-empty"></td>
   </tr>
 </template>

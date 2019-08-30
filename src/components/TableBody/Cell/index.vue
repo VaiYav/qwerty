@@ -1,8 +1,6 @@
 <template>
   <td
-      @click="showPopover"
       v-cloak
-      :id="`${$attrs['data-cellindex']}-${id.value}`"
       class="table-grid-cell"
       :class="{
         pointer: data.editable,
@@ -23,32 +21,39 @@
           v-b-tooltip.hover.d300
           :title="data.value"
           v-else>{{data.value}}</span>
+      <VIcon
+          v-if="data.editable || visiblePopover"
+          class="ml-1 edit-pencil"
+          name="pencil-alt" />
     </span>
-    <VIcon
-        v-if="data.editable || visiblePopover"
-        class="ml-1 position-absolute edit-pencil"
-        name="pencil-alt" />
+    <button
+        @blur="blurCell"
+        :id="`${$attrs['data-cellindex']}-${id.value}`"
+        v-if="data.editable"
+        class="position-absolute cell-edit-button"></button>
     <b-popover
-        v-if="data.editable && visiblePopover"
+        v-if="data.editable"
         @show="() => {
           this.value = data.value
           this.visiblePopover = true
         }"
+        placement="bottom"
         :show="visiblePopover"
         @hide="visiblePopover = false"
         :target="`${$attrs['data-cellindex']}-${id.value}`"
         :triggers="data.editable ? 'click' : ''">
-      <template slot="title">{{$t('form.edit')}}</template>
+      <template slot="title">{{label}}</template>
       <b-form class="p-1" @submit="onSubmit">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center cell-editing">
+          <span class="prefix" v-if="data.inLineEditingModalPrefix" v-html="data.inLineEditingModalPrefix"></span>
           <b-form-input v-model="value"></b-form-input>
-          <VIcon v-if="type === 'money'" scale="2" class="ml-1 mr-1" name="euro-sign" />
+          <span class="suffix" v-if="data.inLineEditingModalSuffix" v-html="data.inLineEditingModalSuffix"></span>
         </div>
         <div class="d-flex justify-content-end mt-1">
-          <b-button @click="closeEditMenu" class="mr-1" variant="danger">
+          <b-button @click="visiblePopover = false" class="mr-1 pointer" variant="danger">
             <VIcon name="times" />
           </b-button>
-          <b-button type="submit" variant="success">
+          <b-button class="pointer" type="submit" variant="success">
             <VIcon name="check" />
           </b-button>
         </div>
@@ -58,7 +63,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'TableBodyCell',
@@ -86,12 +91,32 @@ export default {
     fixedColumn: {
       type: Boolean,
       default: false
+    },
+    label: {
+      type: String,
+      default: ''
+    },
+    multiModalAllowed: {
+      type: [Boolean, Object],
+      default: false
     }
   },
   data() {
     return {
       visiblePopover: false,
       value: ''
+    }
+  },
+  computed: {
+    ...mapGetters({
+      loader: 'externalData/getLoader'
+    })
+  },
+  watch: {
+    loader: {
+      handler() {
+        this.closeEditMenu()
+      }
     }
   },
   methods: {
@@ -104,10 +129,13 @@ export default {
       this.$root.$emit('bv::hide::popover')
     },
     closeEditMenu() {
+      this.visiblePopover = false
       this.$root.$emit('bv::hide::popover')
     },
-    showPopover() {
-      this.data.editable ? this.visiblePopover = true : ''
+    blurCell() {
+      if (!this.multiModalAllowed) {
+        this.visiblePopover = false
+      }
     }
   }
 }
