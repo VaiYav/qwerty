@@ -27,13 +27,16 @@
           name="pencil-alt" />
     </span>
     <button
-        @blur="blurCell"
         :id="`${$attrs['data-cellindex']}-${id.value}`"
         v-if="data.editable"
         class="position-absolute cell-edit-button"></button>
     <b-popover
+        ref="popover"
         v-if="data.editable"
         @show="() => {
+          if (!this.multiModalAllowed) {
+            this.closeEditMenu()
+          }
           this.value = data.value
           this.visiblePopover = true
         }"
@@ -50,7 +53,7 @@
           <span class="suffix" v-if="data.inLineEditingModalSuffix" v-html="data.inLineEditingModalSuffix"></span>
         </div>
         <div class="d-flex justify-content-end mt-1">
-          <b-button @click="visiblePopover = false" class="mr-1 pointer" variant="danger">
+          <b-button @click="closePopover" class="mr-1 pointer" variant="danger">
             <VIcon name="times" />
           </b-button>
           <b-button class="pointer" type="submit" variant="success">
@@ -129,13 +132,12 @@ export default {
       this.$root.$emit('bv::hide::popover')
     },
     closeEditMenu() {
-      this.visiblePopover = false
+      this.closePopover()
       this.$root.$emit('bv::hide::popover')
     },
-    blurCell() {
-      if (!this.multiModalAllowed) {
-        this.visiblePopover = false
-      }
+    closePopover() {
+      this.visiblePopover = false
+      this.$refs.popover.$emit('close')
     }
   }
 }
