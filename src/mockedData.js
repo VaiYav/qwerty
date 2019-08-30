@@ -178,6 +178,7 @@ export default {
       'visible': true,
       'editable': true,
       'settable': true,
+      'multiModalAllowed': true,
       'order': 15,
       'width': {
         'min': 55,
@@ -408,7 +409,9 @@ export default {
       'minimum_price': {
         'value': 4,
         'formatted': 'EUR 4,00',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 8,
@@ -528,7 +531,9 @@ export default {
       'minimum_price': {
         'value': 2.49,
         'formatted': 'EUR 2,49',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 6,
@@ -648,7 +653,9 @@ export default {
       'minimum_price': {
         'value': 15.99,
         'formatted': 'EUR 15,99',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 19.99,
@@ -768,7 +775,9 @@ export default {
       'minimum_price': {
         'value': 4.49,
         'formatted': 'EUR 4,49',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 9.99,
@@ -888,7 +897,9 @@ export default {
       'minimum_price': {
         'value': 14.72,
         'formatted': 'EUR 14,72',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 36.8,
@@ -1008,7 +1019,9 @@ export default {
       'minimum_price': {
         'value': 2.44,
         'formatted': 'EUR 2,44',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 7.32,
@@ -1128,7 +1141,9 @@ export default {
       'minimum_price': {
         'value': 7.26,
         'formatted': 'EUR 7,26',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 21.78,
@@ -1248,7 +1263,9 @@ export default {
       'minimum_price': {
         'value': 9.08,
         'formatted': 'EUR 9,08',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 20,
@@ -1368,7 +1385,9 @@ export default {
       'minimum_price': {
         'value': 15.23,
         'formatted': 'EUR 15,23',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 30.46,
@@ -1488,7 +1507,9 @@ export default {
       'minimum_price': {
         'value': 10.05,
         'formatted': 'EUR 10,05',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 20.1,
@@ -1608,7 +1629,9 @@ export default {
       'minimum_price': {
         'value': 9.08,
         'formatted': 'EUR 9,08',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 20,
@@ -1728,7 +1751,9 @@ export default {
       'minimum_price': {
         'value': 7.49,
         'formatted': 'EUR 7,49',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 20,
@@ -1848,7 +1873,9 @@ export default {
       'minimum_price': {
         'value': 13.31,
         'formatted': 'EUR 13,31',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 26.62,
@@ -1968,7 +1995,9 @@ export default {
       'minimum_price': {
         'value': 15.76,
         'formatted': 'EUR 15,76',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 31.52,
@@ -2088,7 +2117,9 @@ export default {
       'minimum_price': {
         'value': 11.75,
         'formatted': 'EUR 11,75',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 23.5,
@@ -2208,7 +2239,9 @@ export default {
       'minimum_price': {
         'value': 20.9,
         'formatted': 'EUR 20,90',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 41.8,
@@ -2328,7 +2361,9 @@ export default {
       'minimum_price': {
         'value': 40.22,
         'formatted': 'EUR 40,22',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 72.4,
@@ -2448,7 +2483,9 @@ export default {
       'minimum_price': {
         'value': 10.14,
         'formatted': 'EUR 10,14',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 30.42,
@@ -2568,7 +2605,9 @@ export default {
       'minimum_price': {
         'value': 13.83,
         'formatted': 'EUR 13,83',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 27.66,
@@ -2688,7 +2727,9 @@ export default {
       'minimum_price': {
         'value': 10.4,
         'formatted': 'EUR 10,40',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 20.8,
@@ -2808,7 +2849,9 @@ export default {
       'minimum_price': {
         'value': 7.17,
         'formatted': 'EUR 7,17',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 20,
@@ -2928,7 +2971,9 @@ export default {
       'minimum_price': {
         'value': 8.31,
         'formatted': 'EUR 8,31',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 20,
@@ -3048,7 +3093,9 @@ export default {
       'minimum_price': {
         'value': 20.5,
         'formatted': 'EUR 20,50',
-        'editable': true
+        'editable': true,
+        'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
+        'inLineEditingModalSuffix': '&euro;'
       },
       'maximum_price': {
         'value': 41,

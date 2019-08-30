@@ -23,3 +23,10 @@
 [v-cloak] {
   display: none;
 }
+.cell-editing {
+  .suffix,
+  .prefix {
+    max-width: 50px;
+    padding: 0 5px;
+  }
+}
