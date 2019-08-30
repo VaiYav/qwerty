@@ -2,12 +2,13 @@
   <div id="app">
     <Navbar />
     <div style="margin: 1000px 0;">
-      <Pagination v-if="config.pagination.isActive" />
+      <Pagination v-if="config.pagination.isActive && config.pagination.position === 'top'" />
       <Table-grid
           :columns="columns"
           :data="data"
           :config="config"
       />
+      <Pagination v-if="config.pagination.isActive && config.pagination.position === 'bottom'" />
     </div>
   </div>
 </template>

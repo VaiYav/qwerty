@@ -2,6 +2,7 @@ import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vuescroll from 'vuescroll'
+import VueScrollTo from 'vue-scrollto'
 const options = {
   VueAxios: axios,
   Vuescroll: {
@@ -19,6 +20,19 @@ const options = {
         disable: false
       }
     }
+  },
+  VueScrollTo: {
+    container: 'body',
+    duration: 500,
+    easing: 'ease',
+    offset: 0,
+    force: true,
+    cancelable: true,
+    onStart: false,
+    onDone: false,
+    onCancel: false,
+    x: false,
+    y: true
   }
 }
 
@@ -26,5 +40,6 @@ export {
   BootstrapVue,
   VueAxios,
   Vuescroll,
+  VueScrollTo,
   options
 }

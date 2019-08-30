@@ -54,6 +54,9 @@ export default {
       fetchData: 'externalData/fetchData'
     }),
     changePage(page) {
+      if (this.config.pagination.position === 'bottom') {
+        this.$scrollTo('.table.table-container')
+      }
       this.fetchData({
         query: 'response',
         payload: { _page: page, _limit: this.pagination.per_page }
