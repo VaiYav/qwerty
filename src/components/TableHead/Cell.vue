@@ -18,6 +18,7 @@
       <span
           v-b-tooltip.hover.d200
           :title="$t(`columns.${columnKey}`)"
+          :class="{ sortable: column.sortable }"
           class="table-grid-head-title">{{ $t(`columns.${columnKey}`) }}</span>
       <slot />
       <span

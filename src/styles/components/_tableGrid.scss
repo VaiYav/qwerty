@@ -87,13 +87,12 @@
           position: relative;
           display: flex;
           align-items: center;
-          padding: 15px 16px 11px;
+          padding: 15px 10px 11px;
           min-width: 100%;
           max-width: 100%;
           .table-grid-head-title {
             display: inline-block;
             overflow: hidden;
-            padding-right: 21px;
             max-width: 100%;
             color: grey;
             text-align: left;
@@ -103,6 +102,9 @@
             line-height: 12px;
             transition: all .3s cubic-bezier(0, .465, .75, .75);
             user-select: none;
+            &.sortable {
+              padding-right: 21px;
+            }
           }
         }
         &:hover {
@@ -154,7 +156,7 @@
       &-content {
         position: relative;
         display: flex;
-        padding: 16px 16px 16px;
+        padding: 16px 10px 16px;
         height: 55px;
         color: #535c69;
         vertical-align: inherit;

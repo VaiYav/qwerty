@@ -23,6 +23,7 @@ export default ({
     'visible': true,
     'editable': false,
     'settable': true,
+    'sortable': true,
     'fixed': {
       active: true,
       position: 'left'
@@ -39,6 +40,7 @@ export default ({
     'nullable': false,
     'visible': true,
     'settable': true,
+    'sortable': true,
     'fixed': {
       active: true,
       position: 'right'

@@ -6,6 +6,7 @@ export default {
       'visible': false,
       'editable': false,
       'settable': true,
+      'sortable': true,
       'order': 3,
       'width': {
         'min': 55,
@@ -19,6 +20,7 @@ export default {
       'visible': false,
       'editable': false,
       'settable': true,
+      'sortable': false,
       'order': 4,
       'width': {
         'min': 55,
@@ -32,6 +34,7 @@ export default {
       'visible': false,
       'editable': false,
       'settable': true,
+      'sortable': true,
       'order': 5,
       'width': {
         'min': 55,
@@ -45,6 +48,7 @@ export default {
       'visible': false,
       'editable': false,
       'settable': true,
+      'sortable': false,
       'order': 6,
       'width': {
         'min': 55,
