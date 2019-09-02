@@ -7,9 +7,10 @@
       }"
   >
     <thead class="table-grid-header">
-    <TableHeadColumn :columns="getAvailableColumns" />
+      <TableHeadColumn :columns="getAvailableColumns" />
     </thead>
     <tbody v-if="data.length">
+    <CheckAll v-if="checkAllBlock" />
     <TableBodyRow
         v-for="(row, rowIndex) in data.slice(0).map(d => freezeObject(d))"
         :data="row"
@@ -43,11 +44,13 @@ export default {
   components: {
     TableBodyRow: () => import('@/components/TableBody/Row'),
     TableHeadColumn: () => import('@/components/TableHead/Column'),
-    FixedHeader: () => import('@/components/FixedHeader')
+    FixedHeader: () => import('@/components/FixedHeader'),
+    CheckAll: () => import('@/components/CheckAll')
   },
   computed: {
     ...mapGetters({
-      isMobile: 'app/isMobile'
+      isMobile: 'app/isMobile',
+      checkAllBlock: 'table/checkAllBlock'
     }),
     clonedColumns() {
       return cloneDeep(this.columns)

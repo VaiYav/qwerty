@@ -137,7 +137,9 @@ export default {
     },
     closePopover() {
       this.visiblePopover = false
-      this.$refs.popover.$emit('close')
+      if (this.data.editable) {
+        this.$refs.popover.$emit('close')
+      }
     }
   }
 }

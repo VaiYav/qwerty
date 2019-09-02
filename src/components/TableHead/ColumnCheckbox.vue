@@ -33,7 +33,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      selectAllRow: 'table/selectAllRow'
+      selectAllRow: 'table/selectAllRow',
+      toggleCheckAll: 'table/toggleCheckAll'
     }),
     changeStatus(value) {
       this.selectAllRow({
@@ -41,6 +42,10 @@ export default {
         rowIndex: 'All',
         data: value === 'checked' ? this.allData : []
       })
+      this.toggleCheckAll({ entity: 'block', data: value === 'checked' })
+      if (value === 'not_checked') {
+        this.toggleCheckAll({ entity: 'entities', data: false })
+      }
     }
   }
 }

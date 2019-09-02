@@ -6,6 +6,11 @@
       <TableHeadColumn v-cloak :columns="getFixedColumns(columns, position)" fixedColumn />
     </thead>
     <tbody>
+    <tr v-if="checkAllBlock" class="table-grid-row table-grid-row-body">
+      <td class="table-grid-cell" colspan="200">
+        <span class="table-grid-cell-content"></span>
+      </td>
+    </tr>
     <TableBodyRow
         v-for="(row, rowIndex) in data"
         :data="row"
@@ -47,7 +52,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getFixedColumns: 'externalData/getSortedColumnsByPosition'
+      getFixedColumns: 'externalData/getSortedColumnsByPosition',
+      checkAllBlock: 'table/checkAllBlock'
     })
   }
 }
