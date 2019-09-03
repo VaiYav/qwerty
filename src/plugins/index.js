@@ -3,6 +3,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vuescroll from 'vuescroll'
 import VueScrollTo from 'vue-scrollto'
+
 const options = {
   VueAxios: axios,
   Vuescroll: {

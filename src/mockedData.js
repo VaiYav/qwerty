@@ -173,7 +173,7 @@ export default {
       }
     },
     'minimum_price': {
-      'type': 'float',
+      'type': 'currency',
       'nullable': true,
       'visible': true,
       'editable': true,
@@ -239,7 +239,7 @@ export default {
       }
     },
     'purchase_price': {
-      'type': 'float',
+      'type': 'boolean',
       'nullable': true,
       'visible': true,
       'editable': true,
@@ -252,7 +252,7 @@ export default {
       }
     },
     'netto_costs': {
-      'type': 'float',
+      'type': 'chart',
       'nullable': true,
       'visible': true,
       'editable': true,
@@ -411,7 +411,7 @@ export default {
         'formatted': 'EUR 4,00',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 8,
@@ -432,7 +432,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': false,
         'formatted': ''
       },
       'netto_costs': {
@@ -533,7 +533,7 @@ export default {
         'formatted': 'EUR 2,49',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 6,
@@ -554,7 +554,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': false,
         'formatted': ''
       },
       'netto_costs': {
@@ -655,7 +655,7 @@ export default {
         'formatted': 'EUR 15,99',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 19.99,
@@ -676,7 +676,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': false,
         'formatted': ''
       },
       'netto_costs': {
@@ -777,7 +777,7 @@ export default {
         'formatted': 'EUR 4,49',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 9.99,
@@ -798,7 +798,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': false,
         'formatted': ''
       },
       'netto_costs': {
@@ -899,7 +899,7 @@ export default {
         'formatted': 'EUR 14,72',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 36.8,
@@ -920,7 +920,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': false,
         'formatted': ''
       },
       'netto_costs': {
@@ -1021,7 +1021,7 @@ export default {
         'formatted': 'EUR 2,44',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 7.32,
@@ -1042,7 +1042,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': false,
         'formatted': ''
       },
       'netto_costs': {
@@ -1143,7 +1143,7 @@ export default {
         'formatted': 'EUR 7,26',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 21.78,
@@ -1164,7 +1164,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -1265,7 +1265,7 @@ export default {
         'formatted': 'EUR 9,08',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 20,
@@ -1286,7 +1286,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -1387,7 +1387,7 @@ export default {
         'formatted': 'EUR 15,23',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 30.46,
@@ -1408,7 +1408,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -1509,7 +1509,7 @@ export default {
         'formatted': 'EUR 10,05',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 20.1,
@@ -1530,7 +1530,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -1631,7 +1631,7 @@ export default {
         'formatted': 'EUR 9,08',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 20,
@@ -1652,7 +1652,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -1753,7 +1753,7 @@ export default {
         'formatted': 'EUR 7,49',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 20,
@@ -1774,7 +1774,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -1875,7 +1875,7 @@ export default {
         'formatted': 'EUR 13,31',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 26.62,
@@ -1896,7 +1896,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -1997,7 +1997,7 @@ export default {
         'formatted': 'EUR 15,76',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 31.52,
@@ -2018,7 +2018,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -2119,7 +2119,7 @@ export default {
         'formatted': 'EUR 11,75',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 23.5,
@@ -2140,7 +2140,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -2241,7 +2241,7 @@ export default {
         'formatted': 'EUR 20,90',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 41.8,
@@ -2262,7 +2262,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -2363,7 +2363,7 @@ export default {
         'formatted': 'EUR 40,22',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 72.4,
@@ -2384,7 +2384,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -2485,7 +2485,7 @@ export default {
         'formatted': 'EUR 10,14',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 30.42,
@@ -2506,7 +2506,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -2607,7 +2607,7 @@ export default {
         'formatted': 'EUR 13,83',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 27.66,
@@ -2628,7 +2628,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -2729,7 +2729,7 @@ export default {
         'formatted': 'EUR 10,40',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 20.8,
@@ -2750,7 +2750,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -2851,7 +2851,7 @@ export default {
         'formatted': 'EUR 7,17',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 20,
@@ -2872,7 +2872,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -2973,7 +2973,7 @@ export default {
         'formatted': 'EUR 8,31',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 20,
@@ -2994,7 +2994,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -3095,7 +3095,7 @@ export default {
         'formatted': 'EUR 20,50',
         'editable': true,
         'inLineEditingModalPrefix': 'Some <b>HTML</b> Code',
-        'inLineEditingModalSuffix': '&euro;'
+        'inLineEditingModalSuffix': 'euro-sign'
       },
       'maximum_price': {
         'value': 41,
@@ -3116,7 +3116,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -3236,7 +3236,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -3356,7 +3356,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -3476,7 +3476,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -3596,7 +3596,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -3716,7 +3716,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -3836,7 +3836,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -3956,7 +3956,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -4076,7 +4076,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -4196,7 +4196,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -4316,7 +4316,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -4436,7 +4436,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -4556,7 +4556,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -4676,7 +4676,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -4796,7 +4796,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -4916,7 +4916,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -5036,7 +5036,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -5156,7 +5156,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -5276,7 +5276,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -5396,7 +5396,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -5516,7 +5516,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -5636,7 +5636,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -5756,7 +5756,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -5876,7 +5876,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -5996,7 +5996,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -6116,7 +6116,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -6236,7 +6236,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -6356,7 +6356,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -6476,7 +6476,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -6596,7 +6596,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -6716,7 +6716,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -6836,7 +6836,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -6956,7 +6956,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -7076,7 +7076,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': true,
         'formatted': ''
       },
       'netto_costs': {
@@ -7196,7 +7196,7 @@ export default {
         'formatted': ''
       },
       'purchase_price': {
-        'value': null,
+        'value': false,
         'formatted': ''
       },
       'netto_costs': {

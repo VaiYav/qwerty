@@ -7,28 +7,42 @@
         active: visiblePopover
       }">
     <component v-if="component" :data="data" :rowIndex="$attrs['data-cellindex']" :is="component"/>
-    <span v-if="!component" class="table-grid-cell-content">
+    <div v-if="!component" class="table-grid-cell-content">
       <custom
           v-if="type === 'custom'"
           :data="data.formatted">
       </custom>
-      <span
-          v-b-tooltip.hover.d300
-          :title="data.formatted"
+       <component
+           :is="type"
+           v-else-if="type === 'currency'"
+           :sign="data.inLineEditingModalSuffix"
+           :data="data.value">
+       </component>
+      <component
+          :is="type"
+          v-else-if="type === 'chart'"
+          :data="data.data">
+       </component>
+      <component
+          :is="type"
           v-else-if="data.formatted"
-          v-html="data.formatted"></span>
-      <span
-          v-b-tooltip.hover.d300
-          :title="data.value"
-          v-else>{{data.value}}</span>
+          :data="data.formatted">
+      </component>
+      <component
+          :is="type"
+          v-else
+          :data="data.value">
+      </component>
       <VIcon
           v-if="data.editable || visiblePopover"
           class="ml-1 edit-pencil"
           name="pencil-alt" />
-    </span>
+    </div>
     <button
         :id="`${$attrs['data-cellindex']}-${id.value}`"
         v-if="data.editable"
+        v-b-tooltip.hover.d300
+        :title="data.value"
         class="position-absolute cell-edit-button"></button>
     <b-popover
         ref="popover"
@@ -50,7 +64,9 @@
         <div class="d-flex align-items-center cell-editing">
           <span class="prefix" v-if="data.inLineEditingModalPrefix" v-html="data.inLineEditingModalPrefix"></span>
           <b-form-input v-model="value"></b-form-input>
-          <span class="suffix" v-if="data.inLineEditingModalSuffix" v-html="data.inLineEditingModalSuffix"></span>
+          <span class="suffix" v-if="data.inLineEditingModalSuffix">
+            <VIcon :name="data.inLineEditingModalSuffix"></VIcon>
+          </span>
         </div>
         <div class="d-flex justify-content-end mt-1">
           <b-button @click="closePopover" class="mr-1 pointer" variant="danger">
@@ -72,6 +88,12 @@ export default {
   name: 'TableBodyCell',
   components: {
     Custom: () => import('@/components/TableBody/Cell/custom'),
+    string: () => import('@/components/TableBody/Cell/string'),
+    int: () => import('@/components/TableBody/Cell/string'),
+    float: () => import('@/components/TableBody/Cell/string'),
+    currency: () => import('@/components/TableBody/Cell/currency'),
+    boolean: () => import('@/components/TableBody/Cell/boolean'),
+    chart: () => import('@/components/TableBody/Cell/chart'),
     RowControl: () => import('@/components/TableBody/Cell/RowControl')
   },
   props: {
