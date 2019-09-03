@@ -1,6 +1,6 @@
 import * as types from '../types'
 import { EventBus } from '@/EventBus'
-const cloneState = (state) => JSON.parse(JSON.stringify(state))
+import { cloneDeep } from '@/utils'
 
 const table = {
   namespaced: true,
@@ -19,12 +19,12 @@ const table = {
   },
   actions: {
     selectAllRow({ state, commit }, payload) {
-      commit(types.SELECT_ROW, cloneState(payload.data))
+      commit(types.SELECT_ROW, cloneDeep(payload.data))
       commit(types.SET_UN_SELECTED_ROW, [])
     },
     selectRow({ state, commit }, payload) {
-      const selectedRow = cloneState(state.selectedRow)
-      const unSelectedRow = cloneState(state.unSelectedRow)
+      const selectedRow = cloneDeep(state.selectedRow)
+      const unSelectedRow = cloneDeep(state.unSelectedRow)
       if (payload.value === 'checked') {
         selectedRow.push(payload.data)
         commit(types.SELECT_ROW, selectedRow)
@@ -35,7 +35,7 @@ const table = {
         commit(types.SET_UN_SELECTED_ROW, unSelectedRow)
       }
     },
-    toggleCheckAll({ commit }, payload) {
+    toggleCheckAll({ commit, state }, payload) {
       commit(types.TOGGLE_CHECK_ALL, payload)
     }
   },

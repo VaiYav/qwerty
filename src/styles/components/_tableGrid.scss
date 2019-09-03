@@ -156,6 +156,7 @@
         border-bottom: 1px solid #f5f5f5;
         align-items: center;
         padding: 0 1rem;
+        height: 56px;
         &::before {
           content: attr(data-label);
           font-weight: 600;
@@ -170,8 +171,11 @@
         color: #535c69;
         vertical-align: inherit;
         font-size: 13px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        span {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
         &.context-container {
           display: flex;
           align-items: center;

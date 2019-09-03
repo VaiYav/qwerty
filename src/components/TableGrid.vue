@@ -29,7 +29,6 @@
 import { mapGetters } from 'vuex'
 import { EventBus } from '../EventBus'
 import ResizeMixin from '@/mixins/resizeHandler'
-
 export default {
   name: 'TableGrid',
   mixins: [ResizeMixin],

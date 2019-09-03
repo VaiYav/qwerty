@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <div style="margin: 1000px 0;">
+    <div>
       <Pagination v-if="config.pagination.isActive && config.pagination.position === 'top'" />
       <Table-grid
           :columns="columns"
