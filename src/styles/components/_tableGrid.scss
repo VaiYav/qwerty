@@ -76,7 +76,7 @@
           min-width: 100% !important;
         }
         &.draggable {
-          cursor: pointer;
+          //cursor: pointer;
         }
         &:hover {
           .table-grid-head-title {
@@ -120,6 +120,12 @@
           min-width: 0 !important;
           cursor: default;
           border-right: 0;
+        }
+        .sort-icon {
+          width: 16px;
+          height: 16px;
+          min-width: 16px;
+          min-height: 16px;
         }
       }
     }
@@ -310,6 +316,7 @@
     background: rgb(222, 222, 222) !important;
     .__bar-is-horizontal {
       background: rgb(144, 144, 144) !important;
+      opacity: 1 !important;
     }
     &:hover {
       height: 11px !important;
