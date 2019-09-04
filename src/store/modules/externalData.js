@@ -23,7 +23,8 @@ const externalData = {
           next: '/?page=2'
         }
       }
-    }
+    },
+    sortDirection: ''
   },
   getters: {
     getData: state => state.data,
@@ -62,14 +63,16 @@ const externalData = {
         }
         commit(types.SET_DATA, data)
         dispatch('app/requestSuccess', null, { root: true })
-        dispatch('setLoader', false)
+        setTimeout(() => {
+          dispatch('setLoader', false)
+        }, 1000)
         return data
       } catch (e) {
         setTimeout(() => {
           dispatch('app/requestFailure', e, { root: true })
           dispatch('setLoader', false)
+          return e
         }, 1500)
-        return e
       }
     },
     editEntity({ dispatch, commit, state }, payload) {
@@ -92,6 +95,17 @@ const externalData = {
     setColumnWidth({ commit, state }, payload) {
       const clonedState = cloneDeep(state.columns)
       clonedState[payload.field].width.default = payload.width
+    },
+    changeSorting({ commit, state, dispatch }, payload) {
+      const clonedState = cloneDeep(state.columns)
+      for (const key in clonedState) {
+        if (Object.prototype.hasOwnProperty.call(clonedState, key) && clonedState[key].sortable) {
+          clonedState[key].sortable.direction = ''
+        }
+      }
+      clonedState[payload.key] = payload
+      dispatch('fetchData')
+      commit(types.CHANGE_SORTING, { data: clonedState, sortDirection: payload.sortable.direction })
     }
   },
   mutations: {
@@ -111,6 +125,10 @@ const externalData = {
     },
     [types.SET_COLUMN_WIDTH](state, payload) {
       state.columns = payload
+    },
+    [types.CHANGE_SORTING](state, payload) {
+      state.columns = payload.data
+      state.sortDirection = payload.direction
     }
   }
 }

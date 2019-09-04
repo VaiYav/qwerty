@@ -9,5 +9,7 @@ import 'vue-awesome/icons/sliders-h'
 import 'vue-awesome/icons/list-ol'
 import 'vue-awesome/icons/save'
 import 'vue-awesome/icons/window-close'
+import 'vue-awesome/icons/sort-amount-up-alt'
+import 'vue-awesome/icons/sort-amount-down-alt'
 
 Vue.component('VIcon', Icon)

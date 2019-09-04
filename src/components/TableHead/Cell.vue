@@ -13,25 +13,33 @@
       <component v-if="column.component" :is="column.component"></component>
     </keep-alive>
     <div
+        @click="changeSortingStatus"
         v-if="!column.component"
+        :class="{
+          pointer: isSortable
+        }"
         class="table-grid-cell-head-container">
       <span
           v-b-tooltip.hover.d200
           :title="$t(`columns.${columnKey}`)"
-          :class="{ sortable: column.sortable }"
+          :class="{ sortable: isSortable }"
           class="table-grid-head-title">{{ $t(`columns.${columnKey}`) }}</span>
+      <VIcon
+          class="sort-icon"
+          v-if="column.sortable && column.sortable.status && column.sortable.direction"
+          :name="this.sortDirection[column.sortable.direction]"></VIcon>
       <slot />
-      <span
-          v-if="!fixedColumn && draggable"
-          class="table-grid-resize-button"
-          @mousedown="clickDownEvt"></span>
     </div>
+    <span
+        v-if="!fixedColumn && draggable"
+        class="table-grid-resize-button"
+        @mousedown="clickDownEvt"></span>
   </th>
 </template>
 <script>
 import { EventBus } from '../../EventBus'
 import RowControl from './RowControl'
-
+import { cloneDeep } from '@/utils'
 import { mapActions } from 'vuex'
 export default {
   name: 'TableHeadColumnCell',
@@ -72,6 +80,10 @@ export default {
   },
   data() {
     return {
+      sortDirection: {
+        asc: 'sort-amount-up-alt',
+        desc: 'sort-amount-down-alt'
+      },
       width: {
         'min': 0,
         'max': 0,
@@ -80,9 +92,24 @@ export default {
     }
   },
   methods: {
+    cloneDeep,
     ...mapActions({
-      setColumnWidth: 'externalData/setColumnWidth'
+      setColumnWidth: 'externalData/setColumnWidth',
+      changeSorting: 'externalData/changeSorting'
     }),
+    changeSortingStatus() {
+      if (!this.column.sortable) return
+      const clonedColumn = this.cloneDeep(this.column)
+      function toggleDirection(direction) {
+        return direction === 'asc' ? 'desc' : 'asc'
+      }
+      if (!clonedColumn.sortable.direction) {
+        clonedColumn.sortable.direction = clonedColumn.sortable.default
+      } else {
+        clonedColumn.sortable.direction = toggleDirection(clonedColumn.sortable.direction)
+      }
+      this.changeSorting(clonedColumn)
+    },
     resize(e) {
       const size = e.pageX - this.$el.getBoundingClientRect().left
       if (size > this.column.width.max) {
@@ -125,6 +152,11 @@ export default {
       this.width = {
         'default': `${el.clientWidth}`
       }
+    }
+  },
+  computed: {
+    isSortable() {
+      return this.column.sortable && this.column.sortable.status
     }
   },
   mounted() {

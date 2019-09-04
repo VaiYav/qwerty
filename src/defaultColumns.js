@@ -23,7 +23,11 @@ export default ({
     'visible': true,
     'editable': false,
     'settable': true,
-    'sortable': true,
+    'sortable': {
+      status: true,
+      direction: '',
+      default: 'desc'
+    },
     'fixed': {
       active: true,
       position: 'left'
@@ -40,7 +44,11 @@ export default ({
     'nullable': false,
     'visible': true,
     'settable': true,
-    'sortable': true,
+    'sortable': {
+      status: true,
+      direction: '',
+      default: 'asc'
+    },
     'fixed': {
       active: true,
       position: 'right'

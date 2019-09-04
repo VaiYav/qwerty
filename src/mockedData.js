@@ -6,7 +6,11 @@ export default {
       'visible': false,
       'editable': false,
       'settable': true,
-      'sortable': true,
+      'sortable': {
+        status: true,
+        direction: '',
+        default: 'asc'
+      },
       'order': 3,
       'width': {
         'min': 55,
@@ -20,7 +24,11 @@ export default {
       'visible': false,
       'editable': false,
       'settable': true,
-      'sortable': false,
+      'sortable': {
+        status: true,
+        direction: '',
+        default: 'asc'
+      },
       'order': 4,
       'width': {
         'min': 55,
@@ -34,7 +42,11 @@ export default {
       'visible': false,
       'editable': false,
       'settable': true,
-      'sortable': true,
+      'sortable': {
+        status: true,
+        direction: '',
+        default: 'asc'
+      },
       'order': 5,
       'width': {
         'min': 55,
@@ -48,7 +60,11 @@ export default {
       'visible': false,
       'editable': false,
       'settable': true,
-      'sortable': false,
+      'sortable': {
+        status: false,
+        direction: '',
+        default: 'asc'
+      },
       'order': 6,
       'width': {
         'min': 55,
@@ -91,6 +107,11 @@ export default {
       'fixed': {
         active: false,
         position: 'right'
+      },
+      'sortable': {
+        status: true,
+        direction: '',
+        default: 'desc'
       },
       'order': 9,
       'width': {
