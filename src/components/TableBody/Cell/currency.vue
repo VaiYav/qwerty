@@ -1,6 +1,6 @@
 <template>
   <span>
-    {{data.toFixed(2)}}
+    {{parseFloat(data).toFixed(2)}}
      <VIcon :name="sign" />
   </span>
 </template>

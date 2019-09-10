@@ -1,5 +1,7 @@
 <template>
   <th
+      @mouseover="sortableHover = true"
+      @mouseleave="sortableHover = false"
       class="table-grid-cell-head"
       :class="{
         draggable
@@ -13,7 +15,6 @@
       <component v-if="column.component" :is="column.component"></component>
     </keep-alive>
     <div
-        @click="changeSortingStatus"
         v-if="!column.component"
         :class="{
           pointer: isSortable
@@ -24,28 +25,32 @@
           :title="$t(`columns.${columnKey}`)"
           :class="{ sortable: isSortable }"
           class="table-grid-head-title">{{ $t(`columns.${columnKey}`) }}</span>
-      <VIcon
-          class="sort-icon"
-          v-if="column.sortable && column.sortable.status && column.sortable.direction"
-          :name="this.sortDirection[column.sortable.direction]"></VIcon>
+      <span @click="changeSortingStatus">
+         <VIcon
+             class="sort-icon"
+             v-if="column.sortable && column.sortable.direction || column.sortable && ((column.sortable.direction || column.sortable.default) && sortableHover)"
+             :name="this.sortDirection[column.sortable.direction || column.sortable.default]"></VIcon>
+      </span>
       <slot />
     </div>
     <span
-        v-if="!fixedColumn && draggable"
+        v-if="!fixedColumn && draggable && !isMobile"
         class="table-grid-resize-button"
         @mousedown="clickDownEvt"></span>
   </th>
 </template>
 <script>
+import { mapActions } from 'vuex'
 import { EventBus } from '../../EventBus'
 import RowControl from './RowControl'
 import { cloneDeep } from '@/utils'
-import { mapActions } from 'vuex'
+import dragDrop from './mixins/dragDrop'
 export default {
   name: 'TableHeadColumnCell',
   components: {
     RowControl
   },
+  mixins: [dragDrop],
   props: {
     columnKey: {
       type: String,
@@ -71,7 +76,7 @@ export default {
     },
     draggable: {
       type: Boolean,
-      default: true
+      default: false
     },
     fixedColumn: {
       type: Boolean,
@@ -80,6 +85,7 @@ export default {
   },
   data() {
     return {
+      sortableHover: false,
       sortDirection: {
         asc: 'sort-amount-up-alt',
         desc: 'sort-amount-down-alt'
@@ -88,7 +94,8 @@ export default {
         'min': 0,
         'max': 0,
         'width': 0
-      }
+      },
+      order: 0
     }
   },
   methods: {
