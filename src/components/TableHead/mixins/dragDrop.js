@@ -77,17 +77,16 @@ export default {
         function moveAt(e) {
           self.setStyles(self.$el, tds, e.pageX - left - shiftX)
           const currentDrag = self.$el.getBoundingClientRect()
+          const currentDragOrder = +self.$el.getAttribute('data-col-order')
 
           for (let i = 0; i < allThs.length; i++) {
             const th = allThs[i]
             const overTh = th.getBoundingClientRect()
-            if (overTh.left <= coords.left && currentDrag.left <= overTh.right - (overTh.width / 2) && !th.style.transform) {
+            const thOrder = +th.getAttribute('data-col-order')
+            if (currentDrag.left < overTh.left && currentDragOrder > thOrder) {
               self.changePosition(th, self.$el.clientWidth)
               self.changeOrderLeft(self.$el, th)
-            } else if (overTh.right >= coords.right && currentDrag.left >= overTh.right - (overTh.width / 2) && !th.style.transform) {
-              self.changePosition(th, -Math.abs(self.$el.clientWidth))
-              self.changeOrderRight(self.$el, th)
-            } else if (currentDrag.right <= overTh.right && currentDrag.right >= overTh.right - (overTh.width / 2)) {
+            } else if (currentDrag.right > overTh.right && currentDragOrder < thOrder) {
               self.changePosition(th, -Math.abs(self.$el.clientWidth))
               self.changeOrderRight(self.$el, th)
             }
