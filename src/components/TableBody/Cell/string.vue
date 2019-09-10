@@ -1,7 +1,7 @@
 <template>
   <span
       v-b-tooltip.hover.d300
-      :title="data">
+      :title="`${data}`">
     {{data}}
   </span>
 </template>

@@ -42,7 +42,7 @@
         :id="`${$attrs['data-cellindex']}-${id.value}`"
         v-if="data.editable"
         v-b-tooltip.hover.d300
-        :title="data.value"
+        :title="`${data.value}`"
         class="position-absolute cell-edit-button"></button>
     <b-popover
         ref="popover"
@@ -89,6 +89,7 @@ export default {
   components: {
     Custom: () => import('@/components/TableBody/Cell/custom'),
     string: () => import('@/components/TableBody/Cell/string'),
+    datetime: () => import('@/components/TableBody/Cell/string'),
     int: () => import('@/components/TableBody/Cell/string'),
     float: () => import('@/components/TableBody/Cell/string'),
     currency: () => import('@/components/TableBody/Cell/currency'),

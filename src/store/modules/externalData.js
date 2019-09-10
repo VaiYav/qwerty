@@ -90,7 +90,7 @@ const externalData = {
         result[item.key] = item
         return result
       }, {})
-      commit(types.CHANGE_COLUMNS, { ...state.columns, ...newState })
+      commit(types.SET_COLUMNS, { ...state.columns, ...newState })
     },
     setColumnWidth({ commit, state }, payload) {
       const clonedState = cloneDeep(state.columns)
@@ -105,7 +105,17 @@ const externalData = {
       }
       clonedState[payload.key] = payload
       dispatch('fetchData')
-      commit(types.CHANGE_SORTING, { data: clonedState, sortDirection: payload.sortable.direction })
+      commit(types.SET_COLUMNS, clonedState)
+      commit(types.CHANGE_SORTING, payload.sortable.direction)
+    },
+    setThOrder({ commit, state }, payload) {
+      const clonedState = cloneDeep(state.columns)
+      for (const key in payload) {
+        if (Object.hasOwnProperty.call(payload, key)) {
+          clonedState[key].order = payload[key]
+        }
+      }
+      commit(types.SET_COLUMNS, clonedState)
     }
   },
   mutations: {
@@ -120,15 +130,11 @@ const externalData = {
     [types.EDIT_ENTITY](state, payload) {
       state.data = payload
     },
-    [types.CHANGE_COLUMNS](state, payload) {
-      state.columns = payload
-    },
-    [types.SET_COLUMN_WIDTH](state, payload) {
+    [types.SET_COLUMNS](state, payload) {
       state.columns = payload
     },
     [types.CHANGE_SORTING](state, payload) {
-      state.columns = payload.data
-      state.sortDirection = payload.direction
+      state.sortDirection = payload
     }
   }
 }

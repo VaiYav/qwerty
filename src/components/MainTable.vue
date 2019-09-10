@@ -7,7 +7,7 @@
       }"
   >
     <thead class="table-grid-header">
-      <TableHeadColumn :columns="getAvailableColumns" />
+      <TableHeadColumn :columns="getNotFixedColumns" />
     </thead>
     <tbody v-if="data.length">
     <CheckAll v-if="checkAllBlock" />
@@ -18,7 +18,7 @@
         :columns="getNotFixedColumns"
         :key="row.id.value"/>
     </tbody>
-    <FixedHeader :columns="getAvailableColumns" v-if="config.fixedHeader" />
+    <FixedHeader :columns="getNotFixedColumns" v-if="config.fixedHeader" />
   </table>
 </template>
 
@@ -55,24 +55,12 @@ export default {
     clonedColumns() {
       return cloneDeep(this.columns)
     },
-    getAvailableColumns() {
+    getNotFixedColumns() {
       if (this.isMobile) {
         return this.clonedColumns.map(c => {
           if (c.key !== 'context') {
             c.visible = false
           } else {
-            c.fixed.active = false
-          }
-          return c
-        })
-      } else {
-        return cloneDeep(this.columns).map(c => freezeObject(c))
-      }
-    },
-    getNotFixedColumns() {
-      if (this.isMobile) {
-        return this.clonedColumns.map(c => {
-          if (c.fixed) {
             c.fixed.active = false
           }
           return c
