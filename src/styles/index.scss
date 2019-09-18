@@ -4,6 +4,7 @@
 @import './components/_tableGrid.scss';
 @import "./components/_fixedHeader.scss";
 @import "./components/_pagination.scss";
+@import "./components/filters.scss";
 #app {
   overflow: hidden;
 }
@@ -29,4 +30,17 @@
     max-width: 50px;
     padding: 0 5px;
   }
+}
+.taginput-container {
+  border-radius: 0 !important;
+  height: 100% !important;
+}
+.modal {
+  z-index: 3000 !important;
+  .modal-body {
+    padding: 0 1rem !important;
+  }
+}
+.taginput.control {
+  height: 100%;
 }
