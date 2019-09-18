@@ -35,6 +35,29 @@
   "form": {
     "edit": "Edit",
     "menu": "Menu",
-    "checkAll": "Check all (%{qty}) Listings?"
+    "checkAll": "Check all (%{qty}) Listings?",
+    "search": "Search"
+  },
+  "button": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search",
+    "saveFilter": "Save filter",
+    "resetToDefault": "Reset to default",
+    "createNewFilter": "Create new filter"
+  },
+  "filter": {
+    "useFilters": "Use filters?",
+    "mainFilter": "Main Filter (%{qty})",
+    "searchForFilter": "Search for filter",
+    "filter": "Filter %{number}",
+    "chooseFilter": "Choose filter",
+    "mySavedFilters": "My saved filters (%{qty})",
+    "newFilter": "New filter",
+    "filterWasSaved": "Filter was saved",
+    "saveFilter": "Save filter",
+    "resetFilter": "Reset filter",
+    "filterWasReset": "Filter was reset",
+    "renameModal": "Rename modal"
   }
 }

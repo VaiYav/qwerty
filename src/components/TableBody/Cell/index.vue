@@ -62,11 +62,17 @@
       <template slot="title">{{label}}</template>
       <b-form class="p-1" @submit="onSubmit">
         <div class="d-flex align-items-center cell-editing">
-          <span class="prefix" v-if="data.inLineEditingModalPrefix" v-html="data.inLineEditingModalPrefix"></span>
-          <b-form-input v-model="value"></b-form-input>
-          <span class="suffix" v-if="data.inLineEditingModalSuffix">
-            <VIcon :name="data.inLineEditingModalSuffix"></VIcon>
-          </span>
+          <b-input-group class="align-items-center">
+            <b-input-group-prepend v-if="data.inLineEditingModalPrefix" is-text>
+              <span v-html="data.inLineEditingModalPrefix"></span>
+            </b-input-group-prepend>
+            <b-form-input class="p-1" v-model="value"></b-form-input>
+            <b-input-group-append is-text v-if="data.inLineEditingModalSuffix">
+              <span class="suffix">
+                <VIcon :name="data.inLineEditingModalSuffix"></VIcon>
+              </span>
+            </b-input-group-append>
+          </b-input-group>
         </div>
         <div class="d-flex justify-content-end mt-1">
           <b-button @click="closePopover" class="mr-1 pointer" variant="danger">

@@ -2,7 +2,16 @@
   <div id="app">
     <Navbar />
     <div>
-      <Pagination v-if="config.pagination.isActive && config.pagination.position === 'top'" />
+      <b-container fluid>
+        <b-row class="align-items-center">
+          <b-col cols="12" lg="6">
+            <Filtering />
+          </b-col>
+          <b-col cols="12" lg="6" v-if="config.pagination.isActive && config.pagination.position === 'top'">
+            <Pagination />
+          </b-col>
+        </b-row>
+      </b-container>
       <Table-grid
           :columns="columns"
           :data="data"
@@ -19,7 +28,8 @@ export default {
   components: {
     Navbar: () => import('@/layout/Navbar'),
     TableGrid: () => import('@/components/TableGrid'),
-    Pagination: () => import('@/components/Pagination')
+    Pagination: () => import('@/components/Pagination'),
+    Filtering: () => import('@/components/Filtering')
   },
   computed: {
     ...mapGetters({

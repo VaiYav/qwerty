@@ -6,6 +6,7 @@ export default ({
     'visible': true,
     'editable': false,
     'settable': false,
+    'filterable': false,
     'fixed': {
       active: true,
       position: 'left'
@@ -23,6 +24,7 @@ export default ({
     'visible': true,
     'editable': false,
     'settable': true,
+    'filterable': false,
     'sortable': {
       status: true,
       direction: '',
@@ -44,6 +46,7 @@ export default ({
     'nullable': false,
     'visible': true,
     'settable': true,
+    'filterable': false,
     'sortable': {
       status: true,
       direction: '',
