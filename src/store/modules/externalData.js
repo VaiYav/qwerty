@@ -3,7 +3,6 @@ import MockedData from '@/mockedData'
 import defaultColumns from '@/defaultColumns'
 import { fetchData } from '@/api'
 import { cloneDeep } from '@/utils'
-
 const externalData = {
   namespaced: true,
   state: {
@@ -58,7 +57,7 @@ const externalData = {
         const data = {
           ...response.data,
           ...MockedData,
-          meta: { ...state.meta, ...MockedData.meta },
+          // meta: { ...state.meta, ...MockedData.meta },
           columns: { ...state.columns, ...MockedData.columns }
         }
         commit(types.SET_DATA, data)
@@ -74,6 +73,10 @@ const externalData = {
           return e
         }, 1500)
       }
+    },
+    setPagination({ commit, dispatch }, payload) {
+      dispatch('fetchData', payload)
+      commit(types.SET_PAGINATION, payload)
     },
     editEntity({ dispatch, commit, state }, payload) {
       dispatch('setLoader', true)
@@ -106,7 +109,7 @@ const externalData = {
       clonedState[payload.key] = payload
       dispatch('fetchData')
       commit(types.SET_COLUMNS, clonedState)
-      commit(types.CHANGE_SORTING, payload.sortable.direction)
+      commit(types.CHANGE_SORTING, payload.sortable ? payload.sortable.direction : '')
     },
     setThOrder({ commit, state }, payload) {
       const clonedState = cloneDeep(state.columns)
@@ -135,6 +138,9 @@ const externalData = {
     },
     [types.CHANGE_SORTING](state, payload) {
       state.sortDirection = payload
+    },
+    [types.SET_PAGINATION](state, payload) {
+      state.meta.pagination = { ...state.meta.pagination, ...payload }
     }
   }
 }

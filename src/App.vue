@@ -24,6 +24,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { getObjectDiff } from '@/utils'
 export default {
   components: {
     Navbar: () => import('@/layout/Navbar'),
@@ -43,8 +44,44 @@ export default {
       fetchConfig: 'config/fetchConfig',
       fetchData: 'externalData/fetchData',
       setTableLoader: 'externalData/setLoader',
-      setAppLoader: 'app/setLoader'
-    })
+      setAppLoader: 'app/setLoader',
+      changeSorting: 'externalData/changeSorting'
+    }),
+    setData(data) {
+      for (const key in data.query) {
+        if (Object.prototype.hasOwnProperty.call(data.query, key)) {
+          if (!data.query[key]) return
+          const entity = JSON.parse(data.query[key])
+          const func = entity.func
+          delete entity.func
+          this.$store.dispatch(`${func}`, entity)
+        }
+      }
+    },
+    resetState(val) {
+      switch (val) {
+        case 'sort':
+          this.$store.dispatch('externalData/changeSorting', {})
+          break
+        case 'filters':
+          this.$store.dispatch('filters/searchByFilter')
+          break
+        case 'pagination':
+          this.$store.dispatch('externalData/setPagination', { per_page: 50, current_page: 1 })
+          break
+      }
+    }
+  },
+  watch: {
+    $route: {
+      handler(val, oldVal) {
+        this.setData(val)
+        const type = getObjectDiff(val.query, oldVal.query)[0]
+        if (!val.query[type]) {
+          this.resetState(type)
+        }
+      }
+    }
   },
   created() {
     Promise.all([

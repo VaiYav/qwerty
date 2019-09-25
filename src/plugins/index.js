@@ -3,7 +3,6 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vuescroll from 'vuescroll'
 import VueScrollTo from 'vue-scrollto'
-import { Taginput } from 'buefy'
 
 const options = {
   VueAxios: axios,
@@ -43,6 +42,5 @@ export {
   VueAxios,
   Vuescroll,
   VueScrollTo,
-  Taginput,
   options
 }

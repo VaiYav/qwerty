@@ -92,6 +92,9 @@ export default {
       handler(val) {
         this.showFilters = val
         // this.setDefaultSavedFilters(cloneDeep(this.savedFilters))
+        if (val) {
+          this.setActiveFilter(this.searchFilters)
+        }
       }
     }
   },
@@ -99,19 +102,22 @@ export default {
     ...mapGetters({
       savedFilters: 'filters/savedFilters',
       defaultSavedFilters: 'filters/defaultSavedFilters',
-      activeFilter: 'filters/activeFilter'
+      activeFilter: 'filters/activeFilter',
+      searchFilters: 'filters/searchFilters'
     })
   },
   methods: {
     ...mapActions({
       resetFilter: 'filters/resetFilter',
+      setActiveFilter: 'filters/chooseFilter',
       setDefaultSavedFilters: 'filters/setDefaultSavedFilters',
       createFilter: 'filters/createFilter',
       saveFilters: 'filters/saveFilters',
-      searchByFilter: 'filters/searchByFilter'
+      searchByFilter: 'filters/searchByFilter',
+      setRouter: 'routing/setRouter'
     }),
     createNewFilter() {
-      this.createFilter({ title: this.$t('filter.newFilter'), search: [] })
+      this.createFilter({ title: this.$t('filter.newFilter'), search: this.activeFilter.title ? [] : this.searchFilters.search })
     },
     closeModal() {
       this.$emit('close', false)
@@ -160,6 +166,7 @@ export default {
       this.searchByFilter(this.activeFilter)
       this.$emit('close', false)
       this.showFilters = false
+      this.setRouter({ data: this.activeFilter, key: 'filters', func: 'filters/searchByFilter' }, { root: true })
     }
   },
   created() {

@@ -102,7 +102,8 @@ export default {
     cloneDeep,
     ...mapActions({
       setColumnWidth: 'externalData/setColumnWidth',
-      changeSorting: 'externalData/changeSorting'
+      changeSorting: 'externalData/changeSorting',
+      setRouter: 'routing/setRouter'
     }),
     changeSortingStatus() {
       if (!this.column.sortable) return
@@ -116,6 +117,7 @@ export default {
         clonedColumn.sortable.direction = toggleDirection(clonedColumn.sortable.direction)
       }
       this.changeSorting(clonedColumn)
+      this.setRouter({ data: clonedColumn, key: 'sort', func: 'externalData/changeSorting' }, { root: true })
     },
     resize(e) {
       const size = e.pageX - this.$el.getBoundingClientRect().left

@@ -20,5 +20,6 @@ import 'vue-awesome/icons/less-than'
 import 'vue-awesome/icons/less-than-equal'
 import 'vue-awesome/icons/greater-than'
 import 'vue-awesome/icons/greater-than-equal'
+import 'vue-awesome/icons/times-circle'
 
 Vue.component('VIcon', Icon)

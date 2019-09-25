@@ -35,3 +35,14 @@ export default {
   arrayDiffByKey,
   freezeObject
 }
+export function getObjectDiff(obj1, obj2) {
+  return Object.keys(obj1).reduce((result, key) => {
+    if (!Object.prototype.hasOwnProperty.call(obj2, key)) {
+      result.push(key)
+    } else if (Object.entries(obj1[key]).toString() === Object.entries(obj2[key]).toString()) {
+      const resultKeyIndex = result.indexOf(key)
+      result.splice(resultKeyIndex, 1)
+    }
+    return result
+  }, Object.keys(obj2))
+}

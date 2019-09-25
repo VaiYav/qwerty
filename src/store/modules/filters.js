@@ -157,7 +157,7 @@ const filters = {
         payload.title = addNumber(payload.title)
       }
       commit(types.CREATE_FILTER, payload)
-      if (!state.activeFilter.title) dispatch('chooseFilter', { ...payload, ...state.activeFilter })
+      if (!state.activeFilter.title) dispatch('chooseFilter', { ...state.activeFilter, ...payload })
     },
     saveFilters({ commit, state, dispatch }, payload) {
       return new Promise((resolve, reject) => {
@@ -193,14 +193,17 @@ const filters = {
     toggleEditMode({ commit }, payload) {
       commit(types.TOGGLE_EDIT_MODE, payload)
     },
-    searchByFilter({ commit }, payload) {
+    searchByFilter({ commit, dispatch }, payload = { search: [] }) {
       commit(types.SEARCH_BY_FILTER, payload)
     },
     removeSearchFilters({ commit, state }, payload) {
-      const clonedState = cloneDeep(state.searchFilters)
-      const index = clonedState.search.findIndex(cs => cs.column === payload)
-      clonedState.search.splice(index, 1)
-      commit(types.SEARCH_BY_FILTER, clonedState)
+      return new Promise((resolve) => {
+        const clonedState = cloneDeep(state.searchFilters)
+        clonedState.search = payload
+        clonedState.title = ''
+        commit(types.SEARCH_BY_FILTER, clonedState)
+        resolve(clonedState)
+      })
     },
     renameFilter({ commit, state }, payload) {
       const clonedState = cloneDeep(state.savedFilters)

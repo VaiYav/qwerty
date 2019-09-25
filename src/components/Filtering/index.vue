@@ -1,15 +1,11 @@
 <template>
   <div class="position-relative">
-    <b-input-group>
-      <b-taginput
+    <b-input-group class="flex-nowrap">
+      <TagInput
           @blur="blur"
-          @focus="focus"
-          class="p-0 form-control border-0"
           v-model="getTags"
-          ellipsis
-          icon="label"
-          :placeholder="$t(`form.search`)">
-      </b-taginput>
+          field="sign"
+          @focus="focus"></TagInput>
       <b-input-group-append>
         <b-button variant="success">
           <VIcon name="search"></VIcon>
@@ -30,7 +26,8 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Filtering',
   components: {
-    FilterModal: () => import('@/components/Filtering/FilterModal')
+    FilterModal: () => import('@/components/Filtering/FilterModal'),
+    TagInput: () => import('@/components/TagInput')
   },
   data() {
     return {
@@ -40,7 +37,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      removeSearchFilters: 'filters/removeSearchFilters'
+      removeSearchFilters: 'filters/removeSearchFilters',
+      setRouter: 'routing/setRouter'
     }),
     focus() {
       this.selectFilter = true
@@ -70,12 +68,14 @@ export default {
         this.searchFilters.search.map(sf => {
           const entity = this.filterTypes.find(ft => ft.value === sf.type)
           const sign = this.getAllColumns.find(ac => ac.key === sf.column)
-          tags.push({ key: sf.column, value: `${this.$t(`columns.${sf.column}`)} ${entity.sign ? entity.sign : '|'} ${entity.prefixText ? entity.prefixText : ''}${sf.value}${entity.suffixText ? entity.suffixText : ''} ${sign && sign.type === 'currency' ? '€' : ''}` })
+          console.log(entity)
+          tags.push({ column: sf.column, value: sf.value, type: sf.type, sign: `${this.$t(`columns.${sf.column}`)} ${entity && entity.sign ? entity.sign : '|'} ${entity && entity.prefixText ? entity.prefixText : ''}${sf.value}${entity && entity.suffixText ? entity.suffixText : ''} ${sign && sign.type === 'currency' ? '€' : ''}` })
         })
         return tags
       },
       set(val) {
-        this.removeSearchFilters(val.key)
+        this.removeSearchFilters(val)
+          .then((data) => this.setRouter({ data, key: 'filters', func: 'filters/searchByFilter' }, { root: true }))
       }
     }
   }
@@ -83,5 +83,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~buefy/dist/buefy.css';
 </style>
