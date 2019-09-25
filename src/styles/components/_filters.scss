@@ -13,6 +13,8 @@
     height: 100%;
     .main-filter-body {
       .filter-list-container {
+        list-style: none;
+        padding: 0;
         .filter-list-item {
           margin-bottom: .4rem;
           padding: 0 .3rem;

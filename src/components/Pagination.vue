@@ -9,7 +9,7 @@
         :total-rows="pagination.total"
         :per-page="pagination.per_page"
         aria-controls="my-table"
-        @change="changePage"
+        @change="(current_page) => changePage({ current_page })"
     ></b-pagination>
     <b-dropdown
         :disabled="loader"
@@ -23,7 +23,7 @@
         <VIcon name="list-ol" scale="2" />
       </template>
       <b-dropdown-item
-          @click="(e) => changePage(e.target.text)"
+          @click="(e) => changePage({ per_page: +e.target.text })"
           v-for="size in config.pagination.page_sizes"
           :key="size"
           :active="size === pagination.per_page"
@@ -37,11 +37,6 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Pagination',
-  data() {
-    return {
-      currentPage: 1
-    }
-  },
   computed: {
     ...mapGetters({
       pagination: 'externalData/getPagination',
@@ -51,16 +46,18 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchData: 'externalData/fetchData'
+      fetchData: 'externalData/fetchData',
+      setRouter: 'routing/setRouter'
     }),
-    changePage(page) {
+    changePage({ current_page, per_page }) {
       if (this.config.pagination.position === 'bottom') {
         this.$scrollTo('.table.table-container')
       }
-      this.fetchData({
-        query: 'response',
-        payload: { _page: page, _limit: this.pagination.per_page }
-      })
+      const data = {
+        current_page: current_page || this.pagination.current_page,
+        per_page: per_page || this.pagination.per_page
+      }
+      this.setRouter({ data, key: 'pagination', func: 'externalData/setPagination' }, { root: true })
     }
   }
 }
