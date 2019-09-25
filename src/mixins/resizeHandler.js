@@ -1,6 +1,5 @@
 import store from '@/store'
 
-const { body } = document
 const WIDTH = 1023
 
 export default {
@@ -15,8 +14,8 @@ export default {
   },
   methods: {
     checkIsMobile() {
-      const rect = body.getBoundingClientRect()
-      return rect.width <= WIDTH
+      const rect = window.innerWidth
+      return rect <= WIDTH
     },
     resizeHandler() {
       if (!document.hidden) {
