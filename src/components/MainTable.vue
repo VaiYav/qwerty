@@ -18,7 +18,7 @@
         :columns="getNotFixedColumns"
         :key="row.id.value"/>
     </tbody>
-    <FixedHeader :columns="getNotFixedColumns" v-if="config.fixedHeader" />
+    <FixedHeader :columns="getNotFixedColumns" v-if="config.fixedHeader" mainTable />
   </table>
 </template>
 
