@@ -103,7 +103,7 @@ export default {
       'settable': true,
       'draggable': true,
       'filterable': true,
-      'order': 8,
+      'order': 28,
       'width': {
         'min': 55,
         'max': 350,
@@ -407,6 +407,21 @@ export default {
       'draggable': true,
       'filterable': true,
       'order': 27,
+      'width': {
+        'min': 55,
+        'max': 350,
+        'default': 100
+      }
+    },
+    'image': {
+      'type': 'CustomImage',
+      'nullable': true,
+      'visible': true,
+      'editable': false,
+      'settable': true,
+      'draggable': true,
+      'filterable': false,
+      'order': 8,
       'width': {
         'min': 55,
         'max': 350,
