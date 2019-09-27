@@ -66,7 +66,7 @@
             <b-input-group-prepend v-if="data.inLineEditingModalPrefix" is-text>
               <span v-html="data.inLineEditingModalPrefix"></span>
             </b-input-group-prepend>
-            <b-form-input class="p-1" v-model="value"></b-form-input>
+            <b-form-input autofocus @focus="$event.target.select()" class="p-1" v-model="value"></b-form-input>
             <b-input-group-append is-text v-if="data.inLineEditingModalSuffix">
               <span class="suffix">
                 <VIcon :name="data.inLineEditingModalSuffix"></VIcon>
