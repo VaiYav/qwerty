@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="mb-4">
     <Navbar />
     <div>
       <b-container fluid>
@@ -17,7 +17,8 @@
           :data="data"
           :config="config"
       />
-      <Pagination v-if="config.pagination.isActive && config.pagination.position === 'bottom'" />
+<!--      <Pagination v-if="config.pagination.isActive && config.pagination.position === 'bottom'" />-->
+      <Pagination v-if="config.pagination.isActive" />
     </div>
   </div>
 </template>
