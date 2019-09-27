@@ -101,7 +101,8 @@ export default {
     currency: () => import('@/components/TableBody/Cell/currency'),
     boolean: () => import('@/components/TableBody/Cell/boolean'),
     chart: () => import('@/components/TableBody/Cell/chart'),
-    RowControl: () => import('@/components/TableBody/Cell/RowControl')
+    RowControl: () => import('@/components/TableBody/Cell/RowControl'),
+    CustomImage: () => import('@/components/TableBody/Cell/image')
   },
   props: {
     data: {
