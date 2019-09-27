@@ -12,12 +12,19 @@
             fixedHeader
             :fixedColumn="fixedColumn"
         />
+        <CheckAll v-if="checkAllBlock && mainTable" />
+        <tr v-else-if="checkAllBlock">
+          <th colspan="200" class="table-grid-cell">
+            <span class="table-grid-cell-content"></span>
+          </th>
+        </tr>
       </thead>
     </table>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { EventBus } from '../EventBus'
 
 export default {
@@ -30,10 +37,15 @@ export default {
     fixedColumn: {
       type: Boolean,
       default: false
+    },
+    mainTable: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
-    TableHeadColumn: () => import('@/components/TableHead/Column')
+    TableHeadColumn: () => import('@/components/TableHead/Column'),
+    CheckAll: () => import('@/components/CheckAll')
   },
   data() {
     return {
@@ -51,6 +63,11 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters({
+      checkAllBlock: 'table/checkAllBlock'
+    })
+  },
   methods: {
     getClientHeight() {
       const target = this.$parent.$el
@@ -61,11 +78,6 @@ export default {
       this.tablePositionX = elemRect.x
       this.totalOffset = distanceScrolled + elemViewportOffset
       this.hidden = this.totalOffset > 0 || Math.abs(this.totalOffset) > elemRect.height
-      const scroll = document.querySelector('.__rail-is-horizontal')
-      if (scroll) {
-        const tableOffset = window.scrollY
-        scroll.style.opacity = (tableOffset < elemRect.y || Math.abs(this.totalOffset) > elemRect.height) ? '0' : '1'
-      }
     },
     getTableWidth() {
       const target = this.$parent.$el
