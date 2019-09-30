@@ -19,7 +19,6 @@
               <VIcon class="icon-search" name="search"></VIcon>
               <label class="w-100 m-0">
                 <input
-                    @keypress="disableInput"
                     @input="input"
                     @focus="focus"
                     @blur="blur"
@@ -35,6 +34,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'TagInput',
   props: {
@@ -53,13 +53,11 @@ export default {
   },
   methods: {
     input(e) {
-      this.$emit('input', e)
+      console.log(e)
+      this.$emit('input', this.searchFilters.search)
     },
     focus(e) {
       this.$emit('focus', e)
-    },
-    disableInput(e) {
-      e.preventDefault()
     },
     blur(e) {
       this.$emit('blur', e)
@@ -71,6 +69,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      searchFilters: 'filters/searchFilters'
+    }),
     tags: {
       get() { return this.value },
       set(e) {
