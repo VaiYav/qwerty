@@ -68,7 +68,6 @@ export default {
         this.searchFilters.search.map(sf => {
           const entity = this.filterTypes.find(ft => ft.value === sf.type)
           const sign = this.getAllColumns.find(ac => ac.key === sf.column)
-          console.log(entity)
           tags.push({ column: sf.column, value: sf.value, type: sf.type, sign: `${this.$t(`columns.${sf.column}`)} ${entity && entity.sign ? entity.sign : '|'} ${entity && entity.prefixText ? entity.prefixText : ''}${sf.value}${entity && entity.suffixText ? entity.suffixText : ''} ${sign && sign.type === 'currency' ? '€' : ''}` })
         })
         return tags
