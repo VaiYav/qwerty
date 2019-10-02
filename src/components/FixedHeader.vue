@@ -12,9 +12,8 @@
             fixedHeader
             :fixedColumn="fixedColumn"
         />
-        <CheckAll v-if="checkAllBlock && mainTable" />
-        <tr v-else-if="checkAllBlock">
-          <th colspan="200" class="table-grid-cell">
+        <tr v-if="checkAllBlock">
+          <th colspan="200" class="table-grid-cell  table-grid-cell__checkAll">
             <span class="table-grid-cell-content"></span>
           </th>
         </tr>
@@ -24,7 +23,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { EventBus } from '../EventBus'
 
 export default {
@@ -44,8 +43,7 @@ export default {
     }
   },
   components: {
-    TableHeadColumn: () => import('@/components/TableHead/Column'),
-    CheckAll: () => import('@/components/CheckAll')
+    TableHeadColumn: () => import('@/components/TableHead/Column')
   },
   data() {
     return {
@@ -69,6 +67,9 @@ export default {
     })
   },
   methods: {
+    ...mapActions({
+      toggleFixedHeaderStatus: 'table/toggleFixedHeaderStatus'
+    }),
     getClientHeight() {
       const target = this.$parent.$el
       if (!target) return
@@ -78,6 +79,7 @@ export default {
       this.tablePositionX = elemRect.x
       this.totalOffset = distanceScrolled + elemViewportOffset
       this.hidden = this.totalOffset > 0 || Math.abs(this.totalOffset) > elemRect.height
+      this.toggleFixedHeaderStatus(this.hidden)
     },
     getTableWidth() {
       const target = this.$parent.$el

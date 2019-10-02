@@ -1,7 +1,7 @@
 <template>
   <table
       class="table-grid table-fixed-column"
-      :style="{ [position]: 0 }">
+      :style="{ [position]: 0, 'z-index': 4 }">
     <thead class="table-grid-header">
       <TableHeadColumn v-cloak :columns="getFixedColumns(columns, position)" fixedColumn />
     </thead>

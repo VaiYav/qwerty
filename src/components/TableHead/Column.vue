@@ -2,7 +2,7 @@
   <tr class="table-grid-row-head">
     <TableHeadCell
         :class="{ 'table-cell-hidden': !fixedColumn && column.fixed && column.fixed.active }"
-        v-for="(column) in columns"
+        v-for="(column, columnIndex) in columns"
         :data-col-order="column.order"
         :data-col-key="column.key"
         :key="column.key"
@@ -13,6 +13,7 @@
         :draggable="column.draggable"
         :columns="columns"
         :column="column"
+        :columnIndex="columnIndex"
     />
     <th style="width: 150px;" v-if="!fixedColumn" class="table-grid-cell-head table-grid-cell-head__special-empty"></th>
   </tr>
