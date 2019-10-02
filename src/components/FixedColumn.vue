@@ -1,6 +1,7 @@
 <template>
   <table
       class="table-grid table-fixed-column"
+      :class="{ 'is-has-box-shadow': isBoxShadow }"
       :style="{ [position]: 0, 'z-index': 4 }">
     <thead class="table-grid-header">
       <TableHeadColumn v-cloak :columns="getFixedColumns(columns, position)" fixedColumn />
@@ -25,6 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { EventBus } from '../EventBus'
 export default {
   name: 'FixedColumn',
   props: {
@@ -45,6 +47,11 @@ export default {
       default: () => ({})
     }
   },
+  data() {
+    return {
+      isBoxShadow: true
+    }
+  },
   components: {
     TableBodyRow: () => import('@/components/TableBody/Row'),
     TableHeadColumn: () => import('@/components/TableHead/Column'),
@@ -55,6 +62,23 @@ export default {
       getFixedColumns: 'externalData/getSortedColumnsByPosition',
       checkAllBlock: 'table/checkAllBlock'
     })
+  },
+  methods: {
+    setBoxShadow() {
+      const table = document.querySelector('.table-grid.main-table')
+      const tablePosition = table.getBoundingClientRect()
+      if (this.position === 'left') {
+        this.isBoxShadow = tablePosition[this.position] !== this.$el.getBoundingClientRect().right
+      } else if (this.position === 'right') {
+        this.isBoxShadow = tablePosition[this.position] !== this.$el.getBoundingClientRect().left
+      }
+    }
+  },
+  created() {
+    EventBus.$on('handle-horizontal-scroll', this.setBoxShadow)
+  },
+  beforeDestroy() {
+    EventBus.off('handle-horizontal-scroll')
   }
 }
 </script>
