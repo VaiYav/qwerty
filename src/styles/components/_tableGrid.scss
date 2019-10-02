@@ -302,7 +302,9 @@
     min-width: min-content;
     max-width: min-content;
     width: initial;
-    box-shadow: 0 0 6px 2px rgba(0, 0, 0, .2);
+    &.is-has-box-shadow {
+      box-shadow: 0 0 6px 2px rgba(0, 0, 0, .2);
+    }
   }
   .table-cell-hidden {
     visibility: hidden;
