@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      isBoxShadow: true
+      isBoxShadow: false
     }
   },
   components: {
@@ -66,6 +66,12 @@ export default {
   methods: {
     setBoxShadow() {
       const table = document.querySelector('.table-grid.main-table')
+      if (!table) {
+        setTimeout(() => {
+          this.setBoxShadow()
+        }, 1000)
+        return
+      }
       const tablePosition = table.getBoundingClientRect()
       if (this.position === 'left') {
         this.isBoxShadow = tablePosition[this.position] !== this.$el.getBoundingClientRect().right
@@ -77,8 +83,11 @@ export default {
   created() {
     EventBus.$on('handle-horizontal-scroll', this.setBoxShadow)
   },
+  mounted() {
+    this.setBoxShadow()
+  },
   beforeDestroy() {
-    EventBus.off('handle-horizontal-scroll')
+    EventBus.$off('handle-horizontal-scroll', this.setBoxShadow)
   }
 }
 </script>
