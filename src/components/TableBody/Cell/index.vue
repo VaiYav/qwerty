@@ -89,6 +89,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import { EventBus } from '../../../EventBus'
 
 export default {
   name: 'TableBodyCell',
@@ -171,6 +172,13 @@ export default {
         this.$refs.popover.$emit('close')
       }
     }
+  },
+  created() {
+    EventBus.$on('handle-horizontal-scroll', () => {
+      if (this.visiblePopover) {
+        this.$root.$emit('bv::show::popover', `${this.$attrs['data-cellindex']}-${this.id.value}`)
+      }
+    })
   }
 }
 </script>

@@ -21,6 +21,7 @@ export default {
       if (!document.hidden) {
         const isMobile = this.checkIsMobile()
         store.dispatch('app/toggleDevice', isMobile ? 'mobile' : 'desktop')
+        this.$root.$emit('bv::hide::popover')
       }
     }
   }

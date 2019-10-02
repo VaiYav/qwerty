@@ -1,6 +1,10 @@
 <template>
   <tr class="table-grid-row table-grid-row-body">
-    <td class="table-grid-cell" colspan="200" style="background: #fff; height: 57px;">
+    <td
+        class="table-grid-cell"
+        colspan="200"
+        style="background: #fff; height: 56px; z-index: 10;"
+        :style="addFixed">
       <b class="table-grid-cell-content align-items-center check-all-content" :style="style">
         {{$t('form.checkAll', { qty: pagination.total })}}
       <b-form-checkbox
@@ -13,6 +17,11 @@
       ></b-form-checkbox>
       </b>
     </td>
+    <td
+        colspan="200"
+        v-if="!getFixedHeaderStatus"
+        class="table-grid-cell"
+        style="background: #fff; height: 56px;"></td>
   </tr>
 </template>
 
@@ -31,13 +40,22 @@ export default {
   computed: {
     ...mapGetters({
       pagination: 'externalData/getPagination',
-      checkAllEntities: 'table/checkAllEntities'
+      checkAllEntities: 'table/checkAllEntities',
+      getFixedHeaderStatus: 'table/getFixedHeaderStatus'
     }),
     status: {
       get() {
         return this.checkAllEntities ? 'checked' : 'not_checked'
       },
       set(value) {}
+    },
+    addFixed() {
+      if (this.getFixedHeaderStatus) return
+      return {
+        position: 'fixed',
+        width: '100%',
+        top: '53px'
+      }
     }
   },
   methods: {

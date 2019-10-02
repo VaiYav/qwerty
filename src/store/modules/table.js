@@ -10,12 +10,14 @@ const table = {
     checkAll: {
       block: false,
       entities: false
-    }
+    },
+    fixedHeaderStatus: false
   },
   getters: {
     getSelectedRow: state => state.selectedRow,
     checkAllBlock: state => state.checkAll.block,
-    checkAllEntities: state => state.checkAll.entities
+    checkAllEntities: state => state.checkAll.entities,
+    getFixedHeaderStatus: state => state.fixedHeaderStatus
   },
   actions: {
     selectAllRow({ state, commit }, payload) {
@@ -37,6 +39,9 @@ const table = {
     },
     toggleCheckAll({ commit, state }, payload) {
       commit(types.TOGGLE_CHECK_ALL, payload)
+    },
+    toggleFixedHeaderStatus({ commit, state }, payload) {
+      commit(types.TOGGLE_FIXED_HEADER_STATUS, payload)
     }
   },
   mutations: {
@@ -49,6 +54,9 @@ const table = {
     },
     [types.SET_UN_SELECTED_ROW](state, payload) {
       state.unSelectedRow = payload
+    },
+    [types.TOGGLE_FIXED_HEADER_STATUS](state, payload) {
+      state.fixedHeaderStatus = payload
     }
   }
 }
