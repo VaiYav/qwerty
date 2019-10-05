@@ -66,25 +66,23 @@ export default {
   methods: {
     setBoxShadow() {
       const table = document.querySelector('.table-grid.main-table')
-      if (!table) {
+      if (!table || !this.$el) {
         setTimeout(() => {
           this.setBoxShadow()
         }, 1000)
         return
       }
       const tablePosition = table.getBoundingClientRect()
-      if (this.position === 'left') {
+      if (this.position === 'left' && this.$el) {
         this.isBoxShadow = tablePosition[this.position] !== this.$el.getBoundingClientRect().right
-      } else if (this.position === 'right') {
+      } else if (this.position === 'right' && this.$el) {
         this.isBoxShadow = tablePosition[this.position] !== this.$el.getBoundingClientRect().left
       }
     }
   },
   created() {
-    EventBus.$on('handle-horizontal-scroll', this.setBoxShadow)
-  },
-  mounted() {
     this.setBoxShadow()
+    EventBus.$on('handle-horizontal-scroll', this.setBoxShadow)
   },
   beforeDestroy() {
     EventBus.$off('handle-horizontal-scroll', this.setBoxShadow)
