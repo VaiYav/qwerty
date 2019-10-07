@@ -1,17 +1,14 @@
 <template>
   <li
       @click.capture="selectFilter"
-      class="filter-list-item pointer"
+      class="filter-list-item pointer p-1 pl-4"
       :class="{ active: activeFilter.title === filter.title }"
   >
     <span class="d-flex justify-content-between align-items-center">
       <span>{{filter.title}}</span>
-      <span v-if="editMode">
+      <span>
         <span @click.capture="renameSavedFilter">
-          <VIcon class="mr-1" name="pencil-alt"></VIcon>
-        </span>
-        <span @click="removeFilter">
-          <VIcon class="ml-1 mr-1" name="times"></VIcon>
+          <VIcon class="mr-1 text-primary" name="bars"></VIcon>
         </span>
       </span>
     </span>

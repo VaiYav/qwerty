@@ -13,7 +13,7 @@
             :fixedColumn="fixedColumn"
         />
         <tr v-if="checkAllBlock">
-          <th colspan="200" class="table-grid-cell  table-grid-cell__checkAll">
+          <th :colspan="columns.length" class="table-grid-cell  table-grid-cell__checkAll">
             <span class="table-grid-cell-content"></span>
           </th>
         </tr>
