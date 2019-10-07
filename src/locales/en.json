@@ -41,6 +41,7 @@
   },
   "button": {
     "save": "Save",
+    "select": "Select",
     "cancel": "Cancel",
     "search": "Search",
     "saveFilter": "Save filter",
@@ -64,6 +65,7 @@
     "currentFilter": "Current filter",
     "savedFilter": "Saved filter",
     "addFilters": "add filters",
-    "saveFilters": "Save filters"
+    "saveFilters": "Save filters",
+    "filters": "Filters"
   }
 }

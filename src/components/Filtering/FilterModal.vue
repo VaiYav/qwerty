@@ -42,8 +42,8 @@
     <template v-slot:modal-footer="{ ok, cancel }">
       <b-container class="main-filter" fluid>
         <b-row>
-          <b-col offset-md="9" cols="12" md="3" class="p-1">
-            <b-button size="sm" class="w-100 h-100 p-1" variant="secondary" @click="search">{{$t('button.search')}}</b-button>
+          <b-col offset-md="10" cols="12" md="2" class="p-1">
+            <b-button size="sm" class="w-100 h-100" variant="secondary" @click="search">{{$t('button.search')}}</b-button>
           </b-col>
         </b-row>
       </b-container>
