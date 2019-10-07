@@ -68,8 +68,14 @@ export default {
     setInMiddlePage() {
       const table = document.querySelector('.table-grid.main-table')
       const windowWidth = window.innerWidth
+      console.log(windowWidth)
+      const fixedHeader = document.querySelector('.fixed-header-container .table')
       const tablePosition = table.getBoundingClientRect()
-      this.style.left = (windowWidth / 3) - tablePosition.left + 'px'
+      if (fixedHeader) {
+        this.style.left = (windowWidth / 4) + 'px'
+      } else {
+        this.style.left = (windowWidth / 3) - tablePosition.left + 'px'
+      }
     }
   },
   created() {
@@ -78,6 +84,7 @@ export default {
       this.setInMiddlePage()
     })
     window.addEventListener('resize', this.setInMiddlePage)
+    window.addEventListener('scroll', this.setInMiddlePage)
   },
   beforeDestroy() {
     EventBus.$off('handle-horizontal-scroll', () => {

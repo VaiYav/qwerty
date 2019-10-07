@@ -59,6 +59,11 @@
     "saveFilter": "Save filter",
     "resetFilter": "Reset filter",
     "filterWasReset": "Filter was reset",
-    "renameModal": "Rename modal"
+    "renameModal": "Rename modal",
+    "title": "Filter",
+    "currentFilter": "Current filter",
+    "savedFilter": "Saved filter",
+    "addFilters": "add filters",
+    "saveFilters": "Save filters"
   }
 }

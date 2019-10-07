@@ -1,14 +1,21 @@
 <template>
   <div class="main-filter-container">
-    <div class="border-bottom main-filter-head d-flex justify-content-between align-items-center p-2 m-0">
-      <b>{{$t('filter.mySavedFilters', { qty: savedFilters.length })}}</b>
-      <span @click="toggleEdit">
-        <VIcon class="pointer" :name="editMode ? 'arrow-left' : 'tools'"></VIcon>
-      </span>
+    <div class="main-filter-head d-flex align-items-start p-0 m-0 flex-column">
+      <h3 class="main-filter__sub-title pl-2 pt-1">{{$t('filter.title')}}</h3>
+      <span
+          :class="{ active: activeFilter.title === filter.title }"
+          @click="selectFilter"
+          class="filter-list-item pointer w-100 p-1 pl-4">{{$t('filter.currentFilter')}}</span>
     </div>
-    <div class="main-filter-body p-1">
+    <div class="main-filter-body p-0">
+      <h3 class="main-filter__sub-title pl-2">{{$t('filter.savedFilter')}}</h3>
       <ul class="filter-list-container">
-        <FilterListItem v-for="(filter, filterIndex) in savedFilters" :editMode="editMode" :index="filterIndex" :filter="filter" :key="filterIndex" />
+        <FilterListItem
+            v-for="(filter, filterIndex) in savedFilters"
+            :editMode="editMode"
+            :index="filterIndex"
+            :filter="filter"
+            :key="filterIndex" />
       </ul>
     </div>
   </div>
@@ -24,10 +31,15 @@ export default {
   },
   data() {
     return {
+      filter: {
+        title: 'Current filter',
+        search: []
+      }
     }
   },
   computed: {
     ...mapGetters({
+      activeFilter: 'filters/activeFilter',
       savedFilters: 'filters/savedFilters',
       defaultSavedFilters: 'filters/defaultSavedFilters',
       editMode: 'filters/editMode'
@@ -35,10 +47,14 @@ export default {
   },
   methods: {
     ...mapActions({
+      chooseFilter: 'filters/chooseFilter',
       resetFilter: 'filters/resetFilter',
       setDefaultSavedFilters: 'filters/setDefaultSavedFilters',
       toggleEditMode: 'filters/toggleEditMode'
     }),
+    selectFilter() {
+      this.chooseFilter(cloneDeep(this.filter))
+    },
     toggleEdit() {
       this.toggleEditMode(!this.editMode)
       if (this.editMode) {

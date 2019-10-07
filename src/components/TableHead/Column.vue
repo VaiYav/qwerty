@@ -3,7 +3,7 @@
     <TableHeadCell
         :class="{ 'table-cell-hidden': !fixedColumn && column.fixed && column.fixed.active }"
         v-for="(column, columnIndex) in columns"
-        :data-col-order="column.order"
+        :data-col-order="!fixedColumn ? column.order : ''"
         :data-col-key="column.key"
         :key="column.key"
         :columnKey="column.key"

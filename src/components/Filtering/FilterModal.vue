@@ -5,19 +5,32 @@
       size="lg"
       v-model="showFilters"
       centered
-      title="">
+      :title="$t('filter.title')">
     <b-container class="main-filter" fluid>
       <b-row>
         <b-col cols="12" md="3" class="p-0">
           <FilterList />
         </b-col>
-        <b-col cols="12" md="9" class="p-0">
-          <div class="border-bottom main-filter-head d-flex justify-content-between align-items-center p-2 m-0">
-            <b>{{$t(`filter.searchForFilter`)}}</b>
+        <b-col cols="12" md="9" class="p-2 justify-content-between d-flex flex-column">
+          <div cols="12">
+            <div class="main-filter-head d-flex justify-content-between align-items-center pl-3 mt-2">
+              <b>{{$t(`filter.currentFilter`)}}</b>
+            </div>
+            <SavedFilterList />
+            <div class="p-2">
+              <b-button
+                  @click="openChooseColumn"
+                  class="border-0 text-primary bg-transparent d-flex align-items-center text-uppercase p-2 m-0"
+                  variant="primary">
+                <VIcon name="plus-circle" class="mr-1"></VIcon>
+                <span>{{$t('filter.addFilters')}}</span>
+              </b-button>
+            </div>
           </div>
-          <SavedFilterList />
-          <div class="p-2">
-            <b-button @click="openChooseColumn" variant="outline-primary">{{$t('filter.chooseFilter')}}</b-button>
+          <div cols="3" md="12" class="p-0">
+            <div class="p-3 pl-2">
+              <b-button disabled variant="success" class="pl-4 pr-4">{{$t('filter.saveFilters')}}</b-button>
+            </div>
           </div>
         </b-col>
       </b-row>
@@ -29,35 +42,8 @@
     <template v-slot:modal-footer="{ ok, cancel }">
       <b-container class="main-filter" fluid>
         <b-row>
-          <b-col cols="6" md="3" class="p-1">
-            <b-button
-                class="w-100 h-100"
-                size="sm"
-                variant="warning"
-                @click="createNewFilter">
-              {{$t('button.createNewFilter')}}
-            </b-button>
-          </b-col>
-          <b-col cols="6" md="3" class="p-1">
-            <b-button
-                class="w-100 h-100"
-                size="sm"
-                variant="info"
-                @click="saveFilter">
-              {{$t('button.saveFilter')}}
-            </b-button>
-          </b-col>
-            <b-col cols="6" md="3" class="p-1">
-              <b-button
-                class="w-100 h-100"
-                size="sm"
-                variant="danger"
-                @click="resetToDefault">
-                {{$t('button.resetToDefault')}}
-              </b-button>
-            </b-col>
-          <b-col cols="6" md="3" class="p-1">
-            <b-button size="sm" class="w-100 h-100 p-1" variant="success" @click="search">{{$t('button.search')}}</b-button>
+          <b-col offset-md="9" cols="12" md="3" class="p-1">
+            <b-button size="sm" class="w-100 h-100 p-1" variant="secondary" @click="search">{{$t('button.search')}}</b-button>
           </b-col>
         </b-row>
       </b-container>
@@ -83,7 +69,7 @@ export default {
   },
   data() {
     return {
-      showFilters: false,
+      showFilters: true,
       chooseFilter: false
     }
   },
