@@ -1,5 +1,5 @@
 <template>
-  <b-modal @hide="closeModal" class="main-filter" size="lg" v-model="chooseFilter" centered title="">
+  <b-modal @hide="closeModal" class="main-filter" size="lg" v-model="chooseFilter" centered :title="$t('filter.filters')">
     <b-container fluid>
       <b-form-checkbox-group :checked="getCheckedValues" @input="changeColumnFilter">
         <b-form-checkbox
@@ -11,13 +11,7 @@
       </b-form-checkbox-group>
     </b-container>
     <template v-slot:modal-footer="{ ok, cancel }">
-      <b-button
-          size="sm"
-          variant="danger"
-          @click="closeModal">
-        {{$t('button.cancel')}}
-      </b-button>
-      <b-button size="sm" variant="success" @click="saveSelectedColumn">{{$t('button.save')}}</b-button>
+      <b-button size="sm" variant="secondary" @click="saveSelectedColumn">{{$t('button.select')}}</b-button>
     </template>
   </b-modal>
 </template>
@@ -30,7 +24,7 @@ export default {
   props: {
     show: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   data() {
