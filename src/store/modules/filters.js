@@ -53,6 +53,18 @@ const filters = {
       },
       {
         type: 'number',
+        value: 'is between',
+        text: 'is between',
+        sign: 'und'
+      },
+      {
+        type: 'string',
+        value: 'is equal to',
+        text: 'is equal to',
+        sign: '='
+      },
+      {
+        type: 'number',
         value: 'is less or equal than',
         text: 'is less or equal than',
         sign: '≤'

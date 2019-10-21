@@ -2,7 +2,7 @@
   <b-modal
       @hide="closeModal"
       class="main-filter"
-      size="lg"
+      size="xl"
       v-model="showFilters"
       centered
       :title="$t('filter.title')">
@@ -17,19 +17,25 @@
               <b>{{$t(`filter.currentFilter`)}}</b>
             </div>
             <SavedFilterList />
-            <div class="p-2">
+            <div class="p-2 d-flex justify-content-between">
               <b-button
                   @click="openChooseColumn"
-                  class="border-0 text-primary bg-transparent d-flex align-items-center text-uppercase p-2 m-0"
+                  class="border-0 text-primary bg-transparent d-flex align-items-center text-uppercase p-2 m-0 box-shadow-none"
                   variant="primary">
                 <VIcon name="plus-circle" class="mr-1"></VIcon>
                 <span>{{$t('filter.addFilters')}}</span>
+              </b-button>
+              <b-button
+                  @click="resetToDefault"
+                  class="border-0 text-primary bg-transparent d-flex align-items-center text-uppercase p-2 m-0 box-shadow-none"
+                  variant="primary">
+                <span>{{$t('button.resetFilters')}}</span>
               </b-button>
             </div>
           </div>
           <div cols="3" md="12" class="p-0">
             <div class="p-3 pl-2">
-              <b-button disabled variant="success" class="pl-4 pr-4">{{$t('filter.saveFilters')}}</b-button>
+              <b-button style="width: 164px;" variant="success" class="pl-4 pr-4 text-white">{{$t('filter.saveFilters')}}</b-button>
             </div>
           </div>
         </b-col>
@@ -127,9 +133,9 @@ export default {
     },
     resetToDefault() {
       this.reset()
-        .then(() => {
-          this.resetToast()
-        })
+      // .then(() => {
+      //   this.resetToast()
+      // })
     },
     openChooseColumn() {
       this.chooseFilter = true
