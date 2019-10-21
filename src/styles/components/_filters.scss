@@ -61,3 +61,33 @@
     }
   }
 }
+.selected-filter-item {
+  &::after {
+    display: block;
+    content: '';
+    height: 1px;
+    background: #cfcfcf;
+    margin: 2rem 0;
+  }
+  .close-icon {
+    height: 15px;
+    &::before {
+      display: block;
+      content: '';
+      width: 2px;
+      height: 15px;
+      background: $blue;
+      margin: auto;
+      transform: rotateZ(35deg);
+    }
+    &::after {
+      display: block;
+      content: '';
+      width: 2px;
+      height: 15px;
+      background: $blue;
+      margin: auto;
+      transform: translateY(-15px) rotateZ(-37deg);
+    }
+  }
+}

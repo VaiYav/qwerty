@@ -46,7 +46,8 @@
     "search": "Search",
     "saveFilter": "Save filter",
     "resetToDefault": "Reset to default",
-    "createNewFilter": "Create new filter"
+    "createNewFilter": "Create new filter",
+    "resetFilters": "Reset filters"
   },
   "filter": {
     "useFilters": "Use filters?",
