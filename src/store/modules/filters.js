@@ -127,6 +127,7 @@ const filters = {
       }
     ],
     activeFilter: {
+      title: 'Current filter',
       search: []
     },
     defaultSavedFilters: [],
@@ -148,7 +149,7 @@ const filters = {
       return new Promise((resolve, reject) => {
         const clonedState = cloneDeep(state.defaultSavedFilters)
         const entity = clonedState.find(cs => cs.title === state.activeFilter.title)
-        commit(types.CHOOSE_FILTER, entity || { search: [] })
+        commit(types.CHOOSE_FILTER, entity || { search: [], title: 'Current filter' })
         resolve()
       })
     },
@@ -174,11 +175,11 @@ const filters = {
     saveFilters({ commit, state, dispatch }, payload) {
       return new Promise((resolve, reject) => {
         const clonedState = cloneDeep(state.savedFilters)
-        const index = clonedState.findIndex(sf => sf.title === payload.title)
-        clonedState[index] = payload
+        const index = clonedState.findIndex(sf => sf.title === payload.oldTitle)
+        clonedState[index] = { title: payload.newTitle, search: payload.data }
         commit(types.SET_FILTERS, clonedState)
         dispatch('setDefaultSavedFilters', clonedState)
-        dispatch('toggleEditMode', false)
+        dispatch('chooseFilter', clonedState[index])
         resolve()
       })
     },
