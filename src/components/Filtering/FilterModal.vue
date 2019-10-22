@@ -14,7 +14,7 @@
         <b-col cols="12" md="9" class="p-2 justify-content-between d-flex flex-column">
           <div cols="12">
             <div class="main-filter-head d-flex justify-content-between align-items-center pl-3 mt-2">
-              <b>{{$t(`filter.currentFilter`)}}</b>
+              <b>{{activeFilter.title || $t(`filter.currentFilter`)}}</b>
             </div>
             <SavedFilterList />
             <div class="p-2 d-flex justify-content-between">
@@ -35,7 +35,7 @@
           </div>
           <div cols="3" md="12" class="p-0">
             <div class="p-3 pl-2">
-              <b-button style="width: 164px;" variant="success" class="pl-4 pr-4 text-white">{{$t('filter.saveFilters')}}</b-button>
+              <b-button @click="openSaveFilter" style="width: 164px;" variant="success" class="pl-4 pr-4 text-white">{{$t('filter.saveFilters')}}</b-button>
             </div>
           </div>
         </b-col>
@@ -54,6 +54,24 @@
         </b-row>
       </b-container>
     </template>
+    <b-modal centered size="sm" v-model="saveFiltersModal" :title="$t('filter.saveFilters')">
+      <b-form-group
+          id="fieldset-horizontal"
+          label-for="filterName"
+          :label="$t('filter.filterName')"
+      >
+        <b-form-input v-model="filterName" id="filterName"></b-form-input>
+      </b-form-group>
+      <template v-slot:modal-footer="{ ok, cancel }">
+        <b-container class="main-filter" fluid>
+          <b-row>
+            <b-col offset-md="8" cols="12" md="4" class="p-1">
+              <b-button size="sm" class="w-100 h-100" variant="secondary" @click="saveFilter">{{$t('button.save')}}</b-button>
+            </b-col>
+          </b-row>
+        </b-container>
+      </template>
+    </b-modal>
     </b-modal>
 </template>
 
@@ -75,8 +93,10 @@ export default {
   },
   data() {
     return {
-      showFilters: true,
-      chooseFilter: false
+      showFilters: false,
+      chooseFilter: false,
+      saveFiltersModal: false,
+      filterName: ''
     }
   },
   watch: {
@@ -85,7 +105,7 @@ export default {
         this.showFilters = val
         // this.setDefaultSavedFilters(cloneDeep(this.savedFilters))
         if (val) {
-          this.setActiveFilter(this.searchFilters)
+          // this.setActiveFilter(this.searchFilters)
         }
       }
     }
@@ -143,8 +163,23 @@ export default {
     closeChooseFilter() {
       this.chooseFilter = false
     },
+    openSaveFilter() {
+      function addNumber(str) {
+        const words = str.split(' ')
+        const lastElem = words[words.length - 1]
+        if (isNaN(words[words.length - 1])) words.push('1')
+        else words[words.length - 1] = +lastElem + 1
+        return words.join(' ')
+      }
+      if (this.activeFilter.title) {
+        this.filterName = this.activeFilter.title
+      } else {
+        this.filterName = addNumber('Saved filter')
+      }
+      this.saveFiltersModal = true
+    },
     saveFilter() {
-      this.saveFilters(this.activeFilter)
+      this.saveFilters({ oldTitle: this.activeFilter.title, data: this.activeFilter.search, newTitle: this.filterName })
         .then(() => {
           this.$bvToast.toast(`${this.$t('filter.filterWasSaved')}`, {
             title: `${this.$t('filter.saveFilter')}`,
@@ -152,6 +187,7 @@ export default {
             variant: 'success',
             appendToast: true
           })
+          this.saveFiltersModal = false
         })
     },
     search() {

@@ -67,6 +67,7 @@
     "savedFilter": "Saved filter",
     "addFilters": "add filters",
     "saveFilters": "Save filters",
-    "filters": "Filters"
+    "filters": "Filters",
+    "filterName": "Filter name"
   }
 }
