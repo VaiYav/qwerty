@@ -27,7 +27,8 @@
     "vue-scrollto": "^2.15.0",
     "vue-sparklines": "^0.1.9",
     "vuescroll": "^4.14.0",
-    "vuex": "^3.1.1"
+    "vuex": "^3.1.1",
+    "vuex-shared-mutations": "^1.0.2"
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",

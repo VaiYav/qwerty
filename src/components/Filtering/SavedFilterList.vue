@@ -1,5 +1,5 @@
 <template>
-  <div class="main-filter-body p-2" v-if="activeFilter.search && activeFilter.search.length">
+  <div class="main-filter-body p-2 pl-4 pr-4" v-if="activeFilter.search && activeFilter.search.length">
     <div class="selected-filter-container">
       <SavedFilterItem
           v-for="(filter, filterIndex) in activeFilter.search"

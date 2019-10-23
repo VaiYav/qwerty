@@ -13,27 +13,27 @@
         </b-col>
         <b-col cols="12" md="9" class="p-2 justify-content-between d-flex flex-column">
           <div cols="12">
-            <div class="main-filter-head d-flex justify-content-between align-items-center pl-3 mt-2">
+            <div class="main-filter-head d-flex justify-content-between align-items-center pl-4 mt-2">
               <b>{{activeFilter.title || $t(`filter.currentFilter`)}}</b>
             </div>
             <SavedFilterList />
-            <div class="p-2 d-flex justify-content-between">
+            <div class="p-2 pl-4 pr-4 d-flex justify-content-between">
               <b-button
                   @click="openChooseColumn"
-                  class="border-0 text-primary bg-transparent d-flex align-items-center text-uppercase p-2 m-0 box-shadow-none"
+                  class="border-0 text-primary bg-transparent d-flex align-items-center text-uppercase p-2 m-0"
                   variant="primary">
                 <VIcon name="plus-circle" class="mr-1"></VIcon>
                 <span>{{$t('filter.addFilters')}}</span>
               </b-button>
               <b-button
                   @click="resetToDefault"
-                  class="border-0 text-primary bg-transparent d-flex align-items-center text-uppercase p-2 m-0 box-shadow-none"
+                  class="border-0 text-primary bg-transparent d-flex align-items-center text-uppercase p-2 m-0"
                   variant="primary">
                 <span>{{$t('button.resetFilters')}}</span>
               </b-button>
             </div>
           </div>
-          <div cols="3" md="12" class="p-0">
+          <div cols="3" md="12" class="p-0 pl-3 pr-3">
             <div class="p-3 pl-2">
               <b-button @click="openSaveFilter" style="width: 164px;" variant="success" class="pl-4 pr-4 text-white">{{$t('filter.saveFilters')}}</b-button>
             </div>

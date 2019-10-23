@@ -68,6 +68,9 @@
     "addFilters": "add filters",
     "saveFilters": "Save filters",
     "filters": "Filters",
-    "filterName": "Filter name"
+    "filterName": "Filter name",
+    "renameFilter": "Rename filter",
+    "deleteFilter": "Delete filter",
+    "defineAsStandard": "Define as standard"
   }
 }
