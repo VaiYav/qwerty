@@ -1,8 +1,7 @@
 <template>
   <div class="selected-filter-item">
     <div class="selected-filter-item__head">
-      <span>{{$t('filter.filter', { number: index + 1 }) }}</span>
-      <b class="ml-2">{{ $t(`columns.${filter.column}`) }}</b>
+      <b>{{ $t(`columns.${filter.column}`) }}</b>
     </div>
     <div class="selected-filter-item__body">
       <b-container class="bv-example-row">

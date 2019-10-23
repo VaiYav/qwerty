@@ -10550,6 +10550,11 @@ vuescroll@^4.14.0:
   resolved "https://registry.yarnpkg.com/vuescroll/-/vuescroll-4.14.0.tgz#00bdb458b60be3bfa314daa86a7a43b4c0fada81"
   integrity sha512-BQQcU0u9uRpmBTPoqgGcRD//g7/XUJzPxdEXupX4XSW0J+GZyUThjN0+cvvJlQyl/FmduMF6qF3JvKEfpNClQA==
 
+vuex-shared-mutations@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vuex-shared-mutations/-/vuex-shared-mutations-1.0.2.tgz#c5b31fefc29a25be3ca555430d9526ffdd51c199"
+  integrity sha512-tu+rN4DAtZQiRAHLms6OtYdtoK60sKD0CXAP1l+N4lB1rYxJC/cDVGsjXGB/A4p7qIUVb4Mzr8C2Pg1wZlrikA==
+
 vuex@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.1.tgz#0c264bfe30cdbccf96ab9db3177d211828a5910e"
