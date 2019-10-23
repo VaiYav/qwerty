@@ -176,7 +176,7 @@ const filters = {
       return new Promise((resolve, reject) => {
         const clonedState = cloneDeep(state.savedFilters)
         const index = clonedState.findIndex(sf => sf.title === payload.oldTitle)
-        clonedState[index] = { title: payload.newTitle, search: payload.data }
+        clonedState[index === -1 ? clonedState.length : index] = { title: payload.newTitle, search: payload.data }
         commit(types.SET_FILTERS, clonedState)
         dispatch('setDefaultSavedFilters', clonedState)
         dispatch('chooseFilter', clonedState[index])

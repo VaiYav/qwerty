@@ -93,10 +93,11 @@ export default {
   },
   data() {
     return {
-      showFilters: false,
+      showFilters: true,
       chooseFilter: false,
       saveFiltersModal: false,
-      filterName: ''
+      filterName: '',
+      qty: 1
     }
   },
   watch: {
@@ -164,17 +165,11 @@ export default {
       this.chooseFilter = false
     },
     openSaveFilter() {
-      function addNumber(str) {
-        const words = str.split(' ')
-        const lastElem = words[words.length - 1]
-        if (isNaN(words[words.length - 1])) words.push('1')
-        else words[words.length - 1] = +lastElem + 1
-        return words.join(' ')
-      }
-      if (this.activeFilter.title) {
+      if (this.activeFilter.title && this.activeFilter.title !== 'Current filter') {
         this.filterName = this.activeFilter.title
       } else {
-        this.filterName = addNumber('Saved filter')
+        this.filterName = `Saved filter ${this.qty}`
+        this.qty += 1
       }
       this.saveFiltersModal = true
     },
