@@ -115,6 +115,7 @@ export default {
       } else if (this.findColumnType === 'string') {
         this.value = 'ABC'
       }
+      this.setActiveFilter()
     },
     setFilter() {
       this.selected = this.filter.type
