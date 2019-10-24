@@ -12,12 +12,30 @@
         </span>
         <div @click.stop v-show="filterContextMenu" class="filter-context-container">
           <ul>
-            <li>{{$t('filter.renameFilter')}}</li>
+            <li @click="openRenameModal">{{$t('filter.renameFilter')}}</li>
             <li>{{$t('filter.deleteFilter')}}</li>
             <li>{{$t('filter.defineAsStandard')}}</li>
           </ul>
         </div>
       </span>
+      <b-modal centered size="sm" v-model="renameFilterModal" :title="$t('filter.renameFilter')">
+      <b-form-group
+          id="fieldset-horizontal"
+          label-for="filterName"
+          :label="$t('filter.filterName')"
+      >
+        <b-form-input v-model="filterName" id="filterName"></b-form-input>
+      </b-form-group>
+      <template v-slot:modal-footer="{ ok, cancel }">
+        <b-container class="main-filter" fluid>
+          <b-row>
+            <b-col offset-md="8" cols="12" md="4" class="p-1">
+              <b-button size="sm" class="w-100 h-100" variant="secondary" @click="saveFilter">{{$t('button.save')}}</b-button>
+            </b-col>
+          </b-row>
+        </b-container>
+      </template>
+    </b-modal>
     </span>
   </li>
 </template>
@@ -44,8 +62,8 @@ export default {
   data() {
     return {
       active: false,
-      renameModal: false,
-      modalTitle: '',
+      renameFilterModal: false,
+      filterName: '',
       filterContextMenu: false
     }
   },
@@ -54,7 +72,8 @@ export default {
       chooseFilter: 'filters/chooseFilter',
       removeSavedFilter: 'filters/removeSavedFilter',
       renameFilter: 'filters/renameFilter',
-      toggleEditMode: 'filters/toggleEditMode'
+      toggleEditMode: 'filters/toggleEditMode',
+      saveFilters: 'filters/saveFilters'
     }),
     selectFilter() {
       this.chooseFilter(cloneDeep(this.filter))
@@ -65,6 +84,23 @@ export default {
     },
     openContextMenu() {
       this.filterContextMenu = !this.filterContextMenu
+    },
+    openRenameModal() {
+      this.filterName = this.filter.title
+      this.renameFilterModal = true
+      this.filterContextMenu = false
+    },
+    saveFilter() {
+      this.saveFilters({ oldTitle: this.filter.title, data: this.filter.search, newTitle: this.filterName })
+        .then(() => {
+          this.$bvToast.toast(`${this.$t('filter.filterWasSaved')}`, {
+            title: `${this.$t('filter.saveFilter')}`,
+            autoHideDelay: 5000,
+            variant: 'success',
+            appendToast: true
+          })
+          this.renameFilterModal = false
+        })
     }
   },
   computed: {
