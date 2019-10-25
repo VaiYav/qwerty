@@ -44,7 +44,8 @@ const externalData = {
           }
         })
     },
-    getLoader: state => state.loader
+    getLoader: state => state.loader,
+    isFixedColumns: (state, getters) => getters.getAllColumns.some(column => column.fixed && column.fixed.active)
   },
   actions: {
     setLoader({ commit }, payload) {
