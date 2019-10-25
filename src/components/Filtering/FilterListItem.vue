@@ -13,13 +13,14 @@
         <div @click.stop v-show="filterContextMenu" class="filter-context-container">
           <ul>
             <li @click="openRenameModal">{{$t('filter.renameFilter')}}</li>
-            <li>{{$t('filter.deleteFilter')}}</li>
+            <li @click="openDeleteModal">{{$t('filter.deleteFilter')}}</li>
             <li>{{$t('filter.defineAsStandard')}}</li>
           </ul>
         </div>
       </span>
       <b-modal centered size="sm" v-model="renameFilterModal" :title="$t('filter.renameFilter')">
       <b-form-group
+          class="mr-2"
           id="fieldset-horizontal"
           label-for="filterName"
           :label="$t('filter.filterName')"
@@ -31,6 +32,18 @@
           <b-row>
             <b-col offset-md="8" cols="12" md="4" class="p-1">
               <b-button size="sm" class="w-100 h-100" variant="secondary" @click="saveFilter">{{$t('button.save')}}</b-button>
+            </b-col>
+          </b-row>
+        </b-container>
+      </template>
+    </b-modal>
+      <b-modal centered size="sm" v-model="deleteFilterModal" :title="$t('filter.renameFilter')">
+     <span class="filter-modal-text">{{$t('filter.deleteModalText')}}</span>
+      <template v-slot:modal-footer="{ ok, cancel }">
+        <b-container class="main-filter" fluid>
+          <b-row>
+            <b-col offset-md="8" cols="12" md="4" class="p-1">
+              <b-button size="sm" class="w-100 h-100 p-0" variant="secondary" @click="removeFilter">{{$t('button.delete')}}</b-button>
             </b-col>
           </b-row>
         </b-container>
@@ -63,6 +76,7 @@ export default {
     return {
       active: false,
       renameFilterModal: false,
+      deleteFilterModal: false,
       filterName: '',
       filterContextMenu: false
     }
@@ -81,6 +95,7 @@ export default {
     },
     removeFilter() {
       this.removeSavedFilter({ data: this.filter, index: this.index })
+      this.deleteFilterModal = false
     },
     openContextMenu() {
       this.filterContextMenu = !this.filterContextMenu
@@ -101,6 +116,10 @@ export default {
           })
           this.renameFilterModal = false
         })
+    },
+    openDeleteModal() {
+      this.deleteFilterModal = true
+      this.filterContextMenu = false
     }
   },
   computed: {
@@ -142,5 +161,14 @@ export default {
         }
       }
     }
+  }
+  .filter-modal-text {
+    display: block;
+    color: #5e6164;
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    padding: 24px 0;
   }
 </style>

@@ -44,6 +44,7 @@
     "select": "Select",
     "cancel": "Cancel",
     "search": "Search",
+    "delete": "Delete",
     "saveFilter": "Save filter",
     "resetToDefault": "Reset to default",
     "createNewFilter": "Create new filter",
@@ -71,6 +72,7 @@
     "filterName": "Filter name",
     "renameFilter": "Rename filter",
     "deleteFilter": "Delete filter",
-    "defineAsStandard": "Define as standard"
+    "defineAsStandard": "Define as standard",
+    "deleteModalText": "Are you sure you want to delete this filter?"
   }
 }
