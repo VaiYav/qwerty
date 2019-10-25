@@ -93,7 +93,7 @@ export default {
   },
   data() {
     return {
-      showFilters: true,
+      showFilters: false,
       chooseFilter: false,
       saveFiltersModal: false,
       filterName: '',

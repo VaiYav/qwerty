@@ -15,6 +15,14 @@
         }
       }
     }
+    &.is-not-resized {
+      .table-grid-cell-head {
+        width: initial !important;
+      }
+      .table-grid-resize-button {
+        display: none;
+      }
+    }
   }
   table {
     width: 100%;

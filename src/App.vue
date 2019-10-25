@@ -12,11 +12,20 @@
           </b-col>
         </b-row>
       </b-container>
-      <Table-grid
-          :columns="columns"
-          :data="data"
-          :config="config"
-      />
+      <div class="d-flex overflow-hidden">
+        <b-list-group style="max-width: 250px;">
+          <b-list-group-item>Cras justo odio</b-list-group-item>
+          <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
+          <b-list-group-item>Morbi leo risus</b-list-group-item>
+          <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
+          <b-list-group-item>Vestibulum at eros</b-list-group-item>
+        </b-list-group>
+        <Table-grid
+            :columns="columns"
+            :data="data"
+            :config="config"
+        />
+      </div>
 <!--      <Pagination v-if="config.pagination.isActive && config.pagination.position === 'bottom'" />-->
       <Pagination v-if="config.pagination.isActive" />
     </div>
