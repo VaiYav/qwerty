@@ -26,7 +26,6 @@
   }
   table {
     width: 100%;
-    overflow: hidden;
     min-width: 100%;
     border: 0;
     border-spacing: 0;
@@ -138,7 +137,6 @@
     }
     .table-grid-cell {
       position: relative;
-      overflow: hidden;
       padding: 0;
       border-bottom: 1px #e4e4e4 solid;
       border-right: 1px #e4e4e4 solid;

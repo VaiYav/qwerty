@@ -96,3 +96,10 @@
 .box-shadow-none {
   box-shadow: none !important;
 }
+.dropdown-menu.show {
+  z-index: 3 !important;
+}
+.btn-group > .btn,
+.btn-group-vertical > .btn {
+  padding: 0;
+}
