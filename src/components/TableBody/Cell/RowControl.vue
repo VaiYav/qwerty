@@ -4,19 +4,16 @@
           :rowIndex="rowIndex"
           :data="data"
           :id="data.id.value" />
-      <VIcon
-          :id="`${data.id.value}`"
-          name="bars"
-          class="pointer" />
-      <b-popover :target="`${data.id.value}`" triggers="focus">
-        <template slot="title">{{$t('form.menu')}}</template>
-        <b-list-group>
-          <b-list-group-item href="#some-link">Awesome link</b-list-group-item>
-          <b-list-group-item href="#" active>Link with active state</b-list-group-item>
-          <b-list-group-item href="#">Action links are easy</b-list-group-item>
-          <b-list-group-item href="#foobar" disabled>Disabled link</b-list-group-item>
-        </b-list-group>
-      </b-popover>
+      <b-dropdown size="lg" lazy variant="link" toggle-class="text-decoration-none" no-caret>
+        <template v-slot:button-content>
+          <VIcon
+              name="bars"
+              class="pointer" />
+        </template>
+        <b-dropdown-item href="#">Action</b-dropdown-item>
+        <b-dropdown-item href="#">Another action</b-dropdown-item>
+        <b-dropdown-item href="#">Something else here...</b-dropdown-item>
+      </b-dropdown>
     </div>
 </template>
 
