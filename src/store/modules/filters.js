@@ -1,9 +1,10 @@
 import * as types from '../types'
-import { cloneDeep } from '@/utils'
+import { cloneDeep, isObjectEqual } from '@/utils'
 
 const filters = {
   namespaced: true,
   state: {
+    clonedSavedFilter: {},
     filterTypes: [
       {
         type: 'string',
@@ -142,7 +143,8 @@ const filters = {
     activeFilter: (state) => state.activeFilter,
     defaultSavedFilters: (state) => state.defaultSavedFilters,
     editMode: (state) => state.editMode,
-    searchFilters: (state) => state.searchFilters
+    searchFilters: (state) => state.searchFilters,
+    isHaveUnsavedChanges: (state) => !isObjectEqual(state.clonedSavedFilter, state.activeFilter)
   },
   actions: {
     resetFilter({ commit, state }) {
@@ -180,11 +182,15 @@ const filters = {
         commit(types.SET_FILTERS, clonedState)
         dispatch('setDefaultSavedFilters', clonedState)
         dispatch('chooseFilter', clonedState[index])
+        dispatch('cloneSavedFilters')
         resolve()
       })
     },
     chooseFilter({ commit }, payload = { search: [] }) {
-      commit(types.CHOOSE_FILTER, payload)
+      return new Promise((resolve) => {
+        commit(types.CHOOSE_FILTER, payload)
+        resolve()
+      })
     },
     removeFilter({ state, commit }, payload) {
       const clonedState = cloneDeep(state.activeFilter)
@@ -224,6 +230,10 @@ const filters = {
       entity.title = payload.newVal
       commit(types.SET_FILTERS, clonedState)
       commit(types.CHOOSE_FILTER, entity)
+    },
+    cloneSavedFilters({ commit, state }) {
+      const clonedState = cloneDeep(state.activeFilter)
+      commit(types.CLONE_SAVED_FILTERS, clonedState)
     }
   },
   mutations: {
@@ -252,6 +262,9 @@ const filters = {
     },
     [types.SEARCH_BY_FILTER](state, payload) {
       state.searchFilters = payload
+    },
+    [types.CLONE_SAVED_FILTERS](state, payload) {
+      state.clonedSavedFilter = payload
     }
   }
 }

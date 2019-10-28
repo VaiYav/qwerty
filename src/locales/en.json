@@ -48,7 +48,8 @@
     "saveFilter": "Save filter",
     "resetToDefault": "Reset to default",
     "createNewFilter": "Create new filter",
-    "resetFilters": "Reset filters"
+    "resetFilters": "Reset filters",
+    "continue": "Continue"
   },
   "filter": {
     "useFilters": "Use filters?",
@@ -73,6 +74,8 @@
     "renameFilter": "Rename filter",
     "deleteFilter": "Delete filter",
     "defineAsStandard": "Define as standard",
-    "deleteModalText": "Are you sure you want to delete this filter?"
+    "deleteModalText": "Are you sure you want to delete this filter?",
+    "unsavedModifications": "Unsaved modification",
+    "unsavedModificationsText": "Do you want to continue without saving the modifications?"
   }
 }

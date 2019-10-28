@@ -56,8 +56,10 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from '@/utils'
+import unsavedModifications from '@/mixins/unsavedModifications'
 export default {
   name: 'FilterListItem',
+  mixins: [unsavedModifications],
   props: {
     filter: {
       type: Object,
@@ -87,11 +89,18 @@ export default {
       removeSavedFilter: 'filters/removeSavedFilter',
       renameFilter: 'filters/renameFilter',
       toggleEditMode: 'filters/toggleEditMode',
-      saveFilters: 'filters/saveFilters'
+      saveFilters: 'filters/saveFilters',
+      cloneSavedFilters: 'filters/cloneSavedFilters'
     }),
     selectFilter() {
-      this.chooseFilter(cloneDeep(this.filter))
-      this.filterContextMenu = false
+      this.openUnsavedModificationModal()
+        .then(() => {
+          this.chooseFilter(cloneDeep(this.filter))
+            .then(() => {
+              this.cloneSavedFilters()
+            })
+          this.filterContextMenu = false
+        })
     },
     removeFilter() {
       this.removeSavedFilter({ data: this.filter, index: this.index })
