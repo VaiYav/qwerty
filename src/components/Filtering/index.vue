@@ -38,7 +38,8 @@ export default {
   methods: {
     ...mapActions({
       removeSearchFilters: 'filters/removeSearchFilters',
-      setRouter: 'routing/setRouter'
+      setRouter: 'routing/setRouter',
+      cloneSavedFilters: 'filters/cloneSavedFilters'
     }),
     focus() {
       this.selectFilter = true
@@ -51,6 +52,7 @@ export default {
     toggleFilters(status) {
       this.showFilters = status
       this.selectFilter = false
+      if (status) this.cloneSavedFilters()
     },
     closeModal(val) {
       this.showFilters = val

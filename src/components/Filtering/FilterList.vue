@@ -24,8 +24,11 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import { cloneDeep } from '@/utils'
+import unsavedModifications from '@/mixins/unsavedModifications'
+
 export default {
   name: 'FilterList',
+  mixins: [unsavedModifications],
   components: {
     FilterListItem: () => import('@/components/Filtering/FilterListItem')
   },
@@ -50,10 +53,17 @@ export default {
       chooseFilter: 'filters/chooseFilter',
       resetFilter: 'filters/resetFilter',
       setDefaultSavedFilters: 'filters/setDefaultSavedFilters',
-      toggleEditMode: 'filters/toggleEditMode'
+      toggleEditMode: 'filters/toggleEditMode',
+      cloneSavedFilters: 'filters/cloneSavedFilters'
     }),
     selectFilter() {
-      this.chooseFilter(cloneDeep(this.filter))
+      this.openUnsavedModificationModal()
+        .then(() => {
+          this.chooseFilter(cloneDeep(this.filter))
+            .then(() => {
+              this.cloneSavedFilters()
+            })
+        })
     },
     toggleEdit() {
       this.toggleEditMode(!this.editMode)

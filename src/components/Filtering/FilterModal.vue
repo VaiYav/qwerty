@@ -78,8 +78,11 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from '@/utils'
+import unsavedModifications from '@/mixins/unsavedModifications'
+
 export default {
   name: 'FilterModal',
+  mixins: [unsavedModifications],
   components: {
     FilterList: () => import('@/components/Filtering/FilterList'),
     SavedFilterList: () => import('@/components/Filtering/SavedFilterList'),
@@ -127,7 +130,8 @@ export default {
       createFilter: 'filters/createFilter',
       saveFilters: 'filters/saveFilters',
       searchByFilter: 'filters/searchByFilter',
-      setRouter: 'routing/setRouter'
+      setRouter: 'routing/setRouter',
+      cloneSavedFilters: 'filters/cloneSavedFilters'
     }),
     createNewFilter() {
       this.createFilter({ title: this.$t('filter.newFilter'), search: this.activeFilter.title ? [] : this.searchFilters.search })
@@ -186,10 +190,13 @@ export default {
         })
     },
     search() {
-      this.searchByFilter(this.activeFilter)
-      this.$emit('close', false)
-      this.showFilters = false
-      this.setRouter({ data: this.activeFilter, key: 'filters', func: 'filters/searchByFilter' }, { root: true })
+      this.openUnsavedModificationModal()
+        .then(() => {
+          this.searchByFilter(this.activeFilter)
+          this.$emit('close', false)
+          this.showFilters = false
+          this.setRouter({ data: this.activeFilter, key: 'filters', func: 'filters/searchByFilter' }, { root: true })
+        })
     }
   },
   created() {

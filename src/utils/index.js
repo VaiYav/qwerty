@@ -29,12 +29,6 @@ export function arrayDiffByKey(key, ...arrays) {
 export function freezeObject(obj) {
   return Object.freeze(obj)
 }
-export default {
-  debounce,
-  cloneDeep,
-  arrayDiffByKey,
-  freezeObject
-}
 export function getObjectDiff(obj1, obj2) {
   return Object.keys(obj1).reduce((result, key) => {
     if (!Object.prototype.hasOwnProperty.call(obj2, key)) {
@@ -45,4 +39,15 @@ export function getObjectDiff(obj1, obj2) {
     }
     return result
   }, Object.keys(obj2))
+}
+export function isObjectEqual(x, y) {
+  return JSON.stringify(x) === JSON.stringify(y)
+}
+export default {
+  debounce,
+  cloneDeep,
+  arrayDiffByKey,
+  freezeObject,
+  getObjectDiff,
+  isObjectEqual
 }
