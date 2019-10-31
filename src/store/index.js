@@ -9,7 +9,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   modules,
   getters,
-  plugins: [createMutationsSharer({ predicate: ['filters/CHOOSE_FILTER', 'mutation2'] })]
+  plugins: [createMutationsSharer({ predicate: ['filters/SET_STANDARD_FILTER'] })]
 })
 
 export default store

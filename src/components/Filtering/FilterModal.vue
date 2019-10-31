@@ -8,10 +8,10 @@
       :title="$t('filter.title')">
     <b-container class="main-filter" fluid>
       <b-row>
-        <b-col cols="12" md="3" class="p-0">
+        <b-col cols="12" md="2" class="p-0">
           <FilterList />
         </b-col>
-        <b-col cols="12" md="9" class="p-2 justify-content-between d-flex flex-column">
+        <b-col cols="12" md="10" class="p-2 justify-content-between d-flex flex-column">
           <div cols="12">
             <div class="main-filter-head d-flex justify-content-between align-items-center pl-4 mt-2">
               <b>{{activeFilter.title || $t(`filter.currentFilter`)}}</b>

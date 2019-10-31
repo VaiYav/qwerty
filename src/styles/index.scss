@@ -103,3 +103,9 @@
 .btn-group-vertical > .btn {
   padding: 0;
 }
+
+@media (min-width: 1200px) {
+  .modal-xl {
+    max-width: 1187px;
+  }
+}
