@@ -68,7 +68,6 @@ export default {
     setInMiddlePage() {
       const table = document.querySelector('.table-grid.main-table')
       const windowWidth = window.innerWidth
-      console.log(windowWidth)
       const fixedHeader = document.querySelector('.fixed-header-container .table')
       const tablePosition = table.getBoundingClientRect()
       if (fixedHeader) {

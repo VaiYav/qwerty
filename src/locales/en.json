@@ -76,6 +76,7 @@
     "defineAsStandard": "Define as standard",
     "deleteModalText": "Are you sure you want to delete this filter?",
     "unsavedModifications": "Unsaved modification",
-    "unsavedModificationsText": "Do you want to continue without saving the modifications?"
+    "unsavedModificationsText": "Do you want to continue without saving the modifications?",
+    "removeAsStandard": "Remove as standard"
   }
 }

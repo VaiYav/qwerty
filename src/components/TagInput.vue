@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     input(e) {
-      console.log(e)
       this.$emit('input', this.searchFilters.search)
     },
     focus(e) {

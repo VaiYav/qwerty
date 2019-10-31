@@ -19,7 +19,12 @@
           <ul>
             <li @click="openRenameModal">{{$t('filter.renameFilter')}}</li>
             <li @click="openDeleteModal">{{$t('filter.deleteFilter')}}</li>
-            <li @click="defineAsStandard">{{$t('filter.defineAsStandard')}}</li>
+            <li
+                v-if="activeFilter.title === filter.title && activeFilter.isDefault"
+                @click="removeAsStandard">{{$t('filter.removeAsStandard')}}</li>
+            <li
+                v-else
+                @click="defineAsStandard">{{$t('filter.defineAsStandard')}}</li>
           </ul>
         </div>
       </span>
@@ -96,9 +101,10 @@ export default {
       toggleEditMode: 'filters/toggleEditMode',
       saveFilters: 'filters/saveFilters',
       cloneSavedFilters: 'filters/cloneSavedFilters',
-      setStandardFilter: 'filters/setStandardFilter'
+      toggleStandardFilter: 'filters/toggleStandardFilter'
     }),
     selectFilter() {
+      if (this.activeFilter.title === this.filter.title) return
       return new Promise((resolve) => {
         this.openUnsavedModificationModal()
           .then(() => {
@@ -143,8 +149,12 @@ export default {
       this.chooseFilter(cloneDeep(this.filter))
         .then(() => {
           this.cloneSavedFilters()
-          this.setStandardFilter()
+          this.toggleStandardFilter(true)
         })
+      this.filterContextMenu = false
+    },
+    removeAsStandard() {
+      this.toggleStandardFilter(false)
       this.filterContextMenu = false
     }
   },
