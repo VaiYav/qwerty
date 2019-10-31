@@ -98,6 +98,7 @@ const filters = {
     savedFilters: [
       {
         title: 'Filter',
+        isDefault: false,
         search: [
           {
             type: 'is less than',
@@ -113,6 +114,7 @@ const filters = {
       },
       {
         title: 'Qwerty',
+        isDefault: false,
         search: [
           {
             type: 'starts with',
@@ -237,9 +239,9 @@ const filters = {
       const clonedState = cloneDeep(state.activeFilter)
       commit(types.CLONE_SAVED_FILTERS, clonedState)
     },
-    setStandardFilter({ commit, state }) {
+    toggleStandardFilter({ commit, state }, payload) {
       const clonedState = cloneDeep(state.activeFilter)
-      clonedState.isDefault = true
+      clonedState.isDefault = payload
       commit(types.SET_STANDARD_FILTER, clonedState)
     }
   },
