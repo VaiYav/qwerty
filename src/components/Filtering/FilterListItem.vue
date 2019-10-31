@@ -6,6 +6,11 @@
   >
     <span class="d-flex justify-content-between align-items-center">
       <span>{{filter.title}}</span>
+      <img
+          v-if="activeFilter.title === filter.title && activeFilter.isDefault"
+          :src="require('@/assets/push-pin.svg')"
+          class="filter-pin"
+          alt="">
       <span>
         <span @click.stop="openContextMenu">
           <VIcon class="mr-1 text-primary" name="bars"></VIcon>
@@ -14,7 +19,7 @@
           <ul>
             <li @click="openRenameModal">{{$t('filter.renameFilter')}}</li>
             <li @click="openDeleteModal">{{$t('filter.deleteFilter')}}</li>
-            <li>{{$t('filter.defineAsStandard')}}</li>
+            <li @click="defineAsStandard">{{$t('filter.defineAsStandard')}}</li>
           </ul>
         </div>
       </span>
@@ -90,17 +95,21 @@ export default {
       renameFilter: 'filters/renameFilter',
       toggleEditMode: 'filters/toggleEditMode',
       saveFilters: 'filters/saveFilters',
-      cloneSavedFilters: 'filters/cloneSavedFilters'
+      cloneSavedFilters: 'filters/cloneSavedFilters',
+      setStandardFilter: 'filters/setStandardFilter'
     }),
     selectFilter() {
-      this.openUnsavedModificationModal()
-        .then(() => {
-          this.chooseFilter(cloneDeep(this.filter))
-            .then(() => {
-              this.cloneSavedFilters()
-            })
-          this.filterContextMenu = false
-        })
+      return new Promise((resolve) => {
+        this.openUnsavedModificationModal()
+          .then(() => {
+            this.chooseFilter(cloneDeep(this.filter))
+              .then(() => {
+                this.cloneSavedFilters()
+                resolve()
+              })
+            this.filterContextMenu = false
+          })
+      })
     },
     removeFilter() {
       this.removeSavedFilter({ data: this.filter, index: this.index })
@@ -128,6 +137,14 @@ export default {
     },
     openDeleteModal() {
       this.deleteFilterModal = true
+      this.filterContextMenu = false
+    },
+    defineAsStandard() {
+      this.chooseFilter(cloneDeep(this.filter))
+        .then(() => {
+          this.cloneSavedFilters()
+          this.setStandardFilter()
+        })
       this.filterContextMenu = false
     }
   },
@@ -178,6 +195,5 @@ export default {
     font-size: 13px;
     font-weight: 400;
     line-height: 18px;
-    padding: 24px 0;
   }
 </style>
