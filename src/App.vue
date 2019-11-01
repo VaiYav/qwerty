@@ -13,7 +13,7 @@
         </b-row>
       </b-container>
       <div class="d-flex overflow-hidden">
-        <b-list-group style="max-width: 250px;">
+        <b-list-group style="max-width: 250px; background: #fff; z-index: 10;">
           <b-list-group-item>Cras justo odio</b-list-group-item>
           <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
           <b-list-group-item>Morbi leo risus</b-list-group-item>

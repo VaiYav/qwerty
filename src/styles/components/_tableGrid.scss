@@ -204,7 +204,6 @@
         span {
           text-overflow: ellipsis;
           overflow: hidden;
-          white-space: nowrap;
         }
         &.context-container {
           display: flex;
@@ -230,7 +229,7 @@
           max-width: 100%;
           position: relative;
           display: block;
-          margin: 1rem;
+          margin: 0 1rem 1rem 1rem;
         }
       }
       &:nth-child(even) {
