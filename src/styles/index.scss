@@ -109,3 +109,9 @@
     max-width: 1187px;
   }
 }
+.dropdown-menu {
+  min-width: 5rem;
+  .dropdown-item {
+    padding: .25rem .75rem;
+  }
+}

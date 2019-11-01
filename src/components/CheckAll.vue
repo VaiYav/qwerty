@@ -1,5 +1,5 @@
 <template>
-  <tr class="table-grid-row table-grid-row-body">
+  <tr class="table-grid-row table-grid-row-body mb-0 mt-4">
     <td
         class="table-grid-cell"
         colspan="200"
@@ -51,10 +51,15 @@ export default {
     },
     addFixed() {
       if (this.getFixedHeaderStatus) return
+      const table = document.querySelector('.table-grid.main-table')
+      const tablePosition = table.getBoundingClientRect()
       return {
         position: 'fixed',
         width: '100%',
-        top: '53px'
+        top: '53px',
+        padding: 0,
+        'border-bottom': '2px solid #dee2e6',
+        left: tablePosition.left + 'px'
       }
     }
   },
