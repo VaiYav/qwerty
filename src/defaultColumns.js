@@ -47,6 +47,7 @@ export default ({
     'visible': true,
     'settable': true,
     'filterable': false,
+    'isSammary': true,
     'sortable': {
       status: true,
       direction: '',

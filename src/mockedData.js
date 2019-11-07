@@ -226,6 +226,7 @@ export default {
       'draggable': true,
       'multiModalAllowed': true,
       'filterable': true,
+      'isSammary': true,
       'order': 15,
       'width': {
         'min': 55,

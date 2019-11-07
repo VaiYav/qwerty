@@ -30,6 +30,12 @@ import { mapGetters, mapActions } from 'vuex'
 import { EventBus } from '@/EventBus'
 export default {
   name: 'CheckAll',
+  props: {
+    isHaveSummary: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       style: {
@@ -56,7 +62,7 @@ export default {
       return {
         position: 'fixed',
         width: '100%',
-        top: '53px',
+        top: this.isHaveSummary ? '110px' : '53px',
         padding: 0,
         'border-bottom': '2px solid #dee2e6',
         left: tablePosition.left + 'px'

@@ -9,9 +9,10 @@
   >
     <thead class="table-grid-header">
       <TableHeadColumn :columns="getNotFixedColumns" />
+      <SummaryHeader :columns="getNotFixedColumns" />
     </thead>
     <tbody v-if="data.length">
-    <CheckAll v-if="checkAllBlock" />
+    <CheckAll v-if="checkAllBlock" :isHaveSummary="config.isSummary" />
     <TableBodyRow
         v-for="(row, rowIndex) in data.slice(0).map(d => freezeObject(d))"
         :data="row"
@@ -46,7 +47,8 @@ export default {
     TableBodyRow: () => import('@/components/TableBody/Row'),
     TableHeadColumn: () => import('@/components/TableHead/Column'),
     FixedHeader: () => import('@/components/FixedHeader'),
-    CheckAll: () => import('@/components/CheckAll')
+    CheckAll: () => import('@/components/CheckAll'),
+    SummaryHeader: () => import('@/components/SummaryHeader')
   },
   computed: {
     ...mapGetters({
