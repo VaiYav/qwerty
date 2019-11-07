@@ -12,7 +12,8 @@
             fixedHeader
             :fixedColumn="fixedColumn"
         />
-        <tr v-if="checkAllBlock">
+        <SummaryHeader :columns="columns" />
+        <tr v-if="!hidden && checkAllBlock">
           <th :colspan="columns.length" class="table-grid-cell  table-grid-cell__checkAll">
             <span class="table-grid-cell-content"></span>
           </th>
@@ -25,7 +26,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import { EventBus } from '../EventBus'
-
 export default {
   name: 'FixedHeader',
   props: {
@@ -43,7 +43,8 @@ export default {
     }
   },
   components: {
-    TableHeadColumn: () => import('@/components/TableHead/Column')
+    TableHeadColumn: () => import('@/components/TableHead/Column'),
+    SummaryHeader: () => import('@/components/SummaryHeader')
   },
   data() {
     return {

@@ -4,6 +4,7 @@
       :style="{ [position]: 0, 'z-index': 5 }">
     <thead class="table-grid-header">
       <TableHeadColumn v-cloak :columns="getFixedColumns(columns, position)" fixedColumn />
+      <SummaryHeader :columns="getFixedColumns(columns, position)" />
     </thead>
     <tbody>
     <tr v-if="checkAllBlock" class="table-grid-row table-grid-row-body">
@@ -54,7 +55,8 @@ export default {
   components: {
     TableBodyRow: () => import('@/components/TableBody/Row'),
     TableHeadColumn: () => import('@/components/TableHead/Column'),
-    FixedHeader: () => import('@/components/FixedHeader')
+    FixedHeader: () => import('@/components/FixedHeader'),
+    SummaryHeader: () => import('@/components/SummaryHeader')
   },
   computed: {
     ...mapGetters({
